@@ -1,6 +1,6 @@
 # CS 260: Web Programming
 
-## Intro:
+## Intro
 
 Web programming is one of the most useful branches of skills and technologies to have in the world today. Learning these skills will open previously inacessible doors. 
 Because the specifics technologies of web programming shift constantly, focus less on the specific technologies and more on the overall concepts and frameworks of being a web programmer in this class.
@@ -118,3 +118,9 @@ Pull requests are how you suggest/request a change to a respository. You can sub
 Pull requests are specifically for propsing changes to the main branch of code by merging in changes from a feature (other) branch. Pull requests can be reviewed and commented on by others in the repositories, and a pull request can have changes committed to it while it is still open and under review, and the files changed in the pull request can be viewed. A user can also make a draft pull request, which is a pull request that is still in progress and not ready to be merged. It is essentially a "draft" of a pull request. 
 
 A lot more good info on pull requests can be found [here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests)
+
+**Lecture 9.5.24**
+One of Prof. Ventura's biggest course objectives is for us to learn to think analytically and creatively.
+He also wants us to gain confidence, have fun, and of course learn web programming.
+
+Don't be trapped by the accumulation of ignorance, understand as I go.
