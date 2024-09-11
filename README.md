@@ -27,3 +27,18 @@ My application will help you study in a way that emphasizes semantic encoding, a
 - Authentication: This will be used to secure data and user information, and to allow users to log in and out of the application and have distinct profiles.
 - Database usage: This will be used to store created quizzes and flashcards, as well as prior quiz scores and user information.
 - WebSocket data: This will be used for the collaborative study feature, allowing users to share quizzes and flashcards with each other in real time, and view quiz scores and status (online, in quiz, offline, etc.) of other users.
+
+## HTML Deliverable
+
+Overviews of the HTML pages:
+
+- index.html: home page
+- profile.html: user profile page
+- quizMenu.html: page for selecting and creating quizzes
+- quiz.html: template page for taking quizzes
+- quizEdit.html: page for editing quizzes
+- flashcardsMenu.html: page for selecting and creating flashcards
+- flashcards.html: template page for viewing flashcards
+- flashcardsEdit.html: page for editing flashcards
+- login.html: login page
+- about.html: about page
