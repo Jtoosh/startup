@@ -28,9 +28,13 @@ My application will help you study in a way that emphasizes semantic encoding, a
 - Database usage: This will be used to store created quizzes and flashcards, as well as prior quiz scores and user information.
 - WebSocket data: This will be used for the collaborative study feature, allowing users to share quizzes and flashcards with each other in real time, and view quiz scores and status (online, in quiz, offline, etc.) of other users.
 
+### Outline Sketch
+
+![Outline sketch](startupSketch.png)
+
 ## HTML Deliverable
 
-Overviews of the HTML pages:
+Overviews of the HTML pages needed:
 
 - index.html: home page
 - profile.html: user profile page
