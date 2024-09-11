@@ -32,7 +32,7 @@ My application will help you study in a way that emphasizes semantic encoding, a
 
 ![Outline sketch](startupSketch.png)
 
-## HTML Deliverable
+<!-- ## HTML Deliverable
 
 Overviews of the HTML pages needed:
 
@@ -45,4 +45,4 @@ Overviews of the HTML pages needed:
 - flashcards.html: template page for viewing flashcards
 - flashcardsEdit.html: page for editing flashcards
 - login.html: login page
-- about.html: about page
+- about.html: about page -->
