@@ -137,3 +137,22 @@ Peer-to-peer model: This is a model where each computer in the network can act a
 Like with other projects I have had, remember to balance ambition with reality. I felt this when I had the idea to add the file input and quiz generation feature. I think I am going to still make the quiz/study app, but only do a simpler part of it for the project. Then afterwards I'll work on the quiz generation feature.
 
 Maintain the separation between the Development and Production environments. It is bad practice to do any coding/developing in the production environment. Development is the designated place for breaking and messing up. Also ensure that things being done in the development environment are being pushed to GitHub.
+
+**Lecture 9.12.24:**
+Caddy is a gateway that can be used for 3 main purposes: serving static files, web user authentication, and other. It serves the same function as Apache in my ITC210 class.
+
+DNS stands for Domain Name System, and it translates domain names into IP addresses. It is like a phone book for the internet. In the case of AWS, the DNS is Route 53, and the web server is EC2.
+
+The unique combinations of IP addresses actually ran out in 2011, so now there are IPv4 and IPv6 addresses. IPv4 addresses are 32 bits long, and IPv6 addresses are 128 bits long. Most people haven't adopted those yet though. Other things that are being done to address the shortage of IP addresses are NAT (Network Address Translation) and CIDR (Classless Inter-Domain Routing), so I'll still have a "unique" location for my server so it will be secure.
+
+Layers of the Internet:
+Link: The physical connection between devices (fiber, hardware)
+Internet: The network of networks that connects devices (IP, routers)
+Transport: The protocols that move data between devices (TCP, UDP)
+Application: The protocols that define how data is formatted and transmitted (HTTP, FTP)
+
+**Creating EC2 Instance:**
+Something important about the region in which we set up this server, is that the AMI file that they provided for the class is only avalibe in the N. Virginia region. So if you try to set up the server in a different region, it will work, but I won't be able to use the AMI file that they provided.
+
+*Notes about the server from the reading:*
+The `Caddyfile` is the configuration file for your web service gateway. The `public_html` directory contains all of the static files that you are serving up directly through Caddy when using it as a web service. We will cover Caddy configuration in a later instruction. The `services` directory is the place where you are going to install all of your web services once you build them.
