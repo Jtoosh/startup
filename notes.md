@@ -138,7 +138,8 @@ Like with other projects I have had, remember to balance ambition with reality. 
 
 Maintain the separation between the Development and Production environments. It is bad practice to do any coding/developing in the production environment. Development is the designated place for breaking and messing up. Also ensure that things being done in the development environment are being pushed to GitHub.
 
-**Lecture 9.12.24:**
+## Lecture 9.12.24
+
 Caddy is a gateway that can be used for 3 main purposes: serving static files, web user authentication, and other. It serves the same function as Apache in my ITC210 class.
 
 DNS stands for Domain Name System, and it translates domain names into IP addresses. It is like a phone book for the internet. In the case of AWS, the DNS is Route 53, and the web server is EC2.
@@ -154,5 +155,37 @@ Application: The protocols that define how data is formatted and transmitted (HT
 **Creating EC2 Instance:**
 Something important about the region in which we set up this server, is that the AMI file that they provided for the class is only avalibe in the N. Virginia region. So if you try to set up the server in a different region, it will work, but I won't be able to use the AMI file that they provided.
 
-*Notes about the server from the reading:*
+_Notes about the server from the reading:_
 The `Caddyfile` is the configuration file for your web service gateway. The `public_html` directory contains all of the static files that you are serving up directly through Caddy when using it as a web service. We will cover Caddy configuration in a later instruction. The `services` directory is the place where you are going to install all of your web services once you build them.
+
+## Lecture 9.17.24
+
+Domain name anatomy:
+[subdomain].[domain].[tld] 
+tld = top level domain. Examples: .com, .org, .net, .edu, .gov, etc.
+
+There are different records that are associated with a domain name. The most common ones are:
+
+- A record: This is the most common record. It maps a domain name to an IP address. This is the record that you will use to map your domain name to your EC2 instance.
+- CNAME record: This is an alias for another domain name. It is used when you want to map one domain name to another domain name.
+- MX record: This is used to map a domain name to a mail server. It is used when you want to receive email at your domain name.
+- TXT record: This is used to store text information about a domain name. It is used for things like SPF records, DKIM records, and DMARC records.
+
+Caddy cannot use HTTPS with just an IP address, it needs a domain name to do that.
+
+Something that was a stumbling block for me was remembering the syntax of the ssh command. Here is is: `ssh -i keyfile.pem ubuntu@public-ip-address`. The `-i` flag is for the key file, and the `ubuntu` is the username of the server, which would change depending on the server.
+
+Prof. Ventura mentioned that class may not seem very hard right now, which is fine, it'll get more difficult as time goes on.
+
+Make sure to take notes of things as I do the HTTPS assignment reading and the HTML readings.
+
+`input` HTML elements have a `pattern` attribute that can be used to specify a regular expression that the input must match. This is useful for validating user input. 
+
+According to Prof. Ventura, the best resources are MDN Web Docs and W3Schools.
+
+`aside` elements
+: An HTML structural element used to organize tangental or unrelated content, such as sidebars or footnotes.
+
+`main` elements
+: An HTML structural element used to organize the main content of a page.
+
