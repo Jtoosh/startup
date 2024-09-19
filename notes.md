@@ -244,7 +244,7 @@ What pieces do I need?
 - back button to exit set (`button`)
 - Create set button (`button`)
 
-- Quiz page 
+- Quiz page
 - Quiz question (div, p)
 - Quiz help button (button)
 - Flag question button (button)
