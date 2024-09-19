@@ -140,9 +140,11 @@ Maintain the separation between the Development and Production environments. It 
 
 ## Lecture 9.12.24
 
-Caddy is a gateway that can be used for 3 main purposes: serving static files, web user authentication, and other. It serves the same function as Apache in my ITC210 class.
+Caddy
+: a gateway that can be used for 3 main purposes: serving static files, web user authentication, and redirecting web traffic. It serves the same function as Apache in my ITC210 class.
 
-DNS stands for Domain Name System, and it translates domain names into IP addresses. It is like a phone book for the internet. In the case of AWS, the DNS is Route 53, and the web server is EC2.
+DNS
+: Domain Name System, and it translates domain names into IP addresses. It is like a phone book for the internet. In the case of AWS, the DNS is Route 53, and the web server is EC2.
 
 The unique combinations of IP addresses actually ran out in 2011, so now there are IPv4 and IPv6 addresses. IPv4 addresses are 32 bits long, and IPv6 addresses are 128 bits long. Most people haven't adopted those yet though. Other things that are being done to address the shortage of IP addresses are NAT (Network Address Translation) and CIDR (Classless Inter-Domain Routing), so I'll still have a "unique" location for my server so it will be secure.
 
@@ -221,3 +223,48 @@ Attributes: `src`, `controls`, `autoplay`, `loop`, and others. These have the sa
 
 `canvas` elements
 : An HTML internal media element used to create graphics in a webpage. The HTML element itself creates the canvas, but JavaScript is needed to actually draw on it.
+
+## Lecture 9.19.24
+
+Don't worry about making the pieces look like the finished product, just make sure that all of the pieces are present in my HTML. In the Simon example code, most of the pieces don't look or behavior _anything_ like the final product, but they are all there.
+
+## Startup HTML notes
+
+What pieces do I need?
+
+- Nav bar
+- Title
+- Promo/headliner
+
+- Flashcards page
+- Flashcard set selection (`div`, `p`)
+- Individual cards, front and back ( series of `div`s)
+- buttons to edit/save cards (`button`)
+- buttons to move between cards (`button`)
+- back button to exit set (`button`)
+- Create set button (`button`)
+
+- Quiz page 
+- Quiz question (div, p)
+- Quiz help button (button)
+- Flag question button (button)
+- button to move between questions (button)
+- back button to exit quiz (button)
+- Quiz selection (div)
+- Edit quiz button (button)
+- Save quiz button (button)
+- Create quiz button (button)
+
+- Account page
+- Login button/icon
+- Account info fields
+- log out button
+- edit account button
+- save account button
+- study history/stats
+
+- About page
+- picture of me?
+- bio paragraph
+- contact info
+- mission of Mnemonic study
