@@ -252,8 +252,9 @@ What pieces do I need?
 - back button to exit quiz (button)
 - Quiz selection (div)
 - Edit quiz button (button)
-- Save quiz button (button)
-- Create quiz button (button)
+  - Edit quiz page
+  - Save quiz button (button)
+  - Create quiz button (button)
 
 - Account page
 - Login button/icon
@@ -268,3 +269,6 @@ What pieces do I need?
 - bio paragraph
 - contact info
 - mission of Mnemonic study
+
+## Lecture 9.24.24 - CSS
+
