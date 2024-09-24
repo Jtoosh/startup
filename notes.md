@@ -272,3 +272,11 @@ What pieces do I need?
 
 ## Lecture 9.24.24 - CSS
 
+Psuedo selecters allow you to select an element based on its state. The syntax is `element:state`. Some of the most common ones are: `:hover`, `:active`, `:focus`, `:visited`, and others.
+
+A few methods to import an external font:
+
+1. Use a `@font-face` rule in the CSS file, and in the `src` property, set the value to the url. This is for if you personally have the font file.
+2. Use and `@import` rule in the CSS file, and in the `url` property, set the value to the url of the font file. This is for if you are using a font from a font service, like Google Fonts.
+
+Animation is something that can be applied using CSS. The `animation-name` property is used to specify the name of the animation, and the `animation-duration` property is used to specify the duration of the animation. These are placed on the elements which will have the animation applied to them. Then, the `@keyframes` rule is used to define the animation, with the name of the animation matching the value of `animation-name`. The `from` and `to` keywords are used to define the starting and ending states of the animation. Intermediate states can be defined using percentages. 'Keyframes' are the major points of animation, and the browser will interpolate between them.
