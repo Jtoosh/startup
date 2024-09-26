@@ -280,3 +280,31 @@ A few methods to import an external font:
 2. Use and `@import` rule in the CSS file, and in the `url` property, set the value to the url of the font file. This is for if you are using a font from a font service, like Google Fonts.
 
 Animation is something that can be applied using CSS. The `animation-name` property is used to specify the name of the animation, and the `animation-duration` property is used to specify the duration of the animation. These are placed on the elements which will have the animation applied to them. Then, the `@keyframes` rule is used to define the animation, with the name of the animation matching the value of `animation-name`. The `from` and `to` keywords are used to define the starting and ending states of the animation. Intermediate states can be defined using percentages. 'Keyframes' are the major points of animation, and the browser will interpolate between them.
+
+## Lecture 9.26.24 - CSS Continued
+
+>The following is courtesy of Copilot lol.
+
+To remember the order of the properties in the CSS box model, from outside to inside, you can use the mnemonic:
+**"My Big Purple Cat"**
+
+- **M**argin
+- **B**order
+- **P**adding
+- **C**ontent
+
+Review of `display` property values:
+
+- `block`: The element will take up the entire horizontal space of the browser, and it will start on a new line.
+- `inline`: The element will take up only as much horizontal space as it needs, and it will try to fit on existing lines.
+- `inline-block`: The element will take up as much width as is set in the CSS, and it will try to fit on existing lines.
+- `none`: The element will not be displayed at all.
+- `flex`: The element will be displayed as a flex container, and the children of the element will be displayed as flex items.
+- `grid`: The element will be displayed as a grid container, and the children of the element will be displayed as grid items.
+
+Grid and flex are a bit more complex, so here is some more info on them:
+
+- [Grid] (https://www.w3schools.com/css/css_grid.asp)
+- [Flex] (https://www.w3schools.com/css/css3_flexbox.asp)
+
+Bootstrap is the most popular CSS framework, and Tailwind CSS is a newer one that is gaining popularity. All CSS frameworks are built on top of CSS, and they provide a set of pre-built styles that can be used to create a website. They are useful because they save time and effort, and they provide a consistent look and feel to a website. They are also useful because they make responsive web design much easier.
