@@ -30,12 +30,28 @@
             &#8592; Back to Study (link to study.html)
         </button>
         <div> <!--Quiz question-->
-            Quiz Question field
+            Quiz Question field <br>
+            <label for="question">Quiz Question</label>
+            <input type="text" name="Quiz Question" id="question" required= "true">
         </div>
         <br>
         <div><!--Quiz answer field-->
-            Quiz answer field
+            Quiz answer field <br>
+            <label for="answer">Quiz answer</label>
+            <input type="text" name="Quiz Answer" id="answer" required= "true">
+            <br>
+            <label for="semantic">Answer semantic</label>
+            <input type="text" name="answer semantic" id="semantic" required= "true">
         </div>
+
+        <br>For multiple choice:
+
+
+        <input type="radio" name="multipleChoice" value="A"> A
+        <input type="radio" name="multipleChoice" value="B"> B
+        <input type="radio" name="multipleChoice" value="C"> C
+        <input type="radio" name="multipleChoice" value="D"> D
+
 
         <button>Need ideas? <strong>This will use a 3rd party API to generate ideas/mnemonics</strong></button>
 

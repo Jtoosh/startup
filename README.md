@@ -32,17 +32,35 @@ My application will help you study in a way that emphasizes semantic encoding, a
 
 ![Outline sketch](startupSketch.png)
 
-<!-- ## HTML Deliverable
+## HTML Deliverable
 
 Overviews of the HTML pages needed:
 
 - index.html: home page
-- profile.html: user profile page
-- quizMenu.html: page for selecting and creating quizzes
-- quiz.html: template page for taking quizzes
+- account.html: user profile page
+- study.html: page for selecting and quizzes and flashcards
+- quizTemplate.html: template page for taking specific quizzes
 - quizEdit.html: page for editing quizzes
-- flashcardsMenu.html: page for selecting and creating flashcards
-- flashcards.html: template page for viewing flashcards
+- flashcardTemplate.html: template page for viewing a certain flashcard deck
 - flashcardsEdit.html: page for editing flashcards
-- login.html: login page
-- about.html: about page -->
+- about.html: about page
+
+Here, I will describe how this delivarable helps achieve the specifications outlined above.
+
+### Features:HTML
+
+- The quiz Template and Edit pages, and flashcard Template and Edit pages will provide a space for users to create quizzes and flashcards and including their semantic encoding methods. These were implemented using `input` elements that had their `required` attribute set to true.
+- The quizEdit.html page is where the support for multiple choice and short answer is found. This was implemented using `input` elements with `type="radio"` and `type="text"` for multiple choice and short answer, respectively.
+- Sharing quizzes and flashcards is done through the flashcardTemplate.html and quizTemplate.html pages, where a `button` element is placeholding for when that functionality is fully implemented. For viewing quiz scores and other people's study stats using WebSocket data, that will be displayed on the study.html page.
+- Open-source APIs are given placeholder locations in quizEdit.html and flashcardsEdit.html, where a button is placed that will eventually call an API to give users ideas for quiz questions and flashcard terms.
+
+### Technologies:HTML
+
+- HTML was used to create the full structure of the page. It will however, be open to adjustments as implementation continues and understanding of the avaliable technologies grows.
+- CSS was not yet implemented.
+- JavaScript was not yet implemented.
+- React was not yet implemented.
+- Web service APIs were not yet implemented, but given placeholder buttons on the quizEdit.html and flashcardsEdit.html pages.
+- Authentication was not yet implemented, but was given placeholder Login and Logout buttons in the `header` element of each page.
+- Database usage was not yet implemented, but was given a placeholder div element in the account.html page.
+- WebSocket data was not yet implemented, but was given placeholder div element in the study.html page.
