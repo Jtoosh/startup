@@ -337,3 +337,6 @@ Bootstrap is a mobile-first framework, meaning that it is designed to work on mo
 CSS: https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css
 JS: https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js
 
+## Lecture Notes 10.1.24
+
+In Caddy, different from Apache, the `publichtml` directory is the root directory of the website. This is where the `index.html` file is located that gets displayed when no subdomain is specified. The HTML for any subdomain is located in the `services` directory.

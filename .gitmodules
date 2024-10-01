@@ -1,3 +1,6 @@
 [submodule "simon-html"]
 	path = simon-html
 	url = https://github.com/webprogramming260/simon-html.git
+[submodule "simon-css"]
+	path = simon-css
+	url = https://github.com/webprogramming260/simon-css.git
