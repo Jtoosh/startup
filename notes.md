@@ -327,3 +327,13 @@ Grid and flex are a bit more complex, so here is some more info on them:
 Bootstrap is the most popular CSS framework, and Tailwind CSS is a newer one that is gaining popularity. All CSS frameworks are built on top of CSS, and they provide a set of pre-built styles that can be used to create a website. They are useful because they save time and effort, and they provide a consistent look and feel to a website. They are also useful because they make responsive web design much easier.
 
 The downside to Bootstrap is that sites styled with it are pretty uniform, so like all programming tools, it is not an end-all-be-all.
+
+## CSS Frameworks Assignment Notes
+
+Bootstrap is far and away the most popular CSS framework, but its major success is also its weakness: Bootstrap styling has become the de facto look of the web, so using Bootstrap can deliver a reliable and comfortable user experience, but it won't be able to stand out and be unique. Tailwind CSS is the next closest framework as of recent years, emerging in the last 4 years. It allow for different "looks" and avoids having a single distinct style.
+
+Bootstrap is a mobile-first framework, meaning that it is designed to work on mobile devices first, and then scale up to larger devices. It can be used by downloading the files and using a package manager, or by their content delivery network (CDN) Here are their official CDN links:
+
+CSS: https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css
+JS: https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js
+
