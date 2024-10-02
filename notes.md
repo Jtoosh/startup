@@ -340,3 +340,9 @@ JS: https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js
 ## Lecture Notes 10.1.24
 
 In Caddy, different from Apache, the `publichtml` directory is the root directory of the website. This is where the `index.html` file is located that gets displayed when no subdomain is specified. The HTML for any subdomain is located in the `services` directory.
+
+Remember when using the `deployFiles.sh` script, to be in the directory that you want to deploy.
+
+The colors for Bootstrap is present in their CSS using a Sass map. If I want, I can make my own Sass file and customize the colors to my liking. Or, I can just use other assignments for different purposes, like not using the 'danger' color just for warning components.
+
+When debugging CSS, the `Styles` tab in the browser inspector is my best friend. It will only show the styles that are being applied to the element that I have selected, so I need to select one first. In `Styles` I'll see all of the styles applied, and then the ones that are overridden will be crossed out. I can also add new styles to the element to see how they will look, or toggle styles using the checkbox next to them. The `Computed` tab will show me the final styles that are being applied to the element, including the ones that are inherited from the parent elements.
