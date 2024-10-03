@@ -321,8 +321,8 @@ Review of `display` property values:
 
 Grid and flex are a bit more complex, so here is some more info on them:
 
-- [Grid] (https://www.w3schools.com/css/css_grid.asp)
-- [Flex] (https://www.w3schools.com/css/css3_flexbox.asp)
+- [Grid] (<https://www.w3schools.com/css/css_grid.asp>)
+- [Flex] (<https://www.w3schools.com/css/css3_flexbox.asp>)
 
 Bootstrap is the most popular CSS framework, and Tailwind CSS is a newer one that is gaining popularity. All CSS frameworks are built on top of CSS, and they provide a set of pre-built styles that can be used to create a website. They are useful because they save time and effort, and they provide a consistent look and feel to a website. They are also useful because they make responsive web design much easier.
 
@@ -334,8 +334,8 @@ Bootstrap is far and away the most popular CSS framework, but its major success 
 
 Bootstrap is a mobile-first framework, meaning that it is designed to work on mobile devices first, and then scale up to larger devices. It can be used by downloading the files and using a package manager, or by their content delivery network (CDN) Here are their official CDN links:
 
-CSS: https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css
-JS: https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js
+CSS: <https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css>
+JS: <https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js>
 
 ## Lecture Notes 10.1.24
 
@@ -346,3 +346,24 @@ Remember when using the `deployFiles.sh` script, to be in the directory that you
 The colors for Bootstrap is present in their CSS using a Sass map. If I want, I can make my own Sass file and customize the colors to my liking. Or, I can just use other assignments for different purposes, like not using the 'danger' color just for warning components.
 
 When debugging CSS, the `Styles` tab in the browser inspector is my best friend. It will only show the styles that are being applied to the element that I have selected, so I need to select one first. In `Styles` I'll see all of the styles applied, and then the ones that are overridden will be crossed out. I can also add new styles to the element to see how they will look, or toggle styles using the checkbox next to them. The `Computed` tab will show me the final styles that are being applied to the element, including the ones that are inherited from the parent elements.
+
+## Lecture Notes 10.3.24 - JavaScript Intro
+
+UX has become a complex subject, and in the setting of designing a good, mature application, serious consideration must be given to UX.
+
+"Turing complete" Languages
+
+Recall of Events and event handling:
+
+Events are certain actions that happen in a browser. Includes `click`, `mouseover`, `keydown`, `load`, `submit`, and others. Handling an event is done by executing certain code when the event happens. Listening for an event constitutes observing a specific element for a specific event, and then executing code when that event happens.
+
+The `debugger` command in JS will also function as a breakpoint.
+
+In JS strings, %c and %s are used to format data. %c is used to apply CSS styling, and %s is used to format the value as a string. Other formatters are %d or %i for integers, %f for floating point numbers, %o for DOM objects, and %O for JavaScript objects.
+
+There are at least 3 types of objects in JavaScript;
+
+1. Objects that are instances of a class and have methods, such as String, Array, and Date, and others.
+2. Objects that are defined with key value pairs, such as `{name: 'John', age: 30}`, and don't require instantiation.
+3. Type objects.
+
