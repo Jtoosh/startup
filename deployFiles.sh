@@ -1,6 +1,6 @@
 #!/bin/bash
 
-while getopts k:h:s: flag
+while getopts k:h:s:d: flag
 do
     case "${flag}" in
         k) key=${OPTARG};;
@@ -11,7 +11,7 @@ done
 
 if [[ -z "$key" || -z "$hostname" || -z "$service" ]]; then
     printf "\nMissing required parameter.\n"
-    printf "  syntax: deployFiles.sh -k <pem key file> -h <hostname> -s <service>\n\n"
+    printf "  syntax: deployFiles.sh -k <pem key file> -h <hostname> -s <service> -d <directory>\n\n"
     exit 1
 fi
 
