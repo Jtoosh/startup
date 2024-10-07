@@ -367,3 +367,8 @@ There are at least 3 types of objects in JavaScript;
 2. Objects that are defined with key value pairs, such as `{name: 'John', age: 30}`, and don't require instantiation.
 3. Type objects.
 
+## Startup CSS notes
+
+One of the core things that I've noticed as I've used Bootstrap for this is the placement of most of the elements into some type of container, referred to as `components` in their docs. A lot of the stylistic choices include choosing the right component for the job.
+
+Also, alot of the box model classes are similar to the way that they are in Tailwind. `m` for margin, and `mr` for right margin and so on. The `p` classes are for padding, and the `w` classes are for width. The `bg` classes are for background color, and the `text` classes are for text color. Other common ones that I found were `fw` for font weight, `fs` for font size, `text-center` and others for text alignment.

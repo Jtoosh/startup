@@ -4,24 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study | Mnemonic Study</title>
+    <!--Include Bootstrap CSS CDN-->
+    <link rel="stylesheet" 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 </head>
 <body>
-    <header></header>
-        <nav> <!--Nav bar direstion will be altered later-->
-            <menu>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="./study.html">Study</a></li>
-                <li><a href="./account.html">Account</a></li>
-                <li><a href="./about.html">About</a></li>
+    <header>
+        <nav class="navbar bg-info"> <!--Nav bar direction will be altered later-->
+            <div class="container-fluid">
+            <menu class="nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a href="index.html" class="nav-link active" aria-current="true">Home</a></li>
+                <li class="nav-item"><a href="./study.html" class="nav-link">Study</a></li>
+                <li class="nav-item"><a href="./account.html" class="nav-link">Account</a></li>
+                <li class="nav-item"><a href="./about.html" class="nav-link">About</a></li>
             </menu>
             <!--These buttons will be made conditional so that one or the other appears, but not both, depending on authentication-->
-            <button type="submit" name="Login">Login</button>
-            <button type="submit" name="Logout">Logout</button>
-            <p>Account Name with <img src="./assets/img/account_circle_icon.png" alt="Profile icon"></p>
+        
+            <button type="submit" name="Login" class="btn btn-primary mr-1">Login</button>
+            <button type="submit" name="Logout" class="btn btn-secondary m-2">Logout</button>
+            <span>Account Name with <i class="bi bi-person fs-1"></i></span>
+            </div>
         </nav>
     </header>
 
-    <hr>
+    
 
     <main>
         <div><!-- main headline -->
@@ -62,11 +70,12 @@
             <strong>This is where Websocket data will be used</strong></p>
         </div>
     </aside>
-    <footer>
-        <hr>
-        <span>James Teuscher, 2024</span>
-        <br>
-        <a href="https://github.com/Jtoosh/startup.git">Mnemonic Study GitHub</a>
+    <footer class= "container-fluid bg-secondary">
+        <div class="text-center">
+            <span>James Teuscher, 2024</span>
+            <br>
+            <a href="https://github.com/Jtoosh/startup.git">Mnemonic Study GitHub</a>
+        </div>
     </footer>
 </body>
 </html>
