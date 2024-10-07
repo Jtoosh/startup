@@ -32,25 +32,34 @@
 
 
     <main>
-        <div class = "text-center"> <!--Title div-->
+        <div class = "text-center" > <!--Title div-->
             <h1>Mnemonic Study</h1>
             <h2>Welcome to deeper understanding</h2>
         </div>
         <hr>
-        <div> <!--Main promo and motto-->
+        <div class = "container-fluid"> <!--Main promo and motto-->
             <img src="./assets/img/books.jpg" width = "700" alt="Studying placeholder image" class = "mx-auto d-block rounded img-fluid">
-            <p class="text-center lead">"Mnemonic": a device intended to improve function of the memory.</p>
+            <p class="text-center lead mt-4 fw-bold">"Mnemonic": a device intended to improve function of the memory.</p>
             <p class="text-center lead">Welcome to an application that will help improve your memory and understand of what it most important to you. Utilizing psychological memory tools like semantic encoding
              and mnemonic devices, Mnemonic Study is the place where information can become understanding.</p>
         </div>
-        <div> <!--Promo cards for Flashcards and Quizzes-->
-            <img src="" alt="Flashcards icon">
-            <br>
-            <a>Flashcards</a>
+        <div class="row "> <!--Promo cards for Flashcards and Quizzes-->
+            <div class="card col-sm-6" style="width: 15rem">
+                <div class="card-body">
+                    <h5 class="card-title bi bi-card-text "> Flashcards</h5>
+                    <p class="card-text">Click below to view the flashcard sets in your library and review important info.</p>
+                    <a href="./study.html" class="btn btn-primary">View Sets</a>
+                </div>
+            </div>
 
-            <img src="" alt="Quiz icon">
-            <br>
-            <a>Quizzes</a>
+            <div class="card col-sm-6" style="width: 15rem">
+                <div class="card-body">
+                <h5 class="card-title bi bi-pencil-square"> Quizzes</h5>
+                <p class="card-text">Click the below to view the quizzes in your library and test your knowledge.</p>
+                <a href="./study.html" class="btn btn-primary">View Quizzes</a>
+                </div>
+                
+            </div>
         </div>
     </main>
     
