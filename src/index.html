@@ -13,14 +13,14 @@
 </head>
 <body>
     <header>
-        <nav class="navbar bg-info"> <!--Nav bar direction will be altered later-->
+        <nav class="navbar bg-info sticky-top"> <!--Nav bar direction will be altered later-->
             <div class="container-fluid">
-            <menu class="nav me-auto mb-2 mb-lg-0">
+            <ul class="nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a href="index.html" class="nav-link active" aria-current="true">Home</a></li>
                 <li class="nav-item"><a href="./study.html" class="nav-link">Study</a></li>
                 <li class="nav-item"><a href="./account.html" class="nav-link">Account</a></li>
                 <li class="nav-item"><a href="./about.html" class="nav-link">About</a></li>
-            </menu>
+            </ul>
             <!--These buttons will be made conditional so that one or the other appears, but not both, depending on authentication-->
         
             <button type="submit" name="Login" class="btn btn-primary mr-1">Login</button>
@@ -64,12 +64,13 @@
     </main>
     
 
-    <footer class= "container-fluid bg-secondary">
+    <footer class= "container-fluid bg-secondary fixed-bottom">
         <div class="text-center">
             <span>James Teuscher, 2024</span>
             <br>
             <a href="https://github.com/Jtoosh/startup.git">Mnemonic Study GitHub</a>
         </div>
     </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

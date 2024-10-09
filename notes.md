@@ -372,3 +372,34 @@ There are at least 3 types of objects in JavaScript;
 One of the core things that I've noticed as I've used Bootstrap for this is the placement of most of the elements into some type of container, referred to as `components` in their docs. A lot of the stylistic choices include choosing the right component for the job.
 
 Also, alot of the box model classes are similar to the way that they are in Tailwind. `m` for margin, and `mr` for right margin and so on. The `p` classes are for padding, and the `w` classes are for width. The `bg` classes are for background color, and the `text` classes are for text color. Other common ones that I found were `fw` for font weight, `fs` for font size, `text-center` and others for text alignment.
+
+I'm thinking that to achieve my specific needs and ideas, I'm going to have to use a combination of Bootstrap and my own defined CSS. My idea for the flashcards is to have a flashcard class that has a animation defined for it that will flip the card and toggle the visibility of the corresponding side.
+
+## JS Array Assignment notes
+
+The Array object has several interesting static functions associated with it. Here are some of the interesting ones.
+
+| Function | Meaning                                                   | Example                       |
+| -------- | --------------------------------------------------------- | ----------------------------- |
+| push     | Add an item to the end of the array                       | `a.push(4)`                   |
+| pop      | Remove an item from the end of the array                  | `x = a.pop()`                 |
+| slice    | Return a sub-array                                        | `a.slice(1,-1)`               |
+| sort     | Run a function to sort an array in place                  | `a.sort((a,b) => b-a)`        |
+| values   | Creates an iterator for use with a `for of` loop          | `for (i of a.values()) {...}` |
+| find     | Find the first item satisfied by a test function          | `a.find(i => i < 2)`          |
+| forEach  | Run a function on each array item                         | `a.forEach(console.log)`      |
+| reduce   | Run a function to reduce each array item to a single item | `a.reduce((a, c) => a + c)`   |
+| map      | Run a function to map an array to a new array             | `a.map(i => i+i)`             |
+| filter   | Run a function to remove items                            | `a.filter(i => i%2)`          |
+| every    | Run a function to test if all items match                 | `a.every(i => i < 3)`         |
+| some     | Run a function to test if any items match                 | `a.some(i => i < 1)`          |
+
+## Lecture Notes 10.8.24 - JavaScript Continued
+
+- Generally always use the strict equality operator, `===`, not the loose one, `==`. Falsey and truthy values are only functional with the loose equality operator, but they do work with comparison operators.
+- With a switch block, remember to use the `break` keyword to prevent the code from falling through to the next case.
+- An anonymous function is one without a name in the function declaration. They can be called using a name if they are assigned to a variable, however.
+- Unlike other languages, Js allow parameters to be unused and the function still called, that parameter will just be `undefined`.
+- With arrow functions, a return nor curly braces are needed if the function is only one statement. If curly braces are present, a return is needed. Syntax is `arrowfunction = (param) => statement`. This is comparable to a lambda function in Python.
+- A _closure_ is comparable to higher order functions. When a function is returned from another function, the returned function is called a closure. The closure has access to the variables in the outer function, even after the outer function has finished executing.
+- There are `for of` loops which iterates through each value (the iterator needs to be instantiated) and `for in` loops which iterates through each key in an object.

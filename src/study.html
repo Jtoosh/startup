@@ -8,6 +8,7 @@
     <link rel="stylesheet" 
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
     crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 </head>
 <body>
@@ -32,40 +33,47 @@
     
 
     <main>
-        <div><!-- main headline -->
+        <div class="text-center"><!-- main headline -->
             <h1>Study Menu</h1> 
             <p>Here is where you access you flashcard decks and quizzes, both that you have created or found from other users.</p>
         </div>
 
-        <div><!--Flashcard section-->
-            <span>Your Decks:</span>
-            <div>
-                <a href="flashcardTemplate.html">Deck1</a>
+        <div class=" row d-flex justify-content-evenly text-center ms-4"><!--Flashcard section-->
+            <span class="text-start">Your Decks:</span>
+            <div class="card" style="width:10rem">
+                <h5 class="card-title">Deck1</h5>
+                <a href="flashcardTemplate.html" class ="btn btn-primary btn-sm">Study</a>
             </div>
-            <div>
-                <a href="flashcardTemplate.html">Deck2</a>
+            <div class="card" style="width:10rem">
+                <h5 class="card-title">Deck2</h5>
+                <a href="flashcardTemplate.html" class ="btn btn-primary btn-sm">Study</a>
             </div>
-            <div>
-                <button type="submit">Plus Sign</button>
+            <div class="card" style="width:10rem">
+                <h5 class="card-title">Create Deck</h5>
+                <a href="flashcardEdit.html" class="btn btn-primary btn-sm">+</a>
             </div>
         </div>
 
-        <div><!--Quiz section-->
-            <span>Your Quizzes:</span>
-            <div>
-                <a href="quizTemplate.html">Quiz1</a>
-            </div>
-            <div>
-                <a href="quizTemplate.html">Quiz2</a>
-            </div>
-            <div>
-                <button type="submit">Plus Sign</button>
-            </div>
+        <div class="row d-flex justify-content-evenly text-center ms-4"><!--Quiz section-->
+            <span class="text-start">Your Quizzes:</span>
+            
+                <div class="card" style="width:10rem">
+                    <h5 class="card-title">Quiz1</h5>
+                    <a href="quizTemplate.html" class="btn btn-primary btn-sm">Take Quiz</a>
+                </div>
+                <div class="card" style="width:10rem">
+                    <h5 class="card-title">Quiz2</h5>
+                    <a href="quizTemplate.html" class="btn btn-primary btn-sm">Take Quiz</a>
+                </div>
+                <div class="card" style="width:10rem">
+                    <h5 class="card-title">Create Quiz</h5>
+                    <a href="quizEdit.html" class="btn btn-primary btn-sm">+</a>
+                </div>
         </div>
     </main>
 
     <aside>
-        <div><!--Websocket data: see who else is online and studying-->
+        <div class = "websocket"><!--Websocket data: see who else is online and studying-->
             <p>This is where you'll be able to see who else is online and studying in real time. 
             <strong>This is where Websocket data will be used</strong></p>
         </div>
