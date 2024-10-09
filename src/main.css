@@ -3,3 +3,8 @@
     margin-left: 5px;
 }
 
+.banner{
+    background-image: url('assets/img/inspirational.jpg');
+    background-size: cover;
+    background-position: center;
+}
