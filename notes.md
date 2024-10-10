@@ -163,7 +163,7 @@ The `Caddyfile` is the configuration file for your web service gateway. The `pub
 ## Lecture 9.17.24
 
 Domain name anatomy:
-[subdomain].[domain].[tld] 
+[subdomain].[domain].[tld]
 tld = top level domain. Examples: .com, .org, .net, .edu, .gov, etc.
 
 There are different records that are associated with a domain name. The most common ones are:
@@ -403,3 +403,12 @@ The Array object has several interesting static functions associated with it. He
 - With arrow functions, a return nor curly braces are needed if the function is only one statement. If curly braces are present, a return is needed. Syntax is `arrowfunction = (param) => statement`. This is comparable to a lambda function in Python.
 - A _closure_ is comparable to higher order functions. When a function is returned from another function, the returned function is called a closure. The closure has access to the variables in the outer function, even after the outer function has finished executing.
 - There are `for of` loops which iterates through each value (the iterator needs to be instantiated) and `for in` loops which iterates through each key in an object.
+
+## Lecture Notes 10.10.24 - JavaScript Continued
+
+- `try` and `catch` blocks are used similarly to other languages: the code in the `try` block is tried, if an error is thrown, then the thrown error is "caught" in the `catch` block. The `finally` block is always executed.
+- A **spread** operator, `...` is used to spread, or add, the elements of an array into another array as individual elements, not as a nested array.
+- Here is the link to the class [Javascript Demo](https://htmlpreview.github.io/?https://github.com/webprogramming260/.github/blob/main/profile/javascript/introduction/jsDemo.html)
+- Modern web application have very few pages. This is because rather than making lots of separate files, the DOM is manipulated using JavaScript. At some point, I want to try this, maybe during Christmas break. This weekend I'll make a branch for trying that.
+- Remember that using the DOM, a new element is created using `document.createElement()` method. This only creates an instance of an element object, however, it isn't attached to the DOM. It's just free-floating right now. To attach it to the DOM, use the `appendChild()` method of the parent element.
+- localStorage can be used to manually cache in case the database goes down.
