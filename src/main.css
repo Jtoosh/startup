@@ -46,3 +46,8 @@
 .buttons{
     gap:10px;
 }
+
+.question{
+    width:600px;
+    height:400px;
+}

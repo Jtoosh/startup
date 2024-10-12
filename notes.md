@@ -375,6 +375,12 @@ Also, alot of the box model classes are similar to the way that they are in Tail
 
 I'm thinking that to achieve my specific needs and ideas, I'm going to have to use a combination of Bootstrap and my own defined CSS. My idea for the flashcards is to have a flashcard class that has a animation defined for it that will flip the card and toggle the visibility of the corresponding side.
 
+The `input` element has an attribute called `placeholder` where the string value that you give it will appear as placeholder text (which disappears when something is typed) in the input field, when the input type is `text`.
+
+Like Tailwind, Bootstrap has some classes that can apply generally to everything, like `my-` for margins on the y-axis. Most of these classes are 'utility' classes, and can be found in that section of the docs.
+
+
+
 ## JS Array Assignment notes
 
 The Array object has several interesting static functions associated with it. Here are some of the interesting ones.
