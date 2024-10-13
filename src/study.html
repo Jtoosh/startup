@@ -38,6 +38,8 @@
             <p>Here is where you access you flashcard decks and quizzes, both that you have created or found from other users.</p>
         </div>
 
+        <div><button class="btn btn-warning my-4">Show Favorites</button></div><!--Filter Favorites button-->
+
         <div class=" row d-flex justify-content-evenly text-center ms-4"><!--Flashcard section-->
             <span class="text-start">Your Decks:</span>
             <div class="card" style="width:10rem">
@@ -73,9 +75,28 @@
     </main>
 
     <aside>
-        <div class = "websocket"><!--Websocket data: see who else is online and studying-->
-            <p>This is where you'll be able to see who else is online and studying in real time. 
-            <strong>This is where Websocket data will be used</strong></p>
+        <div class = "websocket "><!--Websocket data: see who else is online and studying-->
+            <div class="container-fluid">
+                <h3 class="">See who's online:</h3>
+            </div>
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Active Users</th>
+                        <th>Currently reviewing flashcards</th>
+                        <th>Currently taking a quiz</th>
+                    </tr>
+                </thead>
+                <tbody class="table-success">
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+            <strong>This is where Websocket data will be used</strong>
+
         </div>
     </aside>
     <footer class= "container-fluid bg-secondary fixed-bottom">
