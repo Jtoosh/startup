@@ -47,14 +47,14 @@ Overviews of the HTML pages needed:
 
 Here, I will describe how this delivarable helps achieve the specifications outlined above.
 
-### Features:HTML
+### Features: HTML
 
 - The quiz Template and Edit pages, and flashcard Template and Edit pages will provide a space for users to create quizzes and flashcards and including their semantic encoding methods. These were implemented using `input` elements that had their `required` attribute set to true.
 - The quizEdit.html page is where the support for multiple choice and short answer is found. This was implemented using `input` elements with `type="radio"` and `type="text"` for multiple choice and short answer, respectively.
 - Sharing quizzes and flashcards is done through the flashcardTemplate.html and quizTemplate.html pages, where a `button` element is placeholding for when that functionality is fully implemented. For viewing quiz scores and other people's study stats using WebSocket data, that will be displayed on the study.html page.
 - Open-source APIs are given placeholder locations in quizEdit.html and flashcardsEdit.html, where a button is placed that will eventually call an API to give users ideas for quiz questions and flashcard terms.
 
-### Technologies:HTML
+### Technologies: HTML
 
 - HTML was used to create the full structure of the page. It will however, be open to adjustments as implementation continues and understanding of the avaliable technologies grows.
 - CSS was not yet implemented.
@@ -64,3 +64,29 @@ Here, I will describe how this delivarable helps achieve the specifications outl
 - Authentication was not yet implemented, but was given placeholder Login and Logout buttons in the `header` element of each page.
 - Database usage was not yet implemented, but was given a placeholder div element in the account.html page.
 - WebSocket data was not yet implemented, but was given placeholder div element in the study.html page.
+
+## CSS Deliverable
+
+Overview of CSS implementation:
+
+CSS Styling was added to this application primarily using the Bootstrap 5 external framework. A custom CSS file was also used for some more specific styling to suit the needs of the application. The [Bootstrap Docs](https://getbootstrap.com/docs/5.2/getting-started/introduction/) and [W3Schools](https://www.w3schools.com/bootstrap5/index.php) docs were referenced extenstively, so I have linked to them here.
+
+Due to the current time restraints of this project, styling was not taken to an extreme or fully drawn out level, but enough to give an appealing and professional look. I will now elaborate on how the CSS implementation helps achieve the features and technology usages outlined above.
+
+### Features: CSS
+
+- The fields for Semantic encoding on quiz answers and on editing fields were given `placeholder` attributes of "Semantic Device" to indicate to the user the need for that information. CSS transitions were also used to flip flashcards, and make the backside "hidden". This functionality is not fully complete for interaction, but that will be handled when JavaScript is introduced to the application. Perplexity AI was consulted in the creation of the flip animation, and [here](https://www.perplexity.ai/search/what-would-be-the-most-practic-.PPFSQXRS_C3lgHIok9khw) is a link to the prompt used and information given.
+- Quizzes were styled for both multiple choice and short answer, without proper behavior and exclusivity of one question type or the other.
+- Sharing buttons were styled, and the areas where WebSocket live data and other user's study stats will be displayed were styled as well, with placeholder values inside them.
+- Buttons that will interact with the open-source APIs were styled tas desired.
+
+### Technologies: CSS
+
+- HTML previously  used to create the full structure of the page. Some minor adjustments were made, such as wrapping some `button` elements in `form` elements, or wrapping elements in `div` elements to make them easier to style.
+- CSS was fully implemented according to assignment specifications, subject to minor changes as the application develops.
+- JavaScript was not yet implemented.
+- React was not yet implemented.
+- Web service APIs were not yet implemented, but placeholders were styled..
+- Authentication was not yet implemented, but placeholer login and logout buttons were styled.
+- Database usage was not yet implemented, but a placeholder `table` element was styled.
+- WebSocket data was not yet implemented, but the placeholder `table` created was styled.
