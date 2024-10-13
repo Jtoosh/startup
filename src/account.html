@@ -32,23 +32,56 @@
 
     <main>
         <h1 class="text-center">Account Info</h1>
-        <div> <!--Account info-->
+        <div class="container-fluid"> <!--Account info-->
             <div class="profile-pic ">
+                <span>Profile Picture:</span>
                 <img src="assets/img/book-icon.png" alt="">
             </div>
             <div>
-                <p>Username: </p>
-                <p>Email:</p>
-                <p>Name:</p>
-                <p>Member since:</p>
+                <p class="my-4">Username: </p>
+                <p class="my-4">Email:</p>
+                <p class="my-4">Name:</p>
+                <p class="my-4">Member since:</p>
             </div>
         
-            <div>
+            <div class="my-4">
                 Study Stats:
                 <strong>This is where database data will go.</strong>
-
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Total decks saved</th>
+                            <th>Decks completed</th>
+                            <th>Decks created</th>
+                            <th>Total quizzes saved</th>
+                            <th>Quizzes completed</th>
+                            <th>Quizzes created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Skadoosh</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>Skadoosh friend</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>    
-            <button type="submit" name="edit_account">Edit Account</button>
+            <button class="btn btn-primary" type="submit" name="edit_account">Edit Account</button>
         </div>
     </main>
     

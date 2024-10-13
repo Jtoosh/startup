@@ -38,19 +38,18 @@
             <div class="container-fluid d-flex row justify-content-center"> <!--Flashcard editing interface-->
                 <div class=" flashcard card text-center my-4 flashcard"><!--flashcard-->
                     <div class="flashcard-inner"><!--flashcard-inner-->
-                        <div class="flashcard-front"><!--flashcard-front-->
+                        <div class="flashcard-front my-4"><!--flashcard-front-->
                             Front of flashcard field <br>
-                            <label for="term_name">Term Name</label>
-                            <input type="text" name="term_name" id="term_name" required= "true">
+                            <input type="text" name="term_name" id="term_name" required= "true" placeholder="Term Name">
+                            <br>
+                            <input type="text" required = "true" id= semantic placeholder="Semantic Device" class="my-4">
                         </div>
-                        <div class="flashcard-back"><!--flashcard-back-->
+                        <div class="flashcard-back my-4"><!--flashcard-back-->
                             Back of flashcard field
                             <br>
-                            <label for="definition">Definition</label>
-                            <input type="text" required = "true" id= definition>
-                            <br>
-                            <label for="semantic">Semantic</label>
-                            <input type="text" required = "true" id= semantic>
+                            <input type="text" required = "true" id= definition placeholder="Definition">
+                        
+                            
                         </div>
                     </div>
                 </div>
