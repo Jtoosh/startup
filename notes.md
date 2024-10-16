@@ -379,8 +379,6 @@ The `input` element has an attribute called `placeholder` where the string value
 
 Like Tailwind, Bootstrap has some classes that can apply generally to everything, like `my-` for margins on the y-axis. Most of these classes are 'utility' classes, and can be found in that section of the docs.
 
-
-
 ## JS Array Assignment notes
 
 The Array object has several interesting static functions associated with it. Here are some of the interesting ones.
