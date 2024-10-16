@@ -418,3 +418,18 @@ The Array object has several interesting static functions associated with it. He
 - Modern web application have very few pages. This is because rather than making lots of separate files, the DOM is manipulated using JavaScript. At some point, I want to try this, maybe during Christmas break. This weekend I'll make a branch for trying that.
 - Remember that using the DOM, a new element is created using `document.createElement()` method. This only creates an instance of an element object, however, it isn't attached to the DOM. It's just free-floating right now. To attach it to the DOM, use the `appendChild()` method of the parent element.
 - localStorage can be used to manually cache in case the database goes down.
+
+## Lecture Notes 10.15.24 - JavaScript Promises, Async Await
+
+- Browser rednering is single-threaded so typical sequential execution can cause the browser to hang. This is where promises come in. They are used to handle asynchronous operations in JavaScript. A promise is an **object** that represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
+Asynchronous operating is allowing the program to work on other tasks while waiting for another part of the program to finish. It is like when I go and do another task while waiting for something in the oven to cook.
+- A promise has 3 states: `pending` (initial state, currently running), `fulfilled` (completed successfully), and `rejected` (failed to complete).
+- A promise also has 3 important methods: `then()`, `catch()`, and `finally()`. The `then()` method is used to handle the fulfilled state, the `catch()` method is used to handle the rejected state, and the `finally()` method is used to run code after the promise has been settled. Using this is referred to as the "promise chain" or "promise syntax".
+- Another syntax for dealing with asynchronous operations is the `async` and `await` keywords. The `async` keyword is used to define an asynchronous function, and the `await` keyword is used to pause the execution of the function until the promise from the `async` function is settled. An `async` function always returns a promise, and the value of the promise is the value that the `async` function returns.
+- `await` should only be used on a top-level function, and not in a nested function. This is because `await` will pause the execution of the function until the promise is settled, and if the function is nested, then the parent function will also be paused. If a nested function needs the `await` keyword, then the parent function should also be an `async` function.
+
+>Figure out what the `resolve()` and `reject()` methods do.
+
+**Notes from kahoot:**
+
+- The `i` at the end of the regex statement `/A|f/i` makes the regex case-insensitive.
