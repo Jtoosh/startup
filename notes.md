@@ -419,15 +419,49 @@ The Array object has several interesting static functions associated with it. He
 
 ## Lecture Notes 10.15.24 - JavaScript Promises, Async Await
 
-- Browser rednering is single-threaded so typical sequential execution can cause the browser to hang. This is where promises come in. They are used to handle asynchronous operations in JavaScript. A promise is an **object** that represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
-Asynchronous operating is allowing the program to work on other tasks while waiting for another part of the program to finish. It is like when I go and do another task while waiting for something in the oven to cook.
+- Browser rednering is single-threaded, so typical sequential execution can cause the browser to hang. This is where promises come in. They are used to handle asynchronous operations in JavaScript.
+
+Promise
+: an **object** that represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
+Asynchronous operating allows the program to work on other tasks while waiting for another part of the program to finish. It is like when I go and do another task while waiting for something in the oven to cook.
+
+W3Schools talks about the idea of "producing code" and "consuming code". The producing code is the code that takes some time, and the consuming code must wait for the results of the consuming code.
+
+Anatomy of a Promise:
+
+`new Promise(executor)`
+Where executor is a function to be executed by the constructor, which should take two functions as parameters, `resolve` and `reject`. The `resolve` function is used to return the result of the promise, and the `reject` function is used to return an error. When the `resolve` function is passed a primitive or object that can't have `then` called on it, it is instantly fulfilled.
+
+**Promise Syntax:**
+
 - A promise has 3 states: `pending` (initial state, currently running), `fulfilled` (completed successfully), and `rejected` (failed to complete).
-- A promise also has 3 important methods: `then()`, `catch()`, and `finally()`. The `then()` method is used to handle the fulfilled state, the `catch()` method is used to handle the rejected state, and the `finally()` method is used to run code after the promise has been settled. Using this is referred to as the "promise chain" or "promise syntax".
-- Another syntax for dealing with asynchronous operations is the `async` and `await` keywords. The `async` keyword is used to define an asynchronous function, and the `await` keyword is used to pause the execution of the function until the promise from the `async` function is settled. An `async` function always returns a promise, and the value of the promise is the value that the `async` function returns.
-- `await` should only be used on a top-level function, and not in a nested function. This is because `await` will pause the execution of the function until the promise is settled, and if the function is nested, then the parent function will also be paused. If a nested function needs the `await` keyword, then the parent function should also be an `async` function.
+- A promise also has 3 important methods: `then()`, `catch()`, and `finally()`. The `then()` method is used to handle the fulfilled state, the `catch()` method is used to handle the rejected state, and the `finally()` method is used to run code after the promise has been settled. Using this is referred to as the "promise chain" or "promise syntax". In this syntax, the code here in the promise chain is the consuming code.
+
+**Async Await Syntax:**
+
+- Another syntax for dealing with asynchronous operations is the `async` and `await` keywords. The `async` keyword is used to define an asynchronous function. An `async` function always returns a promise, and the value of the promise is the value that the `async` function returns. The `await` keyword is used to pause the execution of the prefixed function until the promise from the `async` function is settled.
+- `await` should only be used on a top-level function, and not in a nested function. This is because `await` will pause the execution of the function until the promise is settled, and if the function is nested, then the parent function will also be paused. If a nested function needs the `await` keyword, then the parent function needs to be an `async` function.
 
 >Figure out what the `resolve()` and `reject()` methods do.
 
 **Notes from kahoot:**
 
 - The `i` at the end of the regex statement `/A|f/i` makes the regex case-insensitive.
+
+## JS Promises and Async/Await assignment
+
+- I learned the "producing code" and "consuming code" way of thinking about promises is useful for me. When I tried to put the next promise inside of a function called by the `.then()` method, it didn't work. It only did when I placed the promise function directly inside of the `.then()` method. I'm not 100% sure why this is, I'll likely learn later on. What I did learn is that Promises are objects that take in a function to produce something, and then with the promise syntax, the promise chain consumes the product of the producing code.
+
+In doing these assignments, I decided to read up on callbacks, since that kept being mentioned. A callback in JS is a function that is passed to another function as an argument. In other words, it is like a higher-order function. In JavaScript, functions are executed in the order that they are called. Hence the name callback, because a function can be defined and passed as a parameter, but isn't called until the function that it is passed to is called, and it "calls back" to the callback function. **Remember** that when passing a function as an argument, don't put parenthesis.
+
+When using async/await, remember that the `await` keyword can only be used inside of an `async` function. Thus, async is only needed when I want to (1) return a Promise, or (2) use the `await` keyword.
+
+## JS Extra Credit notes
+
+- Remember that most JS methods are camel case. length, toUpperCase, toLowerCase are all string methods.
+- Date is an object type. Use `new Date()` to create a new instance.
+- The method to get and the full year from a date object is `getFullYear()` and `setFullYear()`. The method for the month is `getMonth()`, but it is zero-indexed, so January is 0, February is 1, and so on. The method for the day is `getDate()`.
+- All of the Math operations beyond the primative operators are in the `Math` library.
+- The JS ternary operator is the same as that in C++, `condition ? <expression if true> : <expression if false>`.
+- In a `switch` statement, the `default` keyword is what denotes a block that will execute if none of the cases are true.
+- JS's version of `for in` loops is the `for (x of array)` loop.
