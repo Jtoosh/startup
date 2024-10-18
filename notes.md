@@ -443,6 +443,7 @@ Where executor is a function to be executed by the constructor, which should tak
 - `await` should only be used on a top-level function, and not in a nested function. This is because `await` will pause the execution of the function until the promise is settled, and if the function is nested, then the parent function will also be paused. If a nested function needs the `await` keyword, then the parent function needs to be an `async` function.
 
 >Figure out what the `resolve()` and `reject()` methods do.
+I found out that they are predefined in JavaScript. Basically `resolve()` is used to return the result of the promise, and `reject()` is used to return an error.
 
 **Notes from kahoot:**
 
@@ -465,3 +466,32 @@ When using async/await, remember that the `await` keyword can only be used insid
 - The JS ternary operator is the same as that in C++, `condition ? <expression if true> : <expression if false>`.
 - In a `switch` statement, the `default` keyword is what denotes a block that will execute if none of the cases are true.
 - JS's version of `for in` loops is the `for (x of array)` loop.
+
+## Lecture Notes 10.17.24 - Node.js
+
+Modules
+: A file that contains code that can be exported to other files. Like a package in Python or Java.
+
+The `export` keyword in front of a function signfies that said function is to be accessible by .js files that are trying to import. The `import()` function is used to import a function, and the `from` keyword is used to specify the file that the function is being imported from.
+
+To import all of the functions from a modules, use the `*` wildcard. The syntax is `import * from 'module'`. You might also be able to use `import 'module` to import the entire module, I'm not sure though.
+
+Node.js is a runtime environment that allows you to run JavaScript on the server. It is built on the V8 JavaScript engine, which is the same engine that is used in the Chrome browser.
+
+Some Node things to know:
+**NVM** - Node version manager
+**Node** - JavaScript runtime
+**NPM** - Node package manager
+
+Don't push the `node_modules` directory to GitHub, because of how large it can get.
+
+The `require()` function is used to include a module, passing in the name of the module as a parameter.
+
+Stuff from lecture to look up later (Web service functions):
+
+- `require()`
+- `createServer()`
+- `writeHead()`
+- `write()`
+- `end()`
+- `listen()`
