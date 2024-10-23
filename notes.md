@@ -383,20 +383,20 @@ Like Tailwind, Bootstrap has some classes that can apply generally to everything
 
 The Array object has several interesting static functions associated with it. Here are some of the interesting ones.
 
-| Function | Meaning                                                   | Example                       |
-| -------- | --------------------------------------------------------- | ----------------------------- |
-| push     | Add an item to the end of the array                       | `a.push(4)`                   |
-| pop      | Remove an item from the end of the array                  | `x = a.pop()`                 |
-| slice    | Return a sub-array                                        | `a.slice(1,-1)`               |
-| sort     | Run a function to sort an array in place                  | `a.sort((a,b) => b-a)`        |
-| values   | Creates an iterator for use with a `for of` loop          | `for (i of a.values()) {...}` |
-| find     | Find the first item satisfied by a test function          | `a.find(i => i < 2)`          |
-| forEach  | Run a function on each array item                         | `a.forEach(console.log)`      |
-| reduce   | Run a function to reduce each array item to a single item | `a.reduce((a, c) => a + c)`   |
-| map      | Run a function to map an array to a new array             | `a.map(i => i+i)`             |
-| filter   | Run a function to remove items                            | `a.filter(i => i%2)`          |
-| every    | Run a function to test if all items match                 | `a.every(i => i < 3)`         |
-| some     | Run a function to test if any items match                 | `a.some(i => i < 1)`          |
+| Function | Meaning                                                             | Example                       |
+| -------- | ------------------------------------------------------------------- | ----------------------------- |
+| push     | Add an item to the end of the array                                 | `a.push(4)`                   |
+| pop      | Remove an item from the end of the array                            | `x = a.pop()`                 |
+| slice    | Return a sub-array                                                  | `a.slice(1,-1)`               |
+| sort     | Run a function to sort an array in place                            | `a.sort((a,b) => b-a)`        |
+| values   | Creates an iterator for use with a `for of` loop                    | `for (i of a.values()) {...}` |
+| find     | Find the first item satisfied by a test function                    | `a.find(i => i < 2)`          |
+| forEach  | Run a function on each array item                                   | `a.forEach(console.log)`      |
+| reduce   | Run a function to reduce each array item to a single item           | `a.reduce((a, c) => a + c)`   |
+| map      | Run a function to map an array to a new array                       | `a.map(i => i+i)`             |
+| filter   | Run a function to remove items (items that return false are removed)| `a.filter(i => i%2)`          |
+| every    | Run a function to test if all items match                           | `a.every(i => i < 3)`         |
+| some     | Run a function to test if any items match                           | `a.some(i => i < 1)`          |
 
 ## Lecture Notes 10.8.24 - JavaScript Continued
 
@@ -495,3 +495,29 @@ Stuff from lecture to look up later (Web service functions):
 - `write()`
 - `end()`
 - `listen()`
+
+## Lecture Notes 10.22.24 - React
+
+React is a Web Development framework. Frameworks focus on the DRY principle, simplfying and bundling common patterns and components. They also strive to improve performance and increase device coverage.
+
+The three most used web frameworks are **React**, **Angular**, and **Vue**.
+
+**JSX** is Javascript and HTML combined. It is a syntax extension for JavaScript that allows you to write HTML in your JavaScript code.
+
+**Babel** is a transpiler, that is part of the React package, and it is used to convert JSX into JavaScript.
+
+React works quicker than native JavaScript by using a virtual DOM stored in memory. When a change is made to the DOM, React updates the virtual DOM, and then compares the virtual DOM to the actual DOM. If there are differences, React only updates the parts of the DOM that have changed, rather than re-rendering the entire DOM.
+
+React is not a page-centric or file-centric system like native HTML, CSS, and JS development. Instead, it is component-centric.
+
+A **component** is a function that returns an HTML element. They are isolated from other JS and they run independently. Components exist as either **functional** or **class** components. Functional components are just functions that return JSX, and class components are classes that extend the `React.Component` class. Class components are becomeing deprecated because of hooks, so avoid using them.
+
+When using a component in JSX, the component is used like an self-closing HTML element, with the name of the component as the tag name.
+
+**Props** are used to pass data to a component as arguments. Props are passed to a component as attributes, and they are accessed in the component using the `props` object.
+
+Destructuring is a way to extract values from an object or an array and assign them to independent variables. This is done in JavaScript using the `{}` syntax.
+
+A **hook** is a function that allows you to access and use the state of other React componenets.
+
+`useState` is a hook that is used to add state to a functional component. It takes an initial value as an argument, and **it returns an array with two elements**: the current value of the state, and a function that can be used to update the state.
