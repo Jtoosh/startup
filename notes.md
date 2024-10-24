@@ -514,10 +514,20 @@ A **component** is a function that returns an HTML element. They are isolated fr
 
 When using a component in JSX, the component is used like an self-closing HTML element, with the name of the component as the tag name.
 
-**Props** are used to pass data to a component as arguments. Props are passed to a component as attributes, and they are accessed in the component using the `props` object.
+**Props** are used to pass data to a component as HTML attributes. Props are passed to a component as attributes, and they are accessed in the component using the `props` object. They are essentially parameters for the behind the scenes function of a component.
 
 Destructuring is a way to extract values from an object or an array and assign them to independent variables. This is done in JavaScript using the `{}` syntax.
 
 A **hook** is a function that allows you to access and use the state of other React componenets.
 
 `useState` is a hook that is used to add state to a functional component. It takes an initial value as an argument, and **it returns an array with two elements**: the current value of the state, and a function that can be used to update the state.
+
+## React Assignment Notes
+
+With Component props, I can access them a couple ways. I can list them as a parameter inside {braces}, or uses the props object and refer to the properties of `props`, using the name of the prop passed in the component call. For example: `<Demo who = "James">` could have the `who` prop accessed in the component as `props.who`, or as `{who}` if that was how it was passed in.
+
+To do inline styling with React, use the `style` attribute in the component's returned HTML. The value of the `style` attribute should be a JavaScript object with the CSS properties as keys and the values as values. The keys should be camelCase versions of the CSS properties.
+
+3 main parts of React having reactivity is the `state`, `props` and `render()` method. Anytime a change is made to the state or props of a component, that component's `render()` method is called, and the component is re-rendered, making the change visible.
+
+Another key to reactivity in React is making components return HTML with event listeners. Two that I used for the assignment were `onChange` and `onInput`. The latter is used for input elements, and the former is used for other elements. Something from the assignment that I didn't understand yet was the attributes used to get the value of the input element. What appeared in the code was `e.target.value`, and I'm thinking `e` was just the parameter used for the input data, but I'm not 100% sure, and I'll need to find out exactly what `.target.value` is.
