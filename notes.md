@@ -502,11 +502,11 @@ React is a Web Development framework. Frameworks focus on the DRY principle, sim
 
 The three most used web frameworks are **React**, **Angular**, and **Vue**.
 
-**JSX** is Javascript and HTML combined. It is a syntax extension for JavaScript that allows you to write HTML in your JavaScript code.
+**JSX** is Javascript and HTML combined. It is a syntax extension for JavaScript that allows you to write HTML in your JavaScript code. It stands for JavaScript XML. 
 
 **Babel** is a transpiler, that is part of the React package, and it is used to convert JSX into JavaScript.
 
-React works quicker than native JavaScript by using a virtual DOM stored in memory. When a change is made to the DOM, React updates the virtual DOM, and then compares the virtual DOM to the actual DOM. If there are differences, React only updates the parts of the DOM that have changed, rather than re-rendering the entire DOM.
+React works quicker than native JavaScript by using a virtual DOM stored in memory. When a change is made to the DOM, React updates the virtual DOM, and then compares the virtual DOM to the actual DOM. If there are differences, React only updates the parts of the DOM that have changed, rather than re-rendering the entire DOM. This is referred to as Reactivity.
 
 React is not a page-centric or file-centric system like native HTML, CSS, and JS development. Instead, it is component-centric.
 
@@ -526,8 +526,20 @@ A **hook** is a function that allows you to access and use the state of other Re
 
 With Component props, I can access them a couple ways. I can list them as a parameter inside {braces}, or uses the props object and refer to the properties of `props`, using the name of the prop passed in the component call. For example: `<Demo who = "James">` could have the `who` prop accessed in the component as `props.who`, or as `{who}` if that was how it was passed in.
 
-To do inline styling with React, use the `style` attribute in the component's returned HTML. The value of the `style` attribute should be a JavaScript object with the CSS properties as keys and the values as values. The keys should be camelCase versions of the CSS properties.
+To do inline styling with React, use the `style` attribute in the component's return HTML. The value of the `style` attribute should be a JavaScript object with the CSS properties as keys and the values as values. The keys should be camelCase versions of the CSS properties.
 
 3 main parts of React having reactivity is the `state`, `props` and `render()` method. Anytime a change is made to the state or props of a component, that component's `render()` method is called, and the component is re-rendered, making the change visible.
 
 Another key to reactivity in React is making components return HTML with event listeners. Two that I used for the assignment were `onChange` and `onInput`. The latter is used for input elements, and the former is used for other elements. Something from the assignment that I didn't understand yet was the attributes used to get the value of the input element. What appeared in the code was `e.target.value`, and I'm thinking `e` was just the parameter used for the input data, but I'm not 100% sure, and I'll need to find out exactly what `.target.value` is.
+
+## Lecture Notes 10.24.24 - React Continued (Router and Toolchain)
+
+React routing is what allows the application to navigate between different "pages" without actually changing the URL or html file. The router finds the correct component to render based on the file path given, and then renders that component.
+
+Some important components for this: `BrowserRouter`, `Route`, `Routes`,`NavLink`, and others.
+
+The toolchain used to push a React app into production includes Babel (transpiling JSX, polyfilling) and Minify JS for compressing the JS files. An application called Vite is used to bundle the files, and then the application is deployed to a server.
+
+An important difference between JS and JSX syntax is that in JSX, the `class` attribute is replaced with `className`. This is because `class` is a reserved keyword in JavaScript.
+
+Things to look for in router assignment: relationship between `NavLink` component's `to` attribute and the `Route` component's `path` attribute.
