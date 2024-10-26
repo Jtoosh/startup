@@ -502,7 +502,7 @@ React is a Web Development framework. Frameworks focus on the DRY principle, sim
 
 The three most used web frameworks are **React**, **Angular**, and **Vue**.
 
-**JSX** is Javascript and HTML combined. It is a syntax extension for JavaScript that allows you to write HTML in your JavaScript code. It stands for JavaScript XML. 
+**JSX** is Javascript and HTML combined. It is a syntax extension for JavaScript that allows you to write HTML in your JavaScript code. It stands for JavaScript XML.
 
 **Babel** is a transpiler, that is part of the React package, and it is used to convert JSX into JavaScript.
 
@@ -543,3 +543,35 @@ The toolchain used to push a React app into production includes Babel (transpili
 An important difference between JS and JSX syntax is that in JSX, the `class` attribute is replaced with `className`. This is because `class` is a reserved keyword in JavaScript.
 
 Things to look for in router assignment: relationship between `NavLink` component's `to` attribute and the `Route` component's `path` attribute.
+
+## React Router Reading/Assignment Notes
+
+[React Reading](https://blog.webdevsimplified.com/2022-07/react-router/)
+
+Install React Router using npm, ether the DOM version or the Native version, for web apps and mobile apps respectively.
+There are 3 things that need to be done to use React Router:
+
+1. Set up the React Router
+2. Define the routes
+3. Handle navigation
+
+Here's a bit more about each step:
+
+1. Setting up the router is very easy. Just import the `BrowserRouter` component from the `react-router-dom` package, and then wrap my entire application in the `BrowserRouter`
+component. Following the standard nomenclature, This would look like wrapping my `<App />` component in the `<BrowserRouter>` component.
+
+2. Defining the routes is also pretty easy. Import the `Route` and `Routes` components from the `react-router-dom` package. Each individual `Route` component has 2 essential props:
+`path` and `element`. The `path` prop is the URL/file path to element in the `element` prop, and the `element` prop is a component to be rendered.
+
+3. Handling navigation is done with the `Link` component. It functions like an anchor element, and the path to the component to be rendered is passed in the `to` prop, not in an
+`href` attribute. Links are used outside of the `Routes` component, because only the `Routes` components get re-rendered when the URL changes, and we generally want nav bars to be
+static across pages. Routes are navigated by matching the `to` prop of the `Link` component to the `path` prop of the `Route` component.
+
+One of the simplest advanced features is dynamic routing. If I want to render a page/component for individual products, to keep the code DRY and avoid hardcoding, I can use a
+dynamic route using a colon followed by name for the dynamic parameter.
+
+Route priority is determined by rules similar to those that dictate CSS specificity. The more specific the path, and the less dynamic parameters, the higher the priority. Also the
+`*` character can be used as a wildcard to match any path that hasn't been matched by a more specific path.
+
+The big thing to remember is that, as long as I put the path name in the `path` prop of the `Route` component, and then the same path in the `to` prop of the
+`Link` component, the router will handle the navigation.
