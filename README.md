@@ -90,3 +90,7 @@ Due to the current time restraints of this project, styling was not taken to an 
 - Authentication was not yet implemented, but placeholer login and logout buttons were styled.
 - Database usage was not yet implemented, but a placeholder `table` element was styled.
 - WebSocket data was not yet implemented, but the placeholder `table` created was styled.
+
+## React Deliverable
+
+Overview of React implementation:

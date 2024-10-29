@@ -548,7 +548,7 @@ Things to look for in router assignment: relationship between `NavLink` componen
 
 [React Reading](https://blog.webdevsimplified.com/2022-07/react-router/)
 
-Install React Router using npm, ether the DOM version or the Native version, for web apps and mobile apps respectively.
+Install React Router using npm, either the DOM version or the Native version, for web apps and mobile apps respectively.
 There are 3 things that need to be done to use React Router:
 
 1. Set up the React Router
