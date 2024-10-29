@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Study() {
+export function Study() {
   return (
     <div>
       <h2>Study</h2>

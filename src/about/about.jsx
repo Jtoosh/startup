@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function About() {
-  return <div className="about">About us information goes here</div>;
+export function About() {
+  return <div className="about">
+    <h2>About Us</h2>
+    About us information goes here</div>;
 }

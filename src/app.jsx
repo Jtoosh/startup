@@ -1,6 +1,11 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./app.css";
+import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { Study } from './study/study';
+import { Account } from  './account/account';
+import { About } from './about/about';
+import { Home } from './home/home';
 
 export default function App() {
   return (
@@ -52,7 +57,16 @@ export default function App() {
             </div>
           </nav>
         </header>
-        <main> App content goes here </main>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/study" element={<Study />} />
+        <Route path="/account" element={<Account />} />
+        <Route path="/about" element={<About />} />
+        {/* Not Found component still needs to be implemented */}
+      </Routes> 
+
+
         <footer className="container-fluid bg-secondary fixed-bottom">
           <div className="text-center">
             <span>James Teuscher, 2024</span>
@@ -62,16 +76,6 @@ export default function App() {
           </div>
         </footer>
       </div>
-
-       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/study" element={<Study />} />
-        <Route path="/account" element={<Account />} />
-        <Route path="/about" element={<About />} />
-        <Route path="*" element={<NotFound />} /> 
-        {/* Not Found component still needs to be implemented */}
-      </Routes> 
-
     </BrowserRouter>
   );
 }
