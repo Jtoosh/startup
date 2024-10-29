@@ -575,3 +575,20 @@ Route priority is determined by rules similar to those that dictate CSS specific
 
 The big thing to remember is that, as long as I put the path name in the `path` prop of the `Route` component, and then the same path in the `to` prop of the
 `Link` component, the router will handle the navigation.
+
+## React Porting Notes
+
+Here are some notes from my studying React on W3 and porting my startup app to React:
+
+- The command to create a React app is `npx create-react-app my-app`. The command to start a React app from the root directory is `npm start`.
+- React uses `root` objects, using the `createRoot()` method. `root` objects have a method called `render()` that takes a JSX element as an argument.
+- Though parameters aren't required in arrow functions in ES6, the () are still required, so `() => {}` is the correct syntax, regardless of the
+presence of parameters.
+- When destructuring from an array, use `[]` with a comma for each element to skip. To destructure the 3rd element, use `[, , varName]`. The name
+put in the brackets is the name of the variable that the element will be assigned to.
+- The spread operator `...` copies all or part of an array or object into a new array or object. It is commonly used with destructuring.
+- Remember, the ternary in JS is the same as in C++: `condition ? trueValue : falseValue`. This differs from Python, where the ternary is
+`value if condition else otherValue`.
+- JSX syntax includes replacing where parenthesis would be used in JS with curly braces `{}`. As well as when variables are referenced.
+- React events are written in camelCase, unlike JS. And functions passed to event handlers are passed inside of curly braces `{}`.
+- React keeps track of list items with a `key` attribute. This is used to keep track of which items have changed, and which items are new.
