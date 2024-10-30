@@ -592,3 +592,4 @@ put in the brackets is the name of the variable that the element will be assigne
 - JSX syntax includes replacing where parenthesis would be used in JS with curly braces `{}`. As well as when variables are referenced.
 - React events are written in camelCase, unlike JS. And functions passed to event handlers are passed inside of curly braces `{}`.
 - React keeps track of list items with a `key` attribute. This is used to keep track of which items have changed, and which items are new.
+- Something that I ran into often as I was porting was forgetting to import things into `.jsx` files. I'll need to get into the habit of doing that with every `.jsx` file I make and work in.
