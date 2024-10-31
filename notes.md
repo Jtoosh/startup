@@ -593,3 +593,10 @@ put in the brackets is the name of the variable that the element will be assigne
 - React events are written in camelCase, unlike JS. And functions passed to event handlers are passed inside of curly braces `{}`.
 - React keeps track of list items with a `key` attribute. This is used to keep track of which items have changed, and which items are new.
 - Something that I ran into often as I was porting was forgetting to import things into `.jsx` files. I'll need to get into the habit of doing that with every `.jsx` file I make and work in.
+
+## Spooky Lecture Notes 10.31.24 - Fetch, Web Mechanics
+
+- A router is a special kind of computer, so routers connecting to routers is how the internet works. The internet is a network of networks.
+- A modem is a device that modulates and demodulates signals. It is used to connect a computer to the internet using the infrastructure of telephone lines.
+
+- Fetch is a function that is used to make network requests in JavaScript. It is used to get data from a server, and it returns a promise that resolves to the response from the server. The `fetch` function takes a URL as an argument, and it returns a promise that resolves to the response from the server. The response object has a `json()` method that is used to parse the response as JSON. The `json()` method also returns a promise that resolves to the parsed JSON data. Because of the promise returned, the `fetch` function is asynchronous, and it is used with the `then()` method to handle the response from the server. The `await` method can also be used.
