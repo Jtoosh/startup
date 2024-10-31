@@ -63,6 +63,7 @@ export default function App() {
         <Route path="/study" element={<Study />} />
         <Route path="/account" element={<Account />} />
         <Route path="/about" element={<About />} />
+        <Route path="*" element={<NotFound />} />
         {/* Not Found component still needs to be implemented */}
       </Routes> 
 
@@ -78,4 +79,8 @@ export default function App() {
       </div>
     </BrowserRouter>
   );
+}
+
+function NotFound() {
+  return <main className='container-fluid bg-secondary text-center'><h2>Error 404: Return to sender. Address unknown.</h2></main>;
 }
