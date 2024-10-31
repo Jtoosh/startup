@@ -68,7 +68,7 @@ export default function App() {
       </Routes> 
 
 
-        <footer className="container-fluid bg-secondary fixed-bottom">
+        <footer className="container-fluid bg-secondary bottom">
           <div className="text-center">
             <span>James Teuscher, 2024</span>
             <form action="https://github.com/Jtoosh/startup.git">
