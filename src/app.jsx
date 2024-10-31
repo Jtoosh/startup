@@ -7,6 +7,8 @@ import { Account } from  './account/account';
 import { About } from './about/about';
 import { Home } from './home/home';
 import { Flashcard } from "./study/flashcard";
+import { FlashcardEdit } from "./study/flashcardEdit";
+import { Quiz } from "./study/quiz";
 
 export default function App() {
   return (
@@ -51,6 +53,8 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/study" element={<Study />} />
         <Route path="/study/flashcard" element={<Flashcard />} />
+        <Route path="/study/flashcardEdit" element={<FlashcardEdit />} />
+        <Route path="/study/quiz" element={<Quiz />} />
         <Route path="/account" element={<Account />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />

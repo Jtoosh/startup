@@ -25,7 +25,7 @@ let cardWidth = {width: "10rem"};
             </div>
             <div className="card" style={cardWidth}>
                 <h5 className="card-title">Create Deck</h5>
-                <a href="flashcardEdit.html" className="btn btn-primary btn-sm">+</a>
+                <NavLink to="flashcardEdit" className="btn btn-primary btn-sm">+</NavLink>
             </div>
         </div>
 
@@ -34,11 +34,11 @@ let cardWidth = {width: "10rem"};
             
                 <div className="card" style={cardWidth}>
                     <h5 className="card-title">Quiz1</h5>
-                    <a href="quizTemplate.html" className="btn btn-primary btn-sm">Take Quiz</a>
+                    <NavLink to="quiz" className="btn btn-primary btn-sm">Take Quiz</NavLink>
                 </div>
                 <div className="card" style={cardWidth}>
                     <h5 className="card-title">Quiz2</h5>
-                    <a href="quizTemplate.html" className="btn btn-primary btn-sm">Take Quiz</a>
+                    <NavLink to="quiz" className="btn btn-primary btn-sm">Take Quiz</NavLink>
                 </div>
                 <div className="card" style={cardWidth}>
                     <h5 className="card-title">Create Quiz</h5>
