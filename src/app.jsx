@@ -9,6 +9,7 @@ import { Home } from './home/home';
 import { Flashcard } from "./study/flashcard";
 import { FlashcardEdit } from "./study/flashcardEdit";
 import { Quiz } from "./study/quiz";
+import { QuizEdit } from "./study/quizEdit";
 
 export default function App() {
   return (
@@ -55,6 +56,7 @@ export default function App() {
         <Route path="/study/flashcard" element={<Flashcard />} />
         <Route path="/study/flashcardEdit" element={<FlashcardEdit />} />
         <Route path="/study/quiz" element={<Quiz />} />
+        <Route path="/study/quizEdit" element={<QuizEdit />} />
         <Route path="/account" element={<Account />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />

@@ -42,7 +42,7 @@ let cardWidth = {width: "10rem"};
                 </div>
                 <div className="card" style={cardWidth}>
                     <h5 className="card-title">Create Quiz</h5>
-                    <a href="quizEdit.html" className="btn btn-primary btn-sm">+</a>
+                    <NavLink to="quizEdit" className="btn btn-primary btn-sm">+</NavLink>
                 </div>
         </div>
     </main>
