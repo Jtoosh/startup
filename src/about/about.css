@@ -1,0 +1,27 @@
+.websocket{
+  margin-top: 30px;
+  margin-left: 5px;
+}
+
+.banner{
+  margin-left:0;
+  margin-right:0;
+  padding-right:0;
+  padding-left:0;
+  border-radius: 0.25 rem;
+  width: 100vw;
+  height:30vh;
+}
+
+.buttons{
+  gap:10px;
+}
+
+.question{
+  width:600px;
+  height:400px;
+}
+.websocket{
+width:100vw;
+margin-left:0;
+}
