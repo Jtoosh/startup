@@ -600,3 +600,24 @@ put in the brackets is the name of the variable that the element will be assigne
 - A modem is a device that modulates and demodulates signals. It is used to connect a computer to the internet using the infrastructure of telephone lines.
 
 - Fetch is a function that is used to make network requests in JavaScript. It is used to get data from a server, and it returns a promise that resolves to the response from the server. The `fetch` function takes a URL as an argument, and it returns a promise that resolves to the response from the server. The response object has a `json()` method that is used to parse the response as JSON. The `json()` method also returns a promise that resolves to the parsed JSON data. Because of the promise returned, the `fetch` function is asynchronous, and it is used with the `then()` method to handle the response from the server. The `await` method can also be used.
+
+## Vite Assignment Notes
+
+Vite is a toolchain for web frameworks that bundles code quickly, and allows for features like minification, JSX, polyfilling, and others. It is used to bundle the code for a React app, and then deploy it to a server. This is implemented for my startup in the deployment script. Vite is installed using npm, and the commands `npm run dev` and `npm run build` are used to make development and production builds, respectively.
+
+## Lecture Notes 11.5.24 - Web Services, Express, CORS/SOP
+
+Using `require('http')` returns an object that can be assigned, with methods. The major one is `createServer()`, which takes a callback function as an argument. The callback function takes two arguments, `req` and `res`, which are the request and response objects, respectively. The `req` object contains information about the request, and the `res` object is used to send a response to the client. The `createServer()` method then returns a server object, which has a `listen()` method that is used to start the server listening on a specific port, by passing in the port number as an int, and an optional callback function.
+
+Express
+: A Node.js module used for manipulating and routing HTTP requests, generating HTTP responses, and using middleware to increase functionality.
+
+Express works similarly to managing HTTP with Node, but rather than creating an `http` object, an `express` object is created, which has `get()` and `listen()` methods.
+
+**Middleware stack:**
+There is also a `use()` method, which attempts to use the callback function that is passed in the parameters (often as an arrow function). `app.use([path], callback (req, res, next) => {})` is the basic anatomy of using a middleware function.
+`middleware` refers to software/programs that execute in between the request and response of a HTTP interaction. Functionalities are added in Express middleware using the `next()` function, which is used to pass control to the next middleware function on the stack. When no more middleware functions are left, the response is sent to the client.
+
+Express allows variables to be passed in the URL, and these variables are accessed using the `req.params` object. The `req.params` object is an object that contains the values of the variables passed in the URL as attributes. They are passed in the URL as `/:variableName`.
+
+`express.router()` is used to create a router object, which is used to create modular, mountable route handlers, more just a syntatic sugar for organizing routes.
