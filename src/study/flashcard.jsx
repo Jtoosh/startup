@@ -10,7 +10,6 @@ export class Card {
     }
     
 }
-
 export class Deck {
     constructor(name, cards) {
         this.name = name
@@ -20,7 +19,16 @@ export class Deck {
 export function Flashcard() {
     let card1 = new Card("James", "Just a guy trying to learn react", "Just trying -> James")
     let deck1 = new Deck("Test Deck",[card1] )
-return <main>
+
+    function readStorage(){
+        let userDecks = JSON.parse(localStorage.getItem("database")) || []
+    }
+    function flipAnimation(){
+        let flashcard = document.querySelector(".flashcard");
+        flashcard.classList.toggle("flipped");
+    
+    }
+return <main onLoad={readStorage}>
 <h1 className = "text-center">"Deck Name"</h1>
 <NavLink to="../study" className="btn btn-primary">&#8592; Back to Study</NavLink>
 
@@ -31,9 +39,11 @@ return <main>
                 <div className="flashcard-front">
                     <p>{deck1.cards[0].termName}</p>
                     <p>{deck1.cards[0].semantic}</p>
+                    <button onClick={flipAnimation} className="btn btn-secondary">Flip</button>
                 </div>
                 <div className="flashcard-back">
                     <p>{deck1.cards[0].termDef}</p>
+                    <button onClick={flipAnimation} className="btn btn-secondary">Flip</button>
                 </div>
             </div>
         </div>

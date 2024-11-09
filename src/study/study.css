@@ -27,8 +27,9 @@
   transform-style: preserve-3d;
 }
 
-.flashcard:hover .flashcard-inner {
+.flashcard.flipped .flashcard-inner {
   transform: rotateY(180deg);
+  /* rotate: y 180deg; */
 }
 
 .flashcard-front, .flashcard-back {
@@ -40,6 +41,7 @@
 
 .flashcard-back {
   transform: rotateY(180deg);
+  
 }
 /* Copied from Perplexity, make sure I study and understand it, and adjust as needed */
 
