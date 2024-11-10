@@ -19,10 +19,25 @@ export class Deck {
 export function Flashcard() {
     let card1 = new Card("James", "Just a guy trying to learn react", "Just trying -> James")
     let deck1 = new Deck("Test Deck",[card1] )
-
+    let userDecks = readStorage();
     function readStorage(){
-        let userDecks = JSON.parse(localStorage.getItem("database")) || []
+        let localStorageItems = [];
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            const value = localStorage.getItem(key);
+            localStorageItems.push({ key, value: JSON.parse(value) });
+            
+        }
+        let deckObjects = localStorageItems.map(deck => new Deck(deck.key, deck.value.cards));
+        // console.log(deckObjects);
+        for (let deck of deckObjects){
+            
+            // console.log(deck.cards[0]);;
+            
+        }
+        return deckObjects;
     }
+    console.log(userDecks)
     function flipAnimation(){
         let flashcard = document.querySelector(".flashcard");
         flashcard.classList.toggle("flipped");
@@ -37,12 +52,14 @@ return <main onLoad={readStorage}>
         <div className="card text-center my-4 flashcard">
             <div className="flashcard-inner">
                 <div className="flashcard-front">
-                    <p>{deck1.cards[0].termName}</p>
-                    <p>{deck1.cards[0].semantic}</p>
+                
+                    <p>{userDecks[0].cards[0].termName}</p>
+                    <p>{userDecks[0].cards[0].semantic}</p>
                     <button onClick={flipAnimation} className="btn btn-secondary">Flip</button>
+            
                 </div>
                 <div className="flashcard-back">
-                    <p>{deck1.cards[0].termDef}</p>
+                    <p>{userDecks[0].cards[0].termDef}</p>
                     <button onClick={flipAnimation} className="btn btn-secondary">Flip</button>
                 </div>
             </div>
