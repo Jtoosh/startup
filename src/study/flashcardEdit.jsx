@@ -46,17 +46,12 @@ export function FlashcardEdit() {
     currentCard.semantic = formObject.semantic;
 
     localStorage.setItem(deckEditing.name, JSON.stringify(deckEditing));
-    console.log(deckEditing);
-
-    // let cardIndex = deckEditing.cards.indexOf(card1)
-    // deckEditing.cards[cardIndex] = card1
   }
   function flipAnimation() {
     let flashcard = document.querySelector(".flashcard");
     flashcard.classList.toggle("flipped");
   }
   function advanceCard() {
-
     if (deckEditing.cards[currentCardIndex + 1] === undefined) {
       alert('No more cards in deck. Click "Add Card" to add a new card.');
       return;
