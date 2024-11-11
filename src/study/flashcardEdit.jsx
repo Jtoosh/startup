@@ -55,7 +55,8 @@ export function FlashcardEdit() {
             alert("No more cards in deck. Click \"Add Card\" to add a new card.");
             return;
         }
-        setCurrentCard(deckEditing.cards[cardIndex + 1]);
+        else{setCurrentCard(deckEditing.cards[cardIndex + 1]);}
+            
 
     }
     function retreatCard(){
@@ -64,11 +65,13 @@ export function FlashcardEdit() {
             alert("No more cards in deck. Click \"Add Card\" to add a new card.");
             return;
         }
-        setCurrentCard(deckEditing.cards[cardIndex - 1]);
+        else{setCurrentCard(deckEditing.cards[cardIndex - 1]);} 
+            
     }
     function addCard(){
         let newCard = new Card("New Term", "New Definition", "New Semantic");
         deckEditing.cards.push(newCard);
+        updateStorage();
         setCurrentCard(newCard);
     }
   return <main>
@@ -96,7 +99,7 @@ export function FlashcardEdit() {
             <div>
                 <div className="buttons d-flex column justify-content-center">
                     <button className="btn btn-warning">Need ideas? <strong>This will use a 3rd party API to generate ideas/mnemonics</strong></button>
-                    <button  type="submit" to="../study/flashcard" className="btn btn-primary" onClick={updateStorage} >Save Changes</button>
+                    <button  type="submit" to="../study/flashcard" className="btn btn-primary"  >Save Changes</button>
                 </div>
                 <div className="buttons d-flex column justify-content-center my-4">
                     <button className="btn btn-success" onClick={retreatCard}> &#8592; Previous Card</button>

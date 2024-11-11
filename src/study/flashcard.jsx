@@ -21,6 +21,8 @@ export function Flashcard() {
     const [currentDeck, setCurrentDeck] = React.useState(userDecks[0]);
     const [currentCard, setCurrentCard] = React.useState(currentDeck.cards[0]);
 
+    
+
     function readStorage(){
         let localStorageItems = [];
         for (let i = 0; i < localStorage.length; i++) {
@@ -48,6 +50,14 @@ export function Flashcard() {
         }
         setCurrentCard(currentDeck.cards[cardIndex + 1]);
     }
+    function retreatCard(){
+        let cardIndex = currentDeck.cards.indexOf(currentCard);
+        if (currentDeck.cards[cardIndex - 1] === undefined){
+            alert("No more cards in deck. Click \"Add Card\" to add a new card.");
+            return;
+        }
+        setCurrentCard(currentDeck.cards[cardIndex - 1]);
+    }
 
 return <main onLoad={readStorage}>
 <h1 className = "text-center">"Deck Name"</h1>
@@ -73,7 +83,7 @@ return <main onLoad={readStorage}>
 
     <div className="button ">
         <div className = " buttons d-flex column justify-content-center  mx-2 ">
-            <button className="btn btn-success">&#8592; Back</button>
+            <button className="btn btn-success" onClick={retreatCard}>&#8592; Back</button>
             <button className="btn btn-success" onClick={advanceCard}>Next &#8594;</button>
         </div>
         <div className="buttons d-flex column justify-content-center my-4 ">

@@ -11,7 +11,7 @@ export function Home() {
         </div>
         {/* <!--Main promo and motto--> */}
         <div className = ""> 
-            <img src="../../public/books.jpg"  alt="Studying placeholder image" className = " banner" />
+            <img src="../../books.jpg"  alt="Studying placeholder image" className = " banner" />
             <p className="text-center lead mt-4 fw-bold">"Mnemonic": a device intended to improve function of the memory.</p>
             <p className="text-center lead">Welcome to an application that will help improve your memory and understanding of what is most important to you. Utilizing psychological memory tools like semantic encoding
             and mnemonic devices, Mnemonic Study is the place where information can become understanding.</p>
