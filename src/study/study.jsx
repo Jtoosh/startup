@@ -36,7 +36,6 @@ function readDecks(){
                 <NavLink to="flashcardEdit" className="btn btn-primary btn-sm">+</NavLink>
             </div>
     )
-    let deckArea = document.getElementById("deckDisplay");
     return deckDivs
 }
 
