@@ -3,15 +3,27 @@ import "./study.css";
 import { NavLink } from "react-router-dom";
 import { Card, Deck } from "./flashcard.jsx"
 
-function getDeck(deckName){
-    // let currentDeck = localStorage.getItem(deckName)
-    // let deck = JSON.parse(currentDeck)
-    // return deck
-}
-
 export function FlashcardEdit() {
-    let card1 = new Card("James", "Just a guy trying to learn react", "Just trying -> James")
-    let deckEditing = new Deck("Test Deck",[card1] )
+    let deckEditing = readStorage()[0];
+    const [currentCard, setCurrentCard] = React.useState(deckEditing.cards[0]);
+
+    function readStorage(){
+        let localStorageItems = [];
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            const value = localStorage.getItem(key);
+            localStorageItems.push({ key, value: JSON.parse(value) });
+            
+        }
+        let deckObjects = localStorageItems.map(deck => new Deck(deck.key, deck.value.cards));
+        // console.log(deckObjects);
+        return deckObjects;
+    }
+
+    function updateStorage(){
+        let json_string = JSON.stringify(deckEditing);
+        localStorage.setItem(deckEditing.name, json_string);
+    }
 
     function handleSubmit(e){
         e.preventDefault();
@@ -21,9 +33,9 @@ export function FlashcardEdit() {
 
         const formObject = Object.fromEntries(formData.entries());
         
-        card1.termName = formObject.termName
-        card1.termDef = formObject.termDef
-        card1.semantic = formObject.semantic
+        currentCard.termName = formObject.termName
+        currentCard.termDef = formObject.termDef
+        currentCard.semantic = formObject.semantic
 
         localStorage.setItem(deckEditing.name, JSON.stringify(deckEditing))
         console.log(deckEditing);
@@ -37,6 +49,28 @@ export function FlashcardEdit() {
         flashcard.classList.toggle("flipped");
     
     }
+    function advanceCard(){
+        let cardIndex = deckEditing.cards.indexOf(currentCard);
+        if (deckEditing.cards[cardIndex + 1] === undefined){
+            alert("No more cards in deck. Click \"Add Card\" to add a new card.");
+            return;
+        }
+        setCurrentCard(deckEditing.cards[cardIndex + 1]);
+
+    }
+    function retreatCard(){
+        let cardIndex = deckEditing.cards.indexOf(currentCard);
+        if (deckEditing.cards[cardIndex - 1] === undefined){
+            alert("No more cards in deck. Click \"Add Card\" to add a new card.");
+            return;
+        }
+        setCurrentCard(deckEditing.cards[cardIndex - 1]);
+    }
+    function addCard(){
+        let newCard = new Card("New Term", "New Definition", "New Semantic");
+        deckEditing.cards.push(newCard);
+        setCurrentCard(newCard);
+    }
   return <main>
     <h1 className = "text-center">"Deck Name"</h1>
     <NavLink to="../study" className="btn btn-primary">&#8592; Back to Study</NavLink>
@@ -47,14 +81,14 @@ export function FlashcardEdit() {
                 <div className="flashcard-inner">
                     <div className="flashcard-front my-4">
                         Front of flashcard field
-                        <input type="text" required= "true"  name="termName" id="termName"  placeholder={deckEditing.cards[0].termName}/>
+                        <input type="text" required= "true"  name="termName" id="termName"  placeholder={currentCard.termName}/>
             
-                        <input type="text" required = "true" name="semantic" id="semantic" placeholder={deckEditing.cards[0].semantic} className="my-4"/>
+                        <input type="text" required = "true" name="semantic" id="semantic" placeholder={currentCard.semantic} className="my-4"/>
                         <button onClick={flipAnimation} className="btn btn-secondary">Flip</button>
                     </div>
                     <div className="flashcard-back my-4">
                         Back of flashcard field
-                        <input type="textarea" required = "true" name= "termDef" id= "termDef" placeholder={deckEditing.cards[0].termDef}/>
+                        <input type="textarea" required = "true" name= "termDef" id= "termDef" placeholder={currentCard.termDef}/>
                         <button onClick={flipAnimation} className="btn btn-secondary">Flip</button>
                     </div>
                 </div>
@@ -62,11 +96,12 @@ export function FlashcardEdit() {
             <div>
                 <div className="buttons d-flex column justify-content-center">
                     <button className="btn btn-warning">Need ideas? <strong>This will use a 3rd party API to generate ideas/mnemonics</strong></button>
-                    <button  type="submit" to="../study/flashcard" className="btn btn-primary" >Save Changes</button>
+                    <button  type="submit" to="../study/flashcard" className="btn btn-primary" onClick={updateStorage} >Save Changes</button>
                 </div>
                 <div className="buttons d-flex column justify-content-center my-4">
-                    <button className="btn btn-success"> &#8592; Previous Card</button>
-                    <button className="btn btn-success">Next Card &#8594;</button>
+                    <button className="btn btn-success" onClick={retreatCard}> &#8592; Previous Card</button>
+                    <button className="btn btn-success" onClick={advanceCard}>Next Card &#8594;</button>
+                    <button className="btn btn-secondary" onClick={addCard}>Add Card</button>
                 </div>
             </div>
         </form>
