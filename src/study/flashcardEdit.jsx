@@ -1,15 +1,17 @@
-import React from "react";
+import React,{useContext} from "react";
 import "./study.css";
 import { NavLink } from "react-router-dom";
 import { Card, Deck } from "./flashcard.jsx";
+import { DeckContext } from "../app.jsx";
 
 export function FlashcardEdit() {
+  const [deckEditingIndex, setDeckEditingIndex] = useContext(DeckContext);
   let deckEditing =
-    readStorage()[0] !== undefined
-      ? readStorage()[0]
+    readStorage()[deckEditingIndex] !== undefined
+      ? readStorage()[deckEditingIndex]
       : new Deck("New Deck", [
-          new Card("New Term", "New Definition", "New Semantic"),
-        ]);
+        new Card("New Term", "New Definition", "New Semantic"),
+      ]);
   const [currentCardIndex, setCurrentCardIndex] = React.useState(0);
 
   function readStorage() {
@@ -121,7 +123,11 @@ export function FlashcardEdit() {
                   defaultValue={deckEditing.cards[currentCardIndex].termDef}
                   key={`${currentCardIndex}-termDef-3`}
                 />
-                <button onClick={flipAnimation} className="btn btn-secondary">
+                <button
+                  type="button"
+                  onClick={flipAnimation}
+                  className="btn btn-secondary"
+                >
                   Flip
                 </button>
               </div>
@@ -142,6 +148,13 @@ export function FlashcardEdit() {
               >
                 Save Changes
               </button>
+              <NavLink
+                type="button"
+                to="../study/flashcard"
+                className="btn btn-primary"
+              >
+                Finish Editing
+              </NavLink>
             </div>
             <div className="buttons d-flex column justify-content-center my-4">
               <button

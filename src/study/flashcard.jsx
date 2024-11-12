@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./study.css";
 import { NavLink } from "react-router-dom";
+import { DeckContext } from "../app";
 
 export class Card {
   constructor(termName, termDef, semantic) {
@@ -17,7 +18,7 @@ export class Deck {
 }
 export function Flashcard() {
   let userDecks = readStorage();
-  const [currentDeck, setCurrentDeck] = React.useState(userDecks[0]);
+  const [currentDeck, setCurrentDeck] = useContext(DeckContext);
   const [currentCard, setCurrentCard] = React.useState(currentDeck.cards[0]);
 
   function readStorage() {

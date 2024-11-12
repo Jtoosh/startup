@@ -1,11 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./study.css";
 import { NavLink } from "react-router-dom";
 import { Deck } from "./flashcard.jsx";
+import { DeckContext } from "../app.jsx";
 
 export function Study() {
   let cardWidth = { width: "10rem" };
   let createdDecks = readDecks();
+
+  const {currentDeck, setCurrentDeck} = useContext(DeckContext);
+
   function readStorage() {
     let localStorageItems = [];
     for (let i = 0; i < localStorage.length; i++) {
@@ -20,6 +24,7 @@ export function Study() {
     return deckObjects;
   }
 
+
   function readDecks() {
     let userDecks = readStorage();
     let deckDivs = [];
@@ -27,8 +32,7 @@ export function Study() {
       deckDivs.push(
         <div className="card" style={cardWidth}>
           <h5 className="card-title">{deck.name}</h5>
-          <NavLink to="flashcard" className="btn btn-primary btn-sm">
-            {" "}
+          <NavLink to="flashcard" className="btn btn-primary btn-sm" onClick={() => {setCurrentDeck(deckDivs.indexOf(deck))}}>
             Study
           </NavLink>
         </div>
@@ -37,7 +41,7 @@ export function Study() {
     deckDivs.push(
       <div className="card" style={cardWidth}>
         <h5 className="card-title">Create Deck</h5>
-        <NavLink to="flashcardEdit" className="btn btn-primary btn-sm">
+        <NavLink to="flashcardEdit" className="btn btn-primary btn-sm" onClick={() => {setCurrentDeck(deckDivs.length)}}>
           +
         </NavLink>
       </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useState} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./app.css";
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
@@ -10,6 +10,19 @@ import { Flashcard } from "./study/flashcard";
 import { FlashcardEdit } from "./study/flashcardEdit";
 import { Quiz } from "./study/quiz";
 import { QuizEdit } from "./study/quizEdit";
+
+export const DeckContext = createContext();
+
+export const DeckProvider = ({children}) => {
+  const [currentDeck, setCurrentDeck] = useState(0);
+
+  return(
+    <DeckContext.Provider value={{currentDeck, setCurrentDeck}}>
+      {children}
+    </DeckContext.Provider>
+  )
+
+}
 
 export default function App() {
   return (
