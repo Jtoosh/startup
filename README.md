@@ -75,7 +75,7 @@ Due to the current time restraints of this project, styling was not taken to an 
 
 ### Features: CSS
 
-- The fields for Semantic encoding on quiz answers and on editing fields were given `placeholder` attributes of "Semantic Device" to indicate to the user the need for that information. CSS transitions were also used to flip flashcards, and make the backside "hidden". This functionality is not fully complete for interaction, but that will be handled when JavaScript is introduced to the application. Perplexity AI was consulted in the creation of the flip animation, and [here](https://www.perplexity.ai/search/what-would-be-the-most-practic-.PPFSQXRS_C3lgHIok9khw) is a link to the prompt used and information given.
+- The fields for Semantic encoding on quiz answers and on editing fields were given `defaultValue` attributes of "Semantic Device" to indicate to the user the need for that information. CSS transitions were also used to flip flashcards, and make the backside "hidden". This functionality is not fully complete for interaction, but that will be handled when JavaScript is introduced to the application. Perplexity AI was consulted in the creation of the flip animation, and [here](https://www.perplexity.ai/search/what-would-be-the-most-practic-.PPFSQXRS_C3lgHIok9khw) is a link to the prompt used and information given.
 - Quizzes were styled for both multiple choice and short answer, without proper behavior and exclusivity of one question type or the other.
 - Sharing buttons were styled, and the areas where WebSocket live data and other user's study stats will be displayed were styled as well, with placeholder values inside them.
 - Buttons that will interact with the open-source APIs were styled tas desired.
@@ -94,3 +94,22 @@ Due to the current time restraints of this project, styling was not taken to an 
 ## React Deliverable
 
 Overview of React implementation:
+
+React was implemented by porting the entire application to a React app, which is bundled, built, and deployed using Vite. Separate view components were made for each of the "Home", "Study", "Account", and "About" tabs. Within the "Study" tab is where most of the additional files are, since that is where the majority of the behavior is. This included a component created for the Flashcard items, and for editing the Flashcards. The Quiz components still need to be implemented, as well as the components for updating account information. The react hook `useState` is used in the flashcard components to track which deck of flashcards is being studied or edited, and is updated when that is changed. A React router is used in the App component to route between different components.
+
+To be frank, this deliverable is not implemented according to the feature specifications outlined above. The time restrains of this assignment along with personal shortcoming contributed to this, so a significant portion of the features remain unimplemented. I am committed to spending time on this project after this course however, to fully implement the features and technologies outlined above. In the mean time, I will outline how what is currently presented does meet the specifications.
+
+### Features: React
+
+- The ability to study using flashcards was fully implemented with this deliverable. Flashcard decks can be created, with any number of flashcards, and existing decks can be edited. The semantic encoding fields are present and functional, the card is able to flip upon clicking a button, whereas before the card flipped on mouse hover, making actually entering text in the front-side fields impossible. Edits will properly appear on a saved flashcard, and cards can be added to a deck without problem. Logic is present to allow the program to work regardless of the number of flashcards in a deck, the number of decks in local storage, and other cases.
+
+### Technologies: React
+
+- HTML previously was used to create the full structure of the page. The HTML files were deleted, and the rendered HTML was moved to be included in the return statements of the corresponding React components. Some adjustments were made, such as additional buttons, as development needs arose.
+- CSS was fully implemented according to assignment specifications, adjusted slightly to work with React components. Stylesheets for indiviual components were created as necessary
+- JavaScript was implmented via React.
+- React was about 50% implemented, with full functionality for flashcards, with quizzes and account editing to be implemented soon.
+- Web service APIs were not yet implemented, but placeholders were styled.
+- Authentication was not yet implemented, but placeholer login and logout buttons were styled.
+- Database usage was not yet implemented, but a placeholder `table` element was styled.
+- WebSocket data was not yet implemented, but the placeholder `table` created was styled.
