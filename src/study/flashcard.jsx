@@ -18,8 +18,10 @@ export class Deck {
 }
 export function Flashcard() {
   let userDecks = readStorage();
-  const [currentDeck, setCurrentDeck] = useContext(DeckContext);
-  const [currentCard, setCurrentCard] = React.useState(currentDeck.cards[0]);
+  const {currentDeckIndex, setCurrentDeckIndex} = useContext(DeckContext);
+  // console.log(userDecks);
+  // console.log(currentDeckIndex);
+  const [currentCard, setCurrentCard] = React.useState(userDecks[currentDeckIndex].cards[0]);
 
   function readStorage() {
     let localStorageItems = [];

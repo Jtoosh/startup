@@ -5,7 +5,7 @@ import { Card, Deck } from "./flashcard.jsx";
 import { DeckContext } from "../app.jsx";
 
 export function FlashcardEdit() {
-  const [deckEditingIndex, setDeckEditingIndex] = useContext(DeckContext);
+  const {deckEditingIndex, setDeckEditingIndex} = useContext(DeckContext);
   let deckEditing =
     readStorage()[deckEditingIndex] !== undefined
       ? readStorage()[deckEditingIndex]

@@ -591,6 +591,7 @@ Here are some notes from my studying React on W3 and porting my startup app to R
 - One of my biggeset takeaways from this stage of the startup was that it took much much longer than I anticipated or gave it time for. I think experiencing this will serve as a good learning step for me. In the future I'll devote a lot more time to the design and planning to also get a feel for how long a project like this will take.
 - One challenge that I encountered was comparing object equality. I found it easier to compare object indeces in an array.
 - Remember that data is stored in localStorage as JSON, so it needs to be parsed when it is retrieved, and stringified when it is stored.
+- State is real-time data *only available in that component*. Props are always passed *from parent component to child*.
 
 ## Spooky Lecture Notes 10.31.24 - Fetch, Web Mechanics
 

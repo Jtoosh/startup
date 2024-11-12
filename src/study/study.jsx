@@ -8,7 +8,7 @@ export function Study() {
   let cardWidth = { width: "10rem" };
   let createdDecks = readDecks();
 
-  const {currentDeck, setCurrentDeck} = useContext(DeckContext);
+  const {currentDeckIndex, setCurrentDeckIndex} = useContext(DeckContext);
 
   function readStorage() {
     let localStorageItems = [];
@@ -32,7 +32,7 @@ export function Study() {
       deckDivs.push(
         <div className="card" style={cardWidth}>
           <h5 className="card-title">{deck.name}</h5>
-          <NavLink to="flashcard" className="btn btn-primary btn-sm" onClick={() => {setCurrentDeck(deckDivs.indexOf(deck))}}>
+          <NavLink to="flashcard" className="btn btn-primary btn-sm" onClick={() => {setCurrentDeckIndex(userDecks.indexOf(deck))}}>
             Study
           </NavLink>
         </div>
@@ -41,7 +41,7 @@ export function Study() {
     deckDivs.push(
       <div className="card" style={cardWidth}>
         <h5 className="card-title">Create Deck</h5>
-        <NavLink to="flashcardEdit" className="btn btn-primary btn-sm" onClick={() => {setCurrentDeck(deckDivs.length)}}>
+        <NavLink to="flashcardEdit" className="btn btn-primary btn-sm" onClick={() => {setCurrentDeckIndex(userDecks.length)}}>
           +
         </NavLink>
       </div>
