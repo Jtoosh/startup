@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import "./study.css";
 import { NavLink } from "react-router-dom";
 import { DeckContext } from "../app";
@@ -18,10 +18,13 @@ export class Deck {
 }
 export function Flashcard() {
   let userDecks = readStorage();
-  const {currentDeckIndex, setCurrentDeckIndex} = useContext(DeckContext);
+  const { currentDeckIndex, setCurrentDeckIndex } = useContext(DeckContext);
+  const currentDeck = userDecks[currentDeckIndex];
   // console.log(userDecks);
   // console.log(currentDeckIndex);
-  const [currentCard, setCurrentCard] = React.useState(userDecks[currentDeckIndex].cards[0]);
+  const [currentCard, setCurrentCard] = React.useState(
+    userDecks[currentDeckIndex].cards[0]
+  );
 
   function readStorage() {
     let localStorageItems = [];
@@ -61,7 +64,7 @@ export function Flashcard() {
 
   return (
     <main onLoad={readStorage}>
-      <h1 className="text-center">"Deck Name"</h1>
+      <h1 className="text-center">{currentDeck.name}</h1>
       <NavLink to="../study" className="btn btn-primary">
         &#8592; Back to Study
       </NavLink>

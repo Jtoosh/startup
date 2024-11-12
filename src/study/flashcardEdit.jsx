@@ -1,17 +1,17 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import "./study.css";
 import { NavLink } from "react-router-dom";
 import { Card, Deck } from "./flashcard.jsx";
 import { DeckContext } from "../app.jsx";
 
 export function FlashcardEdit() {
-  const {deckEditingIndex, setDeckEditingIndex} = useContext(DeckContext);
+  const { deckEditingIndex, setDeckEditingIndex } = useContext(DeckContext);
   let deckEditing =
     readStorage()[deckEditingIndex] !== undefined
       ? readStorage()[deckEditingIndex]
       : new Deck("New Deck", [
-        new Card("New Term", "New Definition", "New Semantic"),
-      ]);
+          new Card("New Term", "New Definition", "New Semantic"),
+        ]);
   const [currentCardIndex, setCurrentCardIndex] = React.useState(0);
 
   function readStorage() {
@@ -42,6 +42,8 @@ export function FlashcardEdit() {
     const formObject = Object.fromEntries(formData.entries());
 
     let currentCard = deckEditing.cards[currentCardIndex];
+
+    deckEditing.name = formObject.deckName;
 
     currentCard.termName = formObject.termName;
     currentCard.termDef = formObject.termDef;
@@ -78,7 +80,7 @@ export function FlashcardEdit() {
   }
   return (
     <main>
-      <h1 className="text-center">"Deck Name"</h1>
+      <h1 className="text-center">{deckEditing.name}</h1>
       <NavLink to="../study" className="btn btn-primary">
         &#8592; Back to Study
       </NavLink>
@@ -88,6 +90,16 @@ export function FlashcardEdit() {
           onSubmit={handleSubmit}
           className="container-fluid d-flex row justify-content-center"
         >
+          <div className="text-center">
+            <input
+              type="text"
+              required={true}
+              name="deckName"
+              id="DeckName"
+              defaultValue={deckEditing.name}
+              key={`${currentCardIndex}-deckName-1`}
+            />
+          </div>
           <div className=" flashcard card text-center my-4 flashcard">
             <div className="flashcard-inner">
               <div className="flashcard-front my-4">

@@ -23,10 +23,8 @@ An Amazon Web Services account is an essential resource for this class, and for 
 - EC2: Elastic Cloud Compute - a virtual server in the cloud
 - ECS
 -
--
-
-**Console Application**
-A console application is an essential of web programming, and I need to make sure I have a POSIX compliant one. A console being POSIX compliant means that is supports a standard set of console commands. Warp is the one I am using, and it is POSIX compliant.
+- **Console Application**
+  A console application is an essential of web programming, and I need to make sure I have a POSIX compliant one. A console being POSIX compliant means that is supports a standard set of console commands. Warp is the one I am using, and it is POSIX compliant.
 
 A note, terminal, shell, and console are all synonymous.
 
@@ -73,7 +71,7 @@ You can also chain the input and output of commands using special characters
 - `>` - Redirect output to a file. Overwrites the file if it exists
 - `>>` - Redirect output to a file. Appends if the file exists
 
->Something that I loved from this assignemnt was figureing out that I could write a small bit of script, in the console, to manipulate a file, when I redirect the output of the script to the file using `>>`. I had no idea I could do something like that. I think that is connected to the `less` command, but I need to learn how it works more. Here is the line that was used:
+> Something that I loved from this assignemnt was figureing out that I could write a small bit of script, in the console, to manipulate a file, when I redirect the output of the script to the file using `>>`. I had no idea I could do something like that. I think that is connected to the `less` command, but I need to learn how it works more. Here is the line that was used:
 
 ```bash
 for i in {1..2}; do printf 'y' >> other.txt; done;
@@ -252,6 +250,7 @@ What pieces do I need?
 - back button to exit quiz (button)
 - Quiz selection (div)
 - Edit quiz button (button)
+
   - Edit quiz page
   - Save quiz button (button)
   - Create quiz button (button)
@@ -285,8 +284,12 @@ Here is an example of a simple animation:
 
 ```css
 @keyframes example {
-  from {background-color: red;}
-  to {background-color: yellow;}
+  from {
+    background-color: red;
+  }
+  to {
+    background-color: yellow;
+  }
 }
 
 div {
@@ -300,7 +303,7 @@ div {
 
 ## Lecture 9.26.24 - CSS Continued
 
->The following is courtesy of Copilot lol.
+> The following is courtesy of Copilot lol.
 
 To remember the order of the properties in the CSS box model, from outside to inside, you can use the mnemonic:
 **"My Big Purple Cat"**
@@ -383,20 +386,20 @@ Like Tailwind, Bootstrap has some classes that can apply generally to everything
 
 The Array object has several interesting static functions associated with it. Here are some of the interesting ones.
 
-| Function | Meaning                                                             | Example                       |
-| -------- | ------------------------------------------------------------------- | ----------------------------- |
-| push     | Add an item to the end of the array                                 | `a.push(4)`                   |
-| pop      | Remove an item from the end of the array                            | `x = a.pop()`                 |
-| slice    | Return a sub-array                                                  | `a.slice(1,-1)`               |
-| sort     | Run a function to sort an array in place                            | `a.sort((a,b) => b-a)`        |
-| values   | Creates an iterator for use with a `for of` loop                    | `for (i of a.values()) {...}` |
-| find     | Find the first item satisfied by a test function                    | `a.find(i => i < 2)`          |
-| forEach  | Run a function on each array item                                   | `a.forEach(console.log)`      |
-| reduce   | Run a function to reduce each array item to a single item           | `a.reduce((a, c) => a + c)`   |
-| map      | Run a function to map an array to a new array                       | `a.map(i => i+i)`             |
-| filter   | Run a function to remove items (items that return false are removed)| `a.filter(i => i%2)`          |
-| every    | Run a function to test if all items match                           | `a.every(i => i < 3)`         |
-| some     | Run a function to test if any items match                           | `a.some(i => i < 1)`          |
+| Function | Meaning                                                              | Example                       |
+| -------- | -------------------------------------------------------------------- | ----------------------------- |
+| push     | Add an item to the end of the array                                  | `a.push(4)`                   |
+| pop      | Remove an item from the end of the array                             | `x = a.pop()`                 |
+| slice    | Return a sub-array                                                   | `a.slice(1,-1)`               |
+| sort     | Run a function to sort an array in place                             | `a.sort((a,b) => b-a)`        |
+| values   | Creates an iterator for use with a `for of` loop                     | `for (i of a.values()) {...}` |
+| find     | Find the first item satisfied by a test function                     | `a.find(i => i < 2)`          |
+| forEach  | Run a function on each array item                                    | `a.forEach(console.log)`      |
+| reduce   | Run a function to reduce each array item to a single item            | `a.reduce((a, c) => a + c)`   |
+| map      | Run a function to map an array to a new array                        | `a.map(i => i+i)`             |
+| filter   | Run a function to remove items (items that return false are removed) | `a.filter(i => i%2)`          |
+| every    | Run a function to test if all items match                            | `a.every(i => i < 3)`         |
+| some     | Run a function to test if any items match                            | `a.some(i => i < 1)`          |
 
 ## Lecture Notes 10.8.24 - JavaScript Continued
 
@@ -442,8 +445,8 @@ Where executor is a function to be executed by the constructor, which should tak
 - Another syntax for dealing with asynchronous operations is the `async` and `await` keywords. The `async` keyword is used to define an asynchronous function. An `async` function always returns a promise, and the value of the promise is the value that the `async` function returns. The `await` keyword is used to pause the execution of the prefixed function until the promise from the `async` function is settled.
 - `await` should only be used on a top-level function, and not in a nested function. This is because `await` will pause the execution of the function until the promise is settled, and if the function is nested, then the parent function will also be paused. If a nested function needs the `await` keyword, then the parent function needs to be an `async` function.
 
->Figure out what the `resolve()` and `reject()` methods do.
-I found out that they are predefined in JavaScript. Basically `resolve()` is used to return the result of the promise, and `reject()` is used to return an error.
+> Figure out what the `resolve()` and `reject()` methods do.
+> I found out that they are predefined in JavaScript. Basically `resolve()` is used to return the result of the promise, and `reject()` is used to return an error.
 
 **Notes from kahoot:**
 
@@ -579,7 +582,7 @@ Here are some notes from my studying React on W3 and porting my startup app to R
 - When destructuring from an array, use `[]` with a comma for each element to skip. To destructure the 3rd element, use `[, , varName]`. The name put in the brackets is the name of the variable that the element will be assigned to.
 - The spread operator `...` copies all or part of an array or object into a new array or object. It is commonly used with destructuring.
 - Remember, the ternary in JS is the same as in C++: `condition ? trueValue : falseValue`. This differs from Python, where the ternary is
-`value if condition else otherValue`.
+  `value if condition else otherValue`.
 - JSX syntax includes replacing where parenthesis would be used in JS with curly braces `{}`. As well as when variables are referenced.
 - React events are written in camelCase, unlike JS. And functions passed to event handlers are passed inside of curly braces `{}`.
 - React keeps track of list items with a `key` attribute. This is used to keep track of which items have changed, and which items are new.
@@ -591,7 +594,9 @@ Here are some notes from my studying React on W3 and porting my startup app to R
 - One of my biggeset takeaways from this stage of the startup was that it took much much longer than I anticipated or gave it time for. I think experiencing this will serve as a good learning step for me. In the future I'll devote a lot more time to the design and planning to also get a feel for how long a project like this will take.
 - One challenge that I encountered was comparing object equality. I found it easier to compare object indeces in an array.
 - Remember that data is stored in localStorage as JSON, so it needs to be parsed when it is retrieved, and stringified when it is stored.
-- State is real-time data *only available in that component*. Props are always passed *from parent component to child*.
+- State is real-time data _only available in that component_. Props are always passed _from parent component to child_.
+- `indexOf()` returns -1 when the argument can't be found in the array.
+- Potential rework would include rendering flashcard, quiz, and respective edit components in the study component, rather than separate URLs.
 
 ## Spooky Lecture Notes 10.31.24 - Fetch, Web Mechanics
 
@@ -624,4 +629,18 @@ Express allows variables to be passed in the URL, and these variables are access
 
 `express.router()` is used to create a router object, which is used to create modular, mountable route handlers, more just a syntatic sugar for organizing routes.
 
-## Lecture Notes 11.7.24 - Web Services Continued
+## Lecture Notes 11.12.24 - Web Services: Endpoint Design, Debugging
+
+PM2 is a process manager that uses daemons to keep node services running. Terminal commands can be used to do various things related to PM2 on a server where it is installed. For example, `pm2 ls` lists the services running via pm2. `pm2 start` starts a service, and `pm2 stop` stops a service. `pm2 delete` deletes a service, and `pm2 restart` restarts a service. `pm2 logs` shows the logs of a service, and `pm2 monit` shows the monitoring of a service.
+
+Dr. Ventura reminded us that having a big picture mental model of the system/project and how it should work and what architecture it should have, is super important. I can be a bit better at that.
+
+To debug the backend code, it can be a bit trickier, since it technically runs on a computer in Virginia. Luckily, Vite allows for debugging by proxying into the port that the backend is running on. This is done using a `vite.config.js` file, where this port is specified. This file is placed in the root directory of the project, and frontend code can be stepped through in the browser dev tools as normal, and the backend code can be stepped through in VSCode.
+
+A good way to think of a closure is when a function is returns and all of its state is returned and accessible as well.
+
+Cross Site Request Forgery (CSRF) is a type of attack that tricks the user into performing an action that gives attackers access to their information, by using a fake website to send a fetch request to the real website, and access personal data.
+
+Cross Origin Resource Sharing (CORS) is a security feature that restricts what resources can be accessed by a web page from another domain. So, in this example, the Wells Fargo would only allow requests with an origin of their own domain.
+
+Single Origin Policy (SOP) is a security feature that restricts what resources can be accessed by a web page from another domain.
