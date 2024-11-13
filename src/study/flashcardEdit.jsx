@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import "./study.css";
 import { NavLink } from "react-router-dom";
 import { Card, Deck } from "./flashcard.jsx";
-import { DeckContext } from "../app.jsx";
+import { DeckContext } from "../app";
 
 export function FlashcardEdit() {
-  const { deckEditingIndex, setDeckEditingIndex } = useContext(DeckContext);
+  const { currentDeckIndex, setCurrentDeckIndex } = useContext(DeckContext);
   let deckEditing =
-    readStorage()[deckEditingIndex] !== undefined
-      ? readStorage()[deckEditingIndex]
+    readStorage()[currentDeckIndex] !== undefined
+      ? readStorage()[currentDeckIndex]
       : new Deck("New Deck", [
           new Card("New Term", "New Definition", "New Semantic"),
         ]);

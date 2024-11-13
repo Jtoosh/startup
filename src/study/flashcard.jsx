@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./study.css";
 import { NavLink } from "react-router-dom";
 import { DeckContext } from "../app";
@@ -20,6 +20,7 @@ export function Flashcard() {
   let userDecks = readStorage();
   const { currentDeckIndex, setCurrentDeckIndex } = useContext(DeckContext);
   const currentDeck = userDecks[currentDeckIndex];
+  const [currentCardIndex, setCurrentCardIndex] = useState(0);
   // console.log(userDecks);
   // console.log(currentDeckIndex);
   const [currentCard, setCurrentCard] = React.useState(
@@ -46,20 +47,20 @@ export function Flashcard() {
   }
 
   function advanceCard() {
-    let cardIndex = currentDeck.cards.indexOf(currentCard);
-    if (currentDeck.cards[cardIndex + 1] === undefined) {
+    if (currentDeck.cards[currentCardIndex + 1] === undefined) {
       alert('No more cards in deck. Click "Add Card" to add a new card.');
       return;
+    } else {
+      setCurrentCardIndex(currentCardIndex + 1);
     }
-    setCurrentCard(currentDeck.cards[cardIndex + 1]);
   }
   function retreatCard() {
-    let cardIndex = currentDeck.cards.indexOf(currentCard);
-    if (currentDeck.cards[cardIndex - 1] === undefined) {
+    if (currentDeck.cards[currentCardIndex - 1] === undefined) {
       alert('No more cards in deck. Click "Add Card" to add a new card.');
       return;
+    } else {
+      setCurrentCardIndex(currentCardIndex - 1);
     }
-    setCurrentCard(currentDeck.cards[cardIndex - 1]);
   }
 
   return (
@@ -73,14 +74,14 @@ export function Flashcard() {
         <div className="card text-center my-4 flashcard">
           <div className="flashcard-inner">
             <div className="flashcard-front">
-              <p>{currentCard.termName}</p>
-              <p>{currentCard.semantic}</p>
+              <p>{currentDeck.cards[currentCardIndex].termName}</p>
+              <p>{currentDeck.cards[currentCardIndex].semantic}</p>
               <button onClick={flipAnimation} className="btn btn-secondary">
                 Flip
               </button>
             </div>
             <div className="flashcard-back">
-              <p>{currentCard.termDef}</p>
+              <p>{currentDeck.cards[currentCardIndex].termDef}</p>
               <button onClick={flipAnimation} className="btn btn-secondary">
                 Flip
               </button>
