@@ -603,7 +603,7 @@ Here are some notes from my studying React on W3 and porting my startup app to R
 - A router is a special kind of computer, so routers connecting to routers is how the internet works. The internet is a network of networks.
 - A modem is a device that modulates and demodulates signals. It is used to connect a computer to the internet using the infrastructure of telephone lines.
 
-- Fetch is a function that is used to make network requests in JavaScript. It is used to get data from a server, and it returns a promise that resolves to the response from the server. The `fetch` function takes a URL as an argument, and it returns a promise that resolves to the response from the server. The response object has a `json()` method that is used to parse the response as JSON. The `json()` method also returns a promise that resolves to the parsed JSON data. Because of the promise returned, the `fetch` function is asynchronous, and it is used with the `then()` method to handle the response from the server. The `await` method can also be used.
+- Fetch is a function that is used to make network (HTTP) requests in JavaScript. It is used to get data from a server, and it returns a _promise_ that resolves to the response from the server. The `fetch` function takes a URL as an argument, and it returns a promise that resolves to the response from the server. The response object has a `json()` method that is used to parse the response as JSON. The `json()` method also returns a promise that resolves to the parsed JSON data. Because of the promise returned, the `fetch` function is asynchronous, and its results are used with the `then()` method to handle the response from the server. The `await` method can also be used. The default method for a fetch call is `GET` but `POST` can be used by using the optional argument.
 
 ## Vite Assignment Notes
 
@@ -611,10 +611,12 @@ Vite is a toolchain for web frameworks that bundles code quickly, and allows for
 
 ## Lecture Notes 11.5.24 - Web Services, Express, CORS/SOP
 
+After some more reading, the class notes for Express and middleware were the most helpful for me. [Here](../notes/cs260.github/profile/webServices/express/express.md) is the link to the notes.
+
 Using `require('http')` returns an object that can be assigned, with methods. The major one is `createServer()`, which takes a callback function as an argument. The callback function takes two arguments, `req` and `res`, which are the request and response objects, respectively. The `req` object contains information about the request, and the `res` object is used to send a response to the client. The `createServer()` method then returns a server object, which has a `listen()` method that is used to start the server listening on a specific port, by passing in the port number as an int, and an optional callback function.
 
 Endpoint
-: A valid destination for an HTTP Request. This is code on the server that can be triggered/interacted with via HTTP requests. When an endpoint cannot be found is when a 404 error occurs.
+: A valid destination for an HTTP Request. A URL path that calls a function when visited. This is code on the server that can be triggered/interacted with via HTTP requests. When an endpoint cannot be found is when a 404 error occurs.
 
 Express
 : A Node.js module used for manipulating and routing HTTP requests, generating HTTP responses, and using middleware to increase functionality.
@@ -644,3 +646,7 @@ Cross Site Request Forgery (CSRF) is a type of attack that tricks the user into 
 Cross Origin Resource Sharing (CORS) is a security feature that restricts what resources can be accessed by a web page from another domain. So, in this example, the Wells Fargo would only allow requests with an origin of their own domain.
 
 Single Origin Policy (SOP) is a security feature that restricts what resources can be accessed by a web page from another domain.
+
+_Remember:_ `fetch` statements are used on the front end to make requests to the endpoints specified on the backend, or a third-party.
+
+## Lecture Notes 11.14.24 - Web Authenticatione
