@@ -649,4 +649,41 @@ Single Origin Policy (SOP) is a security feature that restricts what resources c
 
 _Remember:_ `fetch` statements are used on the front end to make requests to the endpoints specified on the backend, or a third-party.
 
-## Lecture Notes 11.14.24 - Web Authenticatione
+## Lecture Notes 11.14.24 - Web Authentication
+
+The best notes are in the class readings. I'll link to the files [here](../notes/cs260.github/profile/webServices/dataServices/dataServices.md).
+
+For accessing data that is user-specific, Dr. Ventura recommended creating a collection for each username, and only access the collection tied to that username.
+
+Rainbow tables are a type of attack that uses precomputed hash values for common passwords to crack hashed passwords, and then map those hash values to the original passwords to find matches.
+
+## Startup Service Notes
+
+My understanding of endpoints is you define a path/URL that triggers a certain function when visited. Then, on certain components on the frontend, when I want to access that data, I use a fetch statement that is connected to that component to get that data.
+
+Design overview:
+
+**Objectives:**
+
+- Create user objects and store them in memory of the backend service.
+- Create a login/create user endpoint.
+- Store the study objects of each user in the backend service.
+- Create an endpoint for getting flashcard suggestions.
+
+**Breaking down the objectives:**
+
+1. Create user objects and store them in memory of the backend service.
+   - Create a User class with a constructor that takes a username, password, and study materials as arguments.
+   - Create a set of users to store the user objects in memory and disallow duplicates.
+   - Create methods for adding users and transferring data from the backend to the front end. Move data storage from local storage to backend.
+2. Create a login/create user endpoint.
+   - Create Login and Authentication components, add those routes to my frontend.
+   - Create a login endpoint.
+   - For both of these, copy the Simon code, since Dr. Ventura encouraged us to do so. Make sure I read and understand all of that code as I do so, however
+3. Store the study objects of each user in the backend service.
+   - Create an endpoint for updating the User object in the Users set with the study materials.
+   - Create an endpoint for getting the study materials of a user as they are updated on the frontend.
+4. Create an endpoint for getting flashcard suggestions.
+    - Create an endpoint for getting flashcard suggestions when using the Help button on the front end.
+
+I'm going to start with the 2nd objective, since it seems to be a bit of a prerequisite, and should be the easiest.
