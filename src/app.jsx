@@ -113,7 +113,7 @@ export default function App() {
             <Route path="*" element={<NotFound />} />
             {/* Not Found component still needs to be implemented */}
           </Routes>
-          <footer className="container-fluid bg-secondary bottom">
+          <footer className="container-fluid bg-secondary fixed-bottom">
             <div className="text-center">
               <span>James Teuscher, 2024</span>
               <form action="https://github.com/Jtoosh/startup.git">

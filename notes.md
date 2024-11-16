@@ -687,3 +687,12 @@ Design overview:
     - Create an endpoint for getting flashcard suggestions when using the Help button on the front end.
 
 I'm going to start with the 2nd objective, since it seems to be a bit of a prerequisite, and should be the easiest.
+
+**Notes**
+I got a little mixed up while trying to connect the backend to the front end, and using the vite config file. After having Micahel help me, I got a few things cleared up mentally.
+
+- The Vite server simulates the front end, serving all of that up.
+- The port that the Vite server runs on and the backend port need to be different.
+- The port listed in the `proxy` object in `vite.config.js` for a particular endpoint is the port the backend is running on.
+- Postman is a useful tool for testing endpoints.
+- Remember that, as far as my understanding, a node package needs to be installed in the same directory as the file it is being used in.

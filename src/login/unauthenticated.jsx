@@ -16,21 +16,6 @@ export function Unauthenticated(props) {
     loginOrCreate(`/api/auth/create`);
   }
 
-  // async function test() {
-  //   const response = await fetch(`/api/auth/test`, {
-  //     method: 'get',
-  //     headers: {
-  //       'Content-type': 'application/json; charset=UTF-8',
-  //     },
-  //   });
-  //   if (response?.status === 200) {
-  //     console.log('Test success');
-  //   } else {
-  //     const body = await response.json();
-  //     setDisplayError(`⚠ Error: ${body.msg}`);
-  //   } 
-  // }
-
   async function loginOrCreate(endpoint) {
     const response = await fetch(endpoint, {
       method: 'post',
@@ -41,12 +26,9 @@ export function Unauthenticated(props) {
     });
     if (response?.status === 200) {
       localStorage.setItem('userName', userName);
+      localStorage.setItem('userObject', response.userObject);
       props.onLogin(userName);
     } else {
-      // if (!response.ok) {
-      //   console.error("Error:", response.status, response.statusText);
-      //   return; // Handle the error accordingly
-      // }
       const body = await response.json();
       setDisplayError(`⚠ Error: ${body.msg}`);
     }

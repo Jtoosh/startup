@@ -1,4 +1,4 @@
-const port = process.argv.length > 2 ? process.argv[2] : 5173;
+const port = process.argv.length > 2 ? process.argv[2] : 5174;
 
 const express = require('express');
 const uuid = require('uuid');
@@ -7,14 +7,14 @@ const app = express();
 //Users and their study materials are stored here in the backend unitl DB is implemented
 //Each User object will be an object with username, password, and decks properties.
 
-class User {
-  constructor(username, password,token, decks){
-    self.username = username;
-    self.password = password;
-    self.token = token
-    self.decks = decks;
-  }
-}
+// class User {
+//   constructor(self, username, password, token, decks){
+//     self.username = username;
+//     self.password = password;
+//     self.token = token
+//     self.decks = decks;
+//   }
+// }
 
 //Set to store User objects
 let users= {};
@@ -29,18 +29,23 @@ app.use(express.static('public'));
 let apiRouter = express.Router();
 app.use('/api', apiRouter);
 
+apiRouter.get('/healthcheck', async (req, res) => {
+  res.send("Hello! I'm working!!")
+})
+
 
 //Endpoint for creating a new user
 apiRouter.post('/auth/create', async (req, res) => {
+  console.log('Create Endpoint Called!!')
   const user = users[req.body.email];
   try {
     if (user){
     res.status(409).send({msg: 'Existing user'});
    } else {
-    const user = new User( req.body.email, req.body.password, uuid.v4(), {});
+    const user = { username: req.body.email, password: req.body.password, token: uuid.v4(), decks: {}};
     users[user.username] = user;
   
-    res.json({ username:user.username})}
+    res.json({ userObject: user});}
   }
   catch (error) {
     console.error("Error in '/auth/create':", error);
@@ -54,7 +59,7 @@ apiRouter.post('/auth/login', async (req, res) => {
   if (user){
     if(req.body.password === user.password){
       user.token = uuid.v4();
-      res.json({ token: user.token });
+      res.json({ userObject: user});
       return
     }
   }

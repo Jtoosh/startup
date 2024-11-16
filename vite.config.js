@@ -3,7 +3,11 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   server: {
     proxy: {
-      '/api': 'http://localhost:4000',
+      '/api':
+      {
+        target: 'http://localhost:5174',
+        secure: false,
+      } 
     },
   },
 });
