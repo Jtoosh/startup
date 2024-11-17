@@ -1,8 +1,10 @@
 const port = process.argv.length > 2 ? process.argv[2] : 5174;
 
-const express = require('express');
-const uuid = require('uuid');
+import express from 'express'
+import * as uuid from 'uuid';
 const app = express();
+import {Card} from '../shared/card.mjs';
+import {Deck} from '../shared/deck.mjs'
 
 //Users and their study materials are stored here in the backend unitl DB is implemented
 //Each User object will be an object with username, password, and decks properties.
@@ -45,6 +47,7 @@ apiRouter.post('/auth/create', async (req, res) => {
     const user = { username: req.body.email, password: req.body.password, token: uuid.v4(), decks: {}};
     users[user.username] = user;
   
+    console.log(user);    
     res.json({ userObject: user});}
   }
   catch (error) {

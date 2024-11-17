@@ -2,21 +2,13 @@ import React, { useContext, useState } from "react";
 import "./study.css";
 import { NavLink } from "react-router-dom";
 import { DeckContext } from "../app";
+import { Card } from "../../shared/card.mjs"
+import { Deck } from "../../shared/deck.mjs"
 
-export class Card {
-  constructor(termName, termDef, semantic) {
-    this.termName = termName;
-    this.termDef = termDef;
-    this.semantic = semantic;
-  }
-}
-export class Deck {
-  constructor(name, cards) {
-    this.name = name;
-    this.cards = cards;
-  }
-}
 export function Flashcard() {
+  const [currentUser, setCurrentUser] = React.useState(
+    localStorage.getItem("userObject")
+  );
   let userDecks = readStorage();
   const { currentDeckIndex, setCurrentDeckIndex } = useContext(DeckContext);
   const currentDeck = userDecks[currentDeckIndex];
@@ -27,16 +19,21 @@ export function Flashcard() {
     userDecks[currentDeckIndex].cards[0]
   );
 
+
   function readStorage() {
-    let localStorageItems = [];
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      const value = localStorage.getItem(key);
-      localStorageItems.push({ key, value: JSON.parse(value) });
+    const thisUserDecks = []
+    if (currentUser.deck !== undefined) {
+      for (let i = 0; i < currentUser.deck.length; i++) {
+        const key = currentUser.deck.key(i);
+        const value = currentUser.deck.getItem(key);
+        thisUserDecks.push({ key, value: JSON.parse(value) });
+      }
+      let deckObjects = thisUserDecks.map(
+        (deck) => new Deck(deck.key, deck.value.cards)
+      );
+    } else{
+      return [];
     }
-    let deckObjects = localStorageItems.map(
-      (deck) => new Deck(deck.key, deck.value.cards)
-    );
     // console.log(deckObjects);
     return deckObjects;
   }

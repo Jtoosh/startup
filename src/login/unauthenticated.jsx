@@ -26,7 +26,9 @@ export function Unauthenticated(props) {
     });
     if (response?.status === 200) {
       localStorage.setItem('userName', userName);
-      localStorage.setItem('userObject', response.userObject);
+      const userObject = await response.json();
+      console.log(userObject);
+      localStorage.setItem('userObject', userObject);
       props.onLogin(userName);
     } else {
       const body = await response.json();
