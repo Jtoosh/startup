@@ -22,13 +22,18 @@ export function Unauthenticated(props) {
       body: JSON.stringify({ email: userName, password: password }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
-      },
+      }, 
     });
     if (response?.status === 200) {
       localStorage.setItem('userName', userName);
-      const userObject = await response.json();
-      console.log(userObject);
-      localStorage.setItem('userObject', userObject);
+      // const userObject = await response.json();
+      const responseText = await response.json();
+      const userObject = JSON.parse(responseText);
+      localStorage.setItem('userObject', JSON.stringify(userObject));
+      console.log('userObject:', userObject);
+
+      console.log('username:', userObject.data?.username);
+
       props.onLogin(userName);
     } else {
       const body = await response.json();

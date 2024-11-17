@@ -8,7 +8,7 @@ import { DeckContext } from "../app";
 export function FlashcardEdit() {
   const { currentDeckIndex, setCurrentDeckIndex } = useContext(DeckContext);
   const [currentCardIndex, setCurrentCardIndex] = React.useState(0);
-  const [currentUser, setCurrentUser] = React.useState(localStorage.getItem("userObject"));
+  const [currentUser, setCurrentUser] = React.useState(JSON.parse(localStorage.getItem("userObject")));
 
   let deckEditing =
     readStorage()[currentDeckIndex] !== undefined
@@ -20,10 +20,10 @@ export function FlashcardEdit() {
 
   function readStorage() {
     const thisUserDecks = []
-    if (currentUser.deck !== undefined) {
-      for (let i = 0; i < currentUser.deck.length; i++) {
-        const key = currentUser.deck.key(i);
-        const value = currentUser.deck.getItem(key);
+    if (currentUser.decks !== undefined) {
+      for (let i = 0; i < currentUser.decks.length; i++) {
+        const key = currentUser.decks.key(i);
+        const value = currentUser.decks.getItem(key);
         thisUserDecks.push({ key, value: JSON.parse(value) });
       }
       let deckObjects = thisUserDecks.map(
@@ -37,8 +37,11 @@ export function FlashcardEdit() {
   }
 
   function updateStorage() {
-    let json_string = JSON.stringify(deckEditing);
-    localStorage.setItem(deckEditing.name, json_string);
+    console.log(currentUser.decks);
+    currentUser.decks[currentDeckIndex] = deckEditing;
+    setCurrentUser(currentUser);
+    localStorage.setItem("userObject", JSON.stringify(currentUser));
+    
   }
 
   function handleSubmit(e) {

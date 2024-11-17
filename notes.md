@@ -698,3 +698,10 @@ I got a little mixed up while trying to connect the backend to the front end, an
 - Remember that, as far as my understanding, a node package needs to be installed in the same directory as the file it is being used in.
 - Because I needed a consistent data structure for Decks between the front and backend, I got to tackle the task of sharing the classes between the front and backend. I made the Card and Deck classes into separate `.js` files, and then put them in a `shared` directory in the root of the project.
 - Continuing from the last point, I found some trouble with importing the classes into both the frontend `.jsx` files, and the backend `.js` node files. I learned that the `import` statement is used in the frontend, because `.jsx` files use ES6 modules, while the node.js backend files use the CommonJS syntax for including modules, which is done with the `require()` function. So, to make this work for the full stack, I changed the `type` of the node app to use ES6 modules. I did this by adding the line `"type": "module"` to the `package.json` file. This allowed me to use the `import` statement in the backend files as well. However, then I had to change and update the `require()` statements for the other node modules I was using like `express` and `uuid`. I was able to do this with identical functionality by doing `import express from 'express'` and `import { v4 as uuidv4 } from 'uuid'`.
+- **Important note:** 3rd party API calls don't need endpoints defined in my backend, because they've been defined in the backend of the 3rd party. I simply make the client-side call on my frontend code.
+
+**CURRENT TODOS**:
+
+- Finish data structure implementation for full stack.
+- Get correct data handling for exisitng pages (flashcard, flashcard edit)
+- Implement datamuse API call for flashcard suggestions using React bootstraph modal.
