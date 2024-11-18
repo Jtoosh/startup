@@ -27,12 +27,12 @@ export function Unauthenticated(props) {
     if (response?.status === 200) {
       localStorage.setItem('userName', userName);
       // const userObject = await response.json();
-      const responseText = await response.json();
-      const userObject = JSON.parse(responseText);
+      const userObject = await response.json();
+      
       localStorage.setItem('userObject', JSON.stringify(userObject));
       console.log('userObject:', userObject);
 
-      console.log('username:', userObject.data?.username);
+      
 
       props.onLogin(userName);
     } else {
