@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { Card } from "../../shared/card.mjs";
 import { Deck } from "../../shared/deck.mjs";
 import { DeckContext } from "../app";
+import { ApiModal } from "./apiModal";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
@@ -11,6 +12,10 @@ export function FlashcardEdit() {
   const { currentDeckIndex, setCurrentDeckIndex } = useContext(DeckContext);
   const [currentCardIndex, setCurrentCardIndex] = React.useState(0);
   const [currentUser, setCurrentUser] = React.useState(JSON.parse(localStorage.getItem("userObject")));
+  const [showModal, setShowModal] = React.useState(false);
+  const handleShow = () => setShowModal(true);
+  const handleClose = () => setShowModal(false);
+  
 
   let deckEditing =
     readStorage()[currentDeckIndex] !== undefined
@@ -92,27 +97,7 @@ export function FlashcardEdit() {
     setCurrentCardIndex(deckEditing.cards.length - 1);
   }
 
-  async function apiModal() {
-    const response = await fetch('https://api.datamuse.com/words?ml=soft');
-    const data = await response.json();
-    return (<div className="modal show">
-      <Modal>
-        <Modal.Header closeButton>
-          <Modal.Title>API Ideas</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <ul>
-            {data.map((item) => (
-              <li key={item.word}>{item.word}</li>
-            ))}
-          </ul>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary">Close</Button>
-        </Modal.Footer>
-        </Modal>
-    </div>);
-  }
+  
   return (
     <main>
       <h1 className="text-center">{deckEditing.name}</h1>
@@ -182,11 +167,9 @@ export function FlashcardEdit() {
           </div>
           <div>
             <div className="buttons d-flex column justify-content-center">
-              <button className="btn btn-warning" onClick={apiModal}>
+              <button className="btn btn-warning" onClick={handleShow}>
                 Need ideas?
-                <strong>
-                  This will use a 3rd party API to generate ideas/mnemonics
-                </strong>
+                  <ApiModal  show = {showModal}/>
               </button>
               <button
                 type="submit"
