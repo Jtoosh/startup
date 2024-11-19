@@ -12,9 +12,7 @@ export function FlashcardEdit() {
   const { currentDeckIndex, setCurrentDeckIndex } = useContext(DeckContext);
   const [currentCardIndex, setCurrentCardIndex] = React.useState(0);
   const [currentUser, setCurrentUser] = React.useState(JSON.parse(localStorage.getItem("userObject")));
-  const [showModal, setShowModal] = React.useState(false);
-  const handleShow = () => setShowModal(true);
-  const handleClose = () => setShowModal(false);
+  
   
 
   let deckEditing =
@@ -167,10 +165,8 @@ export function FlashcardEdit() {
           </div>
           <div>
             <div className="buttons d-flex column justify-content-center">
-              <button className="btn btn-warning" onClick={handleShow}>
-                Need ideas?
-                  <ApiModal  show = {showModal}/>
-              </button>
+              <ApiModal/>
+              
               <button
                 type="submit"
                 to="../study/flashcard"
