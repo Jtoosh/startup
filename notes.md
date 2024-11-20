@@ -701,9 +701,18 @@ I got a little mixed up while trying to connect the backend to the front end, an
 - **Important note:** 3rd party API calls don't need endpoints defined in my backend, because they've been defined in the backend of the 3rd party. I simply make the client-side call on my frontend code.
 - Some important Object methods that I learned about are `Object.keys()` and `Object.entries`. `Object.keys()` returns an array of all of the keys than an object contains. `Object.entries()` returns an array of all of the values in an object, with its index in the returned array as the first value of said array.
 - I ran into a challenge with `Object.entries()` where I thought just the entry was in the array, I didn't know it was an array of arrays with the array index and the entry. So I just had to alter the code slightly to access that data correctly.
+- `useEffect` is the mechanism in React to perform external API calls, because function components cannot by asynchronous. It takes 2 parameters, a function to run, and an array of dependencies. The function runs when the dependencies change. The passed in function returns a cleanup function, which is used to clean up the effect when the component is unmounted. Understanding this hook and using it properly was extremely useful.
+- After taking a look, I think I am going to have to move around my shared Card and Deck .js files, or experiment with editing the deployment shell script so that the build version can access those correctly. Just for future reference.
+- 
 
 **CURRENT TODOS**:
 
 - Finish data structure implementation for full stack.
 - Get correct data handling for exisitng pages (flashcard, flashcard edit)
-- Implement datamuse API call for flashcard suggestions using React bootstraph modal.
+
+## Lecture Notes 11.19.24 - Data Services
+
+Main implementations for Startup Login:
+
+- Cookies
+- Store decks in DB now, can keep front end methods the same.

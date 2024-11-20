@@ -42,7 +42,7 @@ export function ApiModal()  {
         </button>
     <Modal show={showModal} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>API Ideas</Modal.Title>
+        <Modal.Title>Synonym Ideas</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         {searchTerm ? (
@@ -52,7 +52,7 @@ export function ApiModal()  {
             <button className='btn btn-secondary my-4'>Go</button>
           </form>
           
-          <p>Here are some words with similar meaning as ____</p>
+          <p>Here are some words with similar meaning as "{searchTerm}"</p>
           <ul>
             {Object.entries(modalData).map((entry) => (
               <li key={entry[1].word}>{entry[1].word}</li>

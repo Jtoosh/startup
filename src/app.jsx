@@ -44,7 +44,7 @@ export default function App() {
               <div className="container-fluid">
                 <ul className="nav me-auto mb-2 mb-lg-0">
                   <li className="nav-item">
-                    <NavLink to="" className="nav-link">
+                    <NavLink to="home" className="nav-link">
                       Home
                     </NavLink>
                   </li>
@@ -104,6 +104,7 @@ export default function App() {
               }
             />
             <Route path="/study" element={<Study />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/study/flashcard" element={<Flashcard />} />
             <Route path="/study/flashcardEdit" element={<FlashcardEdit />} />
             <Route path="/study/quiz" element={<Quiz />} />

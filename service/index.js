@@ -48,7 +48,7 @@ apiRouter.post('/auth/create', async (req, res) => {
     users[user.username] = user;
   
     console.log(user);    
-    res.json({ userObject: user});}
+    res.json(user);}
   }
   catch (error) {
     console.error("Error in '/auth/create':", error);

@@ -31,7 +31,6 @@ export function Unauthenticated(props) {
       
       localStorage.setItem('userObject', JSON.stringify(userObject));
       console.log('userObject:', userObject);
-
       
 
       props.onLogin(userName);
