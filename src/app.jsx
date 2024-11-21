@@ -26,6 +26,22 @@ export const DeckProvider = ({ children }) => {
   );
 };
 
+// This function is the logout function that will be passed to the logout button **WORK IN PROGRESS**
+// function logout() {
+//   fetch(`/api/auth/logout`, {
+//     method: 'delete',
+//   })
+//     .catch(() => {
+//       // Logout failed. Assuming offline
+//     })
+//     .finally(() => {
+//       localStorage.removeItem('userName');
+//       localStorage.removeItem('userObject');
+//       setAuthState(AuthState.Unauthenticated);
+//       setUserName('');
+//       });
+// }
+
 export default function App() {
   const [userName, setUserName] = React.useState(
     localStorage.getItem("userName") || ""
@@ -67,25 +83,38 @@ export default function App() {
                       About
                     </NavLink>
                   </li>
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="">
+                      Logout
+                    </NavLink>
+                  </li>
                 </ul>
                 {/* <!--These buttons will be made conditional so that one or the other appears, but not both, depending on authentication--> */}
-                <button
+                {/* <button
                   type="submit"
                   name="Login"
                   className="btn btn-primary mr-1"
                 >
                   Login
-                </button>
-                <button
-                  type="submit"
-                  name="Logout"
-                  className="btn btn-secondary m-2"
-                >
-                  Logout
-                </button>
+                </button> */}
+                {/* {currentAuthState === AuthState.Authenticated &&        Logout button **WORK IN PROGRESS**
+                (<NavLink className="nav-link" to="">
+                  <button
+                    type="submit"
+                    name="Logout"
+                    className="btn btn-secondary m-2"
+                    onClick={logout}
+                  >
+                    Logout
+                  </button>
+                </NavLink>)
+                } */}
+                {currentAuthState === AuthState.Authenticated && (
                 <span>
-                  Account Name with <i className="bi bi-person fs-1"></i>
-                </span>
+                  {userName} <i className="bi bi-person fs-1"></i>
+                </span>)
+                }
+
               </div>
             </nav>
           </header>

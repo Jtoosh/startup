@@ -703,7 +703,7 @@ I got a little mixed up while trying to connect the backend to the front end, an
 - I ran into a challenge with `Object.entries()` where I thought just the entry was in the array, I didn't know it was an array of arrays with the array index and the entry. So I just had to alter the code slightly to access that data correctly.
 - `useEffect` is the mechanism in React to perform external API calls, because function components cannot by asynchronous. It takes 2 parameters, a function to run, and an array of dependencies. The function runs when the dependencies change. The passed in function returns a cleanup function, which is used to clean up the effect when the component is unmounted. Understanding this hook and using it properly was extremely useful.
 - After taking a look, I think I am going to have to move around my shared Card and Deck .js files, or experiment with editing the deployment shell script so that the build version can access those correctly. Just for future reference.
-- 
+- Dylan helped me find the error that I had in accessing the Object passed from the backend to the front in the HTTP response. I was calling `res.json({ "userObject":user})`, which was returning a nested object, with an attribute of `userObject` that contained the object I had stored in `user`. So by instead just using `res.json(user)`, I was able to access the object directly in the front end.
 
 **CURRENT TODOS**:
 

@@ -45,9 +45,7 @@ apiRouter.post('/auth/create', async (req, res) => {
     res.status(409).send({msg: 'Existing user'});
    } else {
     const user = { username: req.body.email, password: req.body.password, token: uuid.v4(), decks: []};
-    users[user.username] = user;
-  
-    console.log(user);    
+    users[user.username] = user;    
     res.json(user);}
   }
   catch (error) {
