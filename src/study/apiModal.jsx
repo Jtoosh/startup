@@ -33,8 +33,7 @@ export function ApiModal()  {
   }
 
 
-  console.log((modalData))
-  console.log(`https://api.datamuse.com/words?ml=${searchTerm}`)
+  
   return (
     <>
         <button className="btn btn-warning" onClick={handleShow}>

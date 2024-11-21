@@ -6,10 +6,9 @@ import { Card } from "../../shared/card.mjs"
 import { Deck } from "../../shared/deck.mjs"
 
 export function Flashcard() {
-  const [currentUser, setCurrentUser] = React.useState(
-    localStorage.getItem("userObject")
-  );
+  const [currentUser, setCurrentUser] = React.useState(JSON.parse(localStorage.getItem("userObject")));
   let userDecks = readStorage();
+
   const { currentDeckIndex, setCurrentDeckIndex } = useContext(DeckContext);
   const currentDeck = userDecks[currentDeckIndex];
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
@@ -22,22 +21,36 @@ export function Flashcard() {
 
   function readStorage() {
     const thisUserDecks = []
-    if (currentUser.deck !== undefined) {
-      for (let i = 0; i < currentUser.deck.length; i++) {
-        const key = currentUser.deck.key(i);
-        const value = currentUser.deck.getItem(key);
-        thisUserDecks.push({ key, value: JSON.parse(value) });
+    if (currentUser.decks.length !== 0) {
+      for (let i = 0; i < currentUser.decks.length; i++) {
+        // 
+        const nameKey = Object.keys(currentUser.decks[i])[0];
+        const nameValue = Object.values(currentUser.decks[i])[0];
+        const cardsKey = Object.keys(currentUser.decks[i])[1];
+        const cardsValue = Object.values(currentUser.decks[i])[1];
+        for (let j = 0; j < cardsValue.length; j++) {
+          const termNameKey = Object.keys(cardsValue[j])[0];
+          const termNameValue = Object.values(cardsValue[j])[0];
+          const termDefKey = Object.keys(cardsValue[j])[1];
+          const termDefValue = Object.values(cardsValue[j])[1];
+          const semanticKey = Object.keys(cardsValue[j])[2];
+          const semanticValue = Object.values(cardsValue[j])[2];
+          cardsValue[j] = new Card(termNameValue, termDefValue, semanticValue);
+        }
+        thisUserDecks.push({ name: nameValue, cards: cardsValue });
       }
+      
       let deckObjects = thisUserDecks.map(
-        (deck) => new Deck(deck.key, deck.value.cards)
+        (deck) => new Deck(deck.name, deck.cards)
       );
+      
+      return deckObjects;
     } else{
       return [];
     }
-    // console.log(deckObjects);
-    return deckObjects;
+    
+    
   }
-  // console.log(userDecks)
   function flipAnimation() {
     let flashcard = document.querySelector(".flashcard");
     flashcard.classList.toggle("flipped");

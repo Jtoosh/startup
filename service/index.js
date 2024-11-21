@@ -60,7 +60,7 @@ apiRouter.post('/auth/login', async (req, res) => {
   if (user){
     if(req.body.password === user.password){
       user.token = uuid.v4();
-      res.json({ userObject: user});
+      res.json(user);
       return
     }
   }
@@ -68,12 +68,15 @@ apiRouter.post('/auth/login', async (req, res) => {
 }); 
 
 //Endpoint for logging a user out
-apiRouter.delete('/auth/logout', (req, res) => {
+apiRouter.post('/auth/logout', (req, res) => {
+
   const user = Object.values(users).find((u) => u.token === req.body.token);
   if (user){
-    delete user.token;
+    user.token = '';
   }
+  users[req.body.username] = req.body
   res.status(204).end();
+  console.log(users);
 });
 
 app.listen(port, ()=>{

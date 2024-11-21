@@ -28,21 +28,32 @@ export function FlashcardEdit() {
     if (currentUser.decks.length !== 0) {
       for (let i = 0; i < currentUser.decks.length; i++) {
         // 
-        console.log(currentUser.decks[i].name);
-        const nameKey = currentUser.decks[i].key(0)
-        const nameValue = currentUser.decks[i].getItem(nameKey);
-        const cardsKey = currentUser.decks[i].key(1)
-        const cardsValue = currentUser.decks[i].getItem(cardsKey);
-        thisUserDecks.push({ nameKey, value: JSON.parse(nameValue), cardsKey, cardsValue: JSON.parse(cardsValue) });
+        const nameKey = Object.keys(currentUser.decks[i])[0];
+        const nameValue = Object.values(currentUser.decks[i])[0];
+        const cardsKey = Object.keys(currentUser.decks[i])[1];
+        const cardsValue = Object.values(currentUser.decks[i])[1];
+        for (let j = 0; j < cardsValue.length; j++) {
+          const termNameKey = Object.keys(cardsValue[j])[0];
+          const termNameValue = Object.values(cardsValue[j])[0];
+          const termDefKey = Object.keys(cardsValue[j])[1];
+          const termDefValue = Object.values(cardsValue[j])[1];
+          const semanticKey = Object.keys(cardsValue[j])[2];
+          const semanticValue = Object.values(cardsValue[j])[2];
+          cardsValue[j] = new Card(termNameValue, termDefValue, semanticValue);
+        }
+        thisUserDecks.push({ name: nameValue, cards: cardsValue });
       }
+      
       let deckObjects = thisUserDecks.map(
-        (deck) => new Deck(deck.key, deck.value.cards)
+        (deck) => new Deck(deck.name, deck.cards)
       );
+      
+      return deckObjects;
     } else{
       return [];
     }
-    // console.log(deckObjects);
-    return deckObjects;
+    
+    
   }
 
   function updateStorage() {
@@ -69,7 +80,7 @@ export function FlashcardEdit() {
     currentCard.termDef = formObject.termDef;
     currentCard.semantic = formObject.semantic;
 
-    localStorage.setItem(deckEditing.name, JSON.stringify(deckEditing));
+    updateStorage();
   }
   function flipAnimation() {
     let flashcard = document.querySelector(".flashcard");

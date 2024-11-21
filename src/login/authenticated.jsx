@@ -6,11 +6,16 @@ import Button from 'react-bootstrap/Button';
 // import './authenticated.css';
 
 export function Authenticated(props) {
+  const [currentUser, setCurrentUser] = React.useState(JSON.parse(localStorage.getItem('userObject')));
   const navigate = useNavigate();
 
   function logout() {
     fetch(`/api/auth/logout`, {
-      method: 'delete',
+      method: 'post',
+      body: JSON.stringify(currentUser),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
     })
       .catch(() => {
         // Logout failed. Assuming offline
