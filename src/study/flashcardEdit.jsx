@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import "./study.css";
 import { NavLink } from "react-router-dom";
-import { Card } from "../../shared/card.mjs";
-import { Deck } from "../../shared/deck.mjs";
+import { Card } from "../../public/shared/card.mjs";
+import { Deck } from "../../public/shared/deck.mjs";
 import { DeckContext } from "../app";
 import { ApiModal } from "./apiModal";
 import Button from 'react-bootstrap/Button';

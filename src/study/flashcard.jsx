@@ -2,8 +2,8 @@ import React, { useContext, useState } from "react";
 import "./study.css";
 import { NavLink } from "react-router-dom";
 import { DeckContext } from "../app";
-import { Card } from "../../shared/card.mjs"
-import { Deck } from "../../shared/deck.mjs"
+import { Card } from "../../public/shared/card.mjs"
+import { Deck } from "../../public/shared/deck.mjs"
 
 export function Flashcard() {
   const [currentUser, setCurrentUser] = React.useState(JSON.parse(localStorage.getItem("userObject")));

@@ -1,11 +1,24 @@
-const port = process.argv.length > 2 ? process.argv[2] : 5174;
+const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 import express from 'express'
 import * as uuid from 'uuid';
 const app = express();
-import {Card} from '../shared/card.mjs';
-import {Deck} from '../shared/deck.mjs'
-
+// import {Card} from '../public/shared/card.mjs';
+// import {Deck} from '../public/shared/deck.mjs'
+// These classes arent working with my production file system so I am just going to declare the classes here.
+export  class Card {
+  constructor(termName, termDef, semantic) {
+    this.termName = termName;
+    this.termDef = termDef;
+    this.semantic = semantic;
+  }
+}
+export  class Deck {
+  constructor(name, cards) {
+    this.name = name;
+    this.cards = cards;
+  }
+}
 //Users and their study materials are stored here in the backend unitl DB is implemented
 //Each User object will be an object with username, password, and decks properties.
 
