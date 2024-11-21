@@ -113,3 +113,27 @@ To be frank, this deliverable is not implemented according to the feature specif
 - Authentication was not yet implemented, but placeholer login and logout buttons were styled.
 - Database usage was not yet implemented, but a placeholder `table` element was styled.
 - WebSocket data was not yet implemented, but the placeholder `table` created was styled.
+
+## Web Service Deliverable
+
+Overview of Web Service implementation:
+
+Web services were implemented by adding Express.js to the backend. The index.js file running Node.js was edited to include express and other needed libraries. A combination of personally designed endpoints and 3rd party ones were used to provide the services needed. One was designed for user creation, one for logging in an existing user, and one for logging a user out. An object to store all of the user data was created, with the key being the username of each user. The logout endpoint middleware would update the value of that user with any Flashcard deck changes that were made. The service is being run by a PM2 daemon on the backend, so that the data won't be lost, until a database is implemented.
+
+For 3rd party API calls, the Datamuse API was used (see link [here](https://www.datamuse.com/api/)). The specific endpoint used was the `/words?ml=${searchTerm}`. This would provide a list of 100 words with similar meaning to the search term, from highest to lowest "similarity score". This is meant to help users find words to use for term semantics or definitions.
+
+### Features: Web Service
+
+- This deliverable saw the implementation of the feature "Open-source APIs will be used to provide information for various quizzes and flashcards, expanding the application's functionality." As stated in the previous deliverable, because of the time restraints of this class, some of that feature is not yet available in totality, but some of it is present. This mostly appears in the use of the Datamuse API described above.
+- The ability to loosely authenticate was also implemented, using simple POST methods and comparison operations on the backend to validate. The authentication will be made more secure with the implementation of a database in the next deliverable.
+
+### Technologies: Web Service
+
+- HTML previously was used to create the full structure of the page. The HTML files were deleted, and the rendered HTML was moved to be included in the return statements of the corresponding React components. Some adjustments were made, such as additional buttons, as development needs arose.
+- CSS was previously fully implemented according to assignment specifications, adjusted slightly to work with React components. Stylesheets for indiviual components were created as necessary
+- JavaScript was implmented via React.
+- React was about 50% implemented, with full functionality for flashcards, with quizzes and account editing to be implemented soon.
+- Web service APIs were implemented using the Datamuse API, using the "Need Ideas?" button that is located on the flashcard editing page.
+- Authentication was primitively implemented by sending the username and password from the input elements to the backend in a POST request, then comparing those with the credentials stored in the `users` object in the backend.
+- Database usage was not yet implemented, but a placeholder `table` element was styled.
+- WebSocket data was not yet implemented, but the placeholder `table` created was styled.
