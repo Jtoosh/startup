@@ -677,6 +677,7 @@ Design overview:
    - Create a set of users to store the user objects in memory and disallow duplicates.
    - Create methods for adding users and transferring data from the backend to the front end. Move data storage from local storage to backend.
 2. Create a login/create user endpoint.
+
    - Create Login and Authentication components, add those routes to my frontend.
    - Create a login endpoint.
    - For both of these, copy the Simon code, since Dr. Ventura encouraged us to do so. Make sure I read and understand all of that code as I do so, however
@@ -704,15 +705,45 @@ I got a little mixed up while trying to connect the backend to the front end, an
 - `useEffect` is the mechanism in React to perform external API calls, because function components cannot by asynchronous. It takes 2 parameters, a function to run, and an array of dependencies. The function runs when the dependencies change. The passed in function returns a cleanup function, which is used to clean up the effect when the component is unmounted. Understanding this hook and using it properly was extremely useful.
 - After taking a look, I think I am going to have to move around my shared Card and Deck .js files, or experiment with editing the deployment shell script so that the build version can access those correctly. Just for future reference.
 - Dylan helped me find the error that I had in accessing the Object passed from the backend to the front in the HTTP response. I was calling `res.json({ "userObject":user})`, which was returning a nested object, with an attribute of `userObject` that contained the object I had stored in `user`. So by instead just using `res.json(user)`, I was able to access the object directly in the front end.
+- The class repo notes on Troubleshooting 502 errors was really useful. One of the most helpful things was remembering that I can run the backend script on the server itself, and see what errors are being thrown, `node index.js`.
 
 **CURRENT TODOS**:
 
 - Finish data structure implementation for full stack.
 - Get correct data handling for exisitng pages (flashcard, flashcard edit)
 
-## Lecture Notes 11.19.24 - Data Services
+## Lecture Notes 11.19.24 & Assignment Notes - Data Services
 
 Main implementations for Startup Login:
 
 - Cookies
 - Store decks in DB now, can keep front end methods the same.
+
+Notes:
+
+- To safely establish a database connection, import `MongoDB` library in to your backend file. Then put your database credentials in a separate .json file, _**and make sure that that .json file is in your .gitignore file, DO NOT commit or push those credentials***. Then call the MongoDB method to establish a connection, using the info from the .json file.
+
+MongoDB is built around using JSON. The data are stored as JSON objects, but also the queries to access the data are in a JavaScript-esque style.
+
+Each "table" is called a collection, and each individual entry in a collection is called a document. The object model of Mongo starts with the `MongoClient` object, constructed using a url that connections to the MongoDB server, which contains the username, password, and host name, such as this: `mongodb+srv://${userName}:${password}@${hostname}`
+
+A `db` object is created from the `MongoClient` object, and then the `db` object, which is used to create and access `collection` objects. If a database or collection does not exist when called, then MongoDB will create it.
+
+The main query method is `.find()`. This method takes an object as an argument, which is used to filter the results of the query. An example for a collection of rental houses would be `collection.find({bedrooms: { $gte: 3}})`, which would return all of the documents of the collection that have 3 or more bedrooms. `.find()` is asynchronous, and can take a query object, and an options object as arguments (the options object is optional, for configuring the number of documents returned, sort order, etc).
+
+The method for inserting a document into a collection is `.insertOne()`. This method takes an object as an argument, which is the document to be inserted into the collection. The method returns a promise that resolves to the result of the insertion.
+
+>Remember that to debug the backend, set breakpoints, and then just run them in the terminal with `node <filename>`.
+
+## Lecture Notes 11.21.24 - Web Sockets
+
+The [reading](../notes/cs260.github/profile/webServices/webSocket/webSocket.md) for this was pretty helpful. WebSocket connections move from client-server to peer-peer communication. The main difference in between these two is that client-server can only ever be initiated by the client, while peer-peer can have communication (after the initial) initiated by either end.
+
+On the backend, import the `ws` node module, and create and instance of the `WebSocketServer` class. The `on` method in WebSocketServer objects and other WebSocket objects, sets up a sort of event listener. So a WebSocketServer called `wss` with the method `wss.on('connection', (ws) => {console.log("Hello webSocket")})` Will log out that string on a client connection to the server. The `.on('message')` method will execute the passed in callback function when a client message is received.
+
+On the frontend, WebSocket capacities are built in, so you can simply create an instance of the existing WebSocket class. The frontend WebSocket object also has a type of event listeners, with slightly different syntax (`.onmessage()` instead of `.on('message')`).
+
+>Remember that the `...` spread operator when used on Objects or Arrays "destructures" them, separating them into their individual elements.
+
+The `WebSocket.close()` method closes the connection.
+When WebSocket capacities are only wanted for some of the data traffic, a non-webSocket server can be made, as well as an instance of WebSocketServer, with the property `noServer` set to true. Then connections can be specified to be upgraded or not, and the backend can have event listeners for those upgrades.
