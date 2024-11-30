@@ -1,35 +1,33 @@
-const port = process.argv.length > 2 ? process.argv[2] : 4000;
+const port = process.argv.length > 2 ? process.argv[2] : 5173;
 
-import express from 'express'
-import * as uuid from 'uuid';
+const cookieParser = require('cookie-parser');
+const uuid = require('uuid');
+const bcrypt = require('bcrypt');
+
+const express = require('express');
 const app = express();
+
+const DB = require("./database.js")
+
+const authCookieName = 'token'
+ 
+
 // import {Card} from '../public/shared/card.mjs';
 // import {Deck} from '../public/shared/deck.mjs'
 // These classes arent working with my production file system so I am just going to declare the classes here.
-export  class Card {
+class Card {
   constructor(termName, termDef, semantic) {
     this.termName = termName;
     this.termDef = termDef;
     this.semantic = semantic;
   }
 }
-export  class Deck {
+class Deck {
   constructor(name, cards) {
     this.name = name;
     this.cards = cards;
   }
 }
-//Users and their study materials are stored here in the backend unitl DB is implemented
-//Each User object will be an object with username, password, and decks properties.
-
-// class User {
-//   constructor(self, username, password, token, decks){
-//     self.username = username;
-//     self.password = password;
-//     self.token = token
-//     self.decks = decks;
-//   }
-// }
 
 //Set to store User objects
 let users= {};
@@ -37,8 +35,14 @@ let users= {};
 //JSON body parsing 
 app.use(express.json());
 
+//Cookie parser
+app.use(cookieParser());
+
 //Serving static files
 app.use(express.static('public'));
+
+// Trust headers that are forwarded from the proxy so we can determine IP addresses *Copied from Simon code*
+app.set('trust proxy', true);
 
 // Router for all service endpoints
 let apiRouter = express.Router();
@@ -52,13 +56,14 @@ apiRouter.get('/healthcheck', async (req, res) => {
 //Endpoint for creating a new user
 apiRouter.post('/auth/create', async (req, res) => {
   console.log('Create Endpoint Called!!')
-  const user = users[req.body.email];
+  
   try {
-    if (user){
+    if (await DB.getUser(req.body.username)){
     res.status(409).send({msg: 'Existing user'});
    } else {
-    const user = { username: req.body.email, password: req.body.password, token: uuid.v4(), decks: []};
-    users[user.username] = user;    
+    const user = await DB.createUser(req.body.username, req.body.password);
+    // users[user.username] = user; 
+    setAuthCookie(res, user.token)   
     res.json(user);}
   }
   catch (error) {
@@ -69,10 +74,10 @@ apiRouter.post('/auth/create', async (req, res) => {
 
 //Endpoint for loging in an existing user
 apiRouter.post('/auth/login', async (req, res) => {
-  const user = users[req.body.email];
+  const user = await DB.getUser(req.body.username)
   if (user){
-    if(req.body.password === user.password){
-      user.token = uuid.v4();
+    if(await bcrypt.compare(req.body.password, user.password)){
+      setAuthCookie(res, user.token)
       res.json(user);
       return
     }
@@ -81,16 +86,20 @@ apiRouter.post('/auth/login', async (req, res) => {
 }); 
 
 //Endpoint for logging a user out
-apiRouter.post('/auth/logout', (req, res) => {
-
-  const user = Object.values(users).find((u) => u.token === req.body.token);
-  if (user){
-    user.token = '';
-  }
-  users[req.body.username] = req.body
+apiRouter.post('/auth/logout', async (req, res) => {
+  await DB.updateUser(req.body);
+  res.clearCookie(authCookieName);
   res.status(204).end();
-  console.log(users);
 });
+
+// setAuthCookie in the HTTP response *Copied from Simon code*
+function setAuthCookie(res, authToken) {
+  res.cookie(authCookieName, authToken, {
+    secure: true,
+    httpOnly: true,
+    sameSite: 'strict',
+  });
+}
 
 app.listen(port, ()=>{
   console.log(`Listening on port ${port}`);

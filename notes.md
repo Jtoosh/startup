@@ -721,7 +721,7 @@ Main implementations for Startup Login:
 
 Notes:
 
-- To safely establish a database connection, import `MongoDB` library in to your backend file. Then put your database credentials in a separate .json file, _**and make sure that that .json file is in your .gitignore file, DO NOT commit or push those credentials***. Then call the MongoDB method to establish a connection, using the info from the .json file.
+- To safely establish a database connection, import `MongoDB` library in to your backend file. Then put your database credentials in a separate .json file, _**and make sure that that .json file is in your .gitignore file, DO NOT commit or push those credentials**_. Then call the MongoDB method to establish a connection, using the info from the .json file.
 
 MongoDB is built around using JSON. The data are stored as JSON objects, but also the queries to access the data are in a JavaScript-esque style.
 
@@ -747,3 +747,22 @@ On the frontend, WebSocket capacities are built in, so you can simply create an 
 
 The `WebSocket.close()` method closes the connection.
 When WebSocket capacities are only wanted for some of the data traffic, a non-webSocket server can be made, as well as an instance of WebSocketServer, with the property `noServer` set to true. Then connections can be specified to be upgraded or not, and the backend can have event listeners for those upgrades.
+
+## Startup Login Notes
+
+**Design Outline**:
+To start, I'm going to outline what needs to be implemented using the DB and roughly how to do it.
+Because all of the Class instantiation happens on the front end, I don't need to worry about that on the backend at all. The main thing will be identifying which endpoints need to access data, and how to get the data from the DB for those end points.
+
+Data-needing endpoints:
+
+- Login endpoint
+- Create user endpoint
+- Logout endpoint
+
+These will follow the same general structure as the Simon example, but slightly different because of the data structure.
+
+**Notes/Insights from Implementation**:
+
+- Ran into more fun stuff with Common JS/ES6 modules. I think that the there is no way to use a mix of the two, only ever one or other other. I realized that because the file structure that led to the Card and Deck classes are odd, I just defined the classes again in the backend file, and because that was the main reason I was using ES6 on the backend, I found it easier to just use CommonJS for the backend. I also learned that because ES6 modules and Common JS use different methods of exporting, that a class or method that is being exported can only be exported via one of those two methods, not both.
+- I had to understand `cookie-parser` a bit better for this one too. I learned that when the express app is using `cookie-parser` the `req` object has a property called `cookies` that is an object that contains all of the cookies that are stored in the browser for the site. The cookie-parser is what parses and populates this property of the request object.
