@@ -1,4 +1,4 @@
-const port = process.argv.length > 2 ? process.argv[2] : 5173;
+const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 const cookieParser = require('cookie-parser');
 const uuid = require('uuid');
