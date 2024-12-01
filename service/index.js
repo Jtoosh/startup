@@ -101,6 +101,28 @@ function setAuthCookie(res, authToken) {
   });
 }
 
-app.listen(port, ()=>{
+
+const server = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+//   // Graceful shutdown logic
+//   process.on('SIGTERM', () => {
+//     console.log('SIGTERM signal received: closing HTTP server');
+//     server.close(() => {
+//       console.log('HTTP server closed');
+//       process.exit(0);
+//     });
+//   });
+
+//   process.on('SIGINT', () => {
+//     console.log('SIGINT signal received: closing HTTP server');
+//     server.close(() => {
+//       console.log('HTTP server closed');
+//       process.exit(0);
+//     });
+//   });
+
+// } catch (error) {
+//   console.error('Error starting server:', error);
+//   process.exit(1); // Exit with failure
