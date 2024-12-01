@@ -137,3 +137,26 @@ For 3rd party API calls, the Datamuse API was used (see link [here](https://www.
 - Authentication was primitively implemented by sending the username and password from the input elements to the backend in a POST request, then comparing those with the credentials stored in the `users` object in the backend.
 - Database usage was not yet implemented, but a placeholder `table` element was styled.
 - WebSocket data was not yet implemented, but the placeholder `table` created was styled.
+
+## Database Deliverable
+
+Overview of Database implementation:
+
+A database was implemented using MongoDB. A database and relevant collection were created on MongoDB's cloud service, Atlas. The backend was then connected to the database using the `MongoClient` object from the `mongodb` library. The `database.js` file was then created, and methods for handling the data were added, including `getUser()`, `createUser`, `updateUser()`, and `getUserByToken()` The front end didn't need to be altered at all, and the backend's index.js file didn't need to be altered too much either. The `database.js` file was imported, and the endpoints that needed to access the data in Mongo were simply updated to use the methods from `database.js`, rather than accessing a local object, like was done in the previous deliverable.
+
+As far as the data stored in the database, each user's username/email, their encrypted password digest (not the plaintext), a token for their login, and the decks that they have created were stored in the database. As mentioned in the outline for the React deliverable, Quizzes aren't implemented yet, so that data ins't stored in the database yet.
+
+### Features: Database
+
+- This deliverable saw the implementation of the feature "Database usage: This will be used to store created quizzes and flashcards, as well as prior quiz scores and user information." The database was used to store user information, and the decks that they have created. The database will be used to store quiz information when I improve this project in the future. This was a significant step forward as it allows a user's data to persist between sessions, as well as between executions of the backend. During deployment of the previous deliverable, I had to restart the backend various times while debugging, and each time the data that was being stored was lost. Now, regardless of how many times I stop and start the backend, the data will persist since it is stored externally. This will allow for much easier debugging and deployment in the future, especially if I gain real users in the future.
+
+### Technologies: Database
+
+- HTML previously was used to create the full structure of the page. The HTML files were deleted, and the rendered HTML was moved to be included in the return statements of the corresponding React components. Some adjustments were made, such as additional buttons, as development needs arose.
+- CSS was previously fully implemented according to assignment specifications, adjusted slightly to work with React components. Stylesheets for indiviual components were created as necessary
+- JavaScript was implmented via React.
+- React was about 50% implemented, with full functionality for flashcards, with quizzes and account editing to be implemented soon.
+- Web service APIs were implemented using the Datamuse API, using the "Need Ideas?" button that is located on the flashcard editing page.
+- Authentication was primitively implemented by sending the username and password from the input elements to the backend in a POST request, then comparing those with the credentials stored in the `users` object in the backend.
+- Database usage was using MongoDB, and the `database.js` file was created to handle the data. The data present in the database is visible when the user logs in, as their username is displayed in "Welcome, [username]" text of the login response page. It is also visible when the user navigates to the study page, as their flashcard decks are displayed and able to be studied.
+- WebSocket data was not yet implemented, but the placeholder `table` created was styled.
