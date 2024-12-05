@@ -702,7 +702,7 @@ I got a little mixed up while trying to connect the backend to the front end, an
 - **Important note:** 3rd party API calls don't need endpoints defined in my backend, because they've been defined in the backend of the 3rd party. I simply make the client-side call on my frontend code.
 - Some important Object methods that I learned about are `Object.keys()` and `Object.entries`. `Object.keys()` returns an array of all of the keys than an object contains. `Object.entries()` returns an array of all of the values in an object, with its index in the returned array as the first value of said array.
 - I ran into a challenge with `Object.entries()` where I thought just the entry was in the array, I didn't know it was an array of arrays with the array index and the entry. So I just had to alter the code slightly to access that data correctly.
-- `useEffect` is the mechanism in React to perform external API calls, because function components cannot by asynchronous. It takes 2 parameters, a function to run, and an array of dependencies. The function runs when the dependencies change. The passed in function returns a cleanup function, which is used to clean up the effect when the component is unmounted. Understanding this hook and using it properly was extremely useful.
+- `useEffect` is the mechanism in React to perform external API calls, because function components cannot by asynchronous. It takes 2 parameters, a function to run, and an array of dependencies. The function runs when the dependencies change, after the DOM updates with those changes. The passed in function returns a cleanup function, which is used to clean up the effect before the next DOM update. Understanding this hook and using it properly was extremely useful.
 - After taking a look, I think I am going to have to move around my shared Card and Deck .js files, or experiment with editing the deployment shell script so that the build version can access those correctly. Just for future reference.
 - Dylan helped me find the error that I had in accessing the Object passed from the backend to the front in the HTTP response. I was calling `res.json({ "userObject":user})`, which was returning a nested object, with an attribute of `userObject` that contained the object I had stored in `user`. So by instead just using `res.json(user)`, I was able to access the object directly in the front end.
 - The class repo notes on Troubleshooting 502 errors was really useful. One of the most helpful things was remembering that I can run the backend script on the server itself, and see what errors are being thrown, `node index.js`.
@@ -770,3 +770,33 @@ These will follow the same general structure as the Simon example, but slightly 
 - The commond `lsof` shows what ports are being used on MacOS. `lsof -i :<port>` shows what process is using a specific port.
 - I was running into a problem of trying to debug the backend index.js file, but it kept saying that the port was in use. I didn't realize that because the bash script runs `pm2 restart startup`, that the index.js file was already running using pm2. So I had to stop the pm2 process, and then run the index.js file in the terminal to debug it.
 - I also was reminded to check the discord more often! That honestly should come earlier in the hierarchy before googling, because the info an questions in the Discord are specific to the class' context. I was able to find that other people had already had the exact same problem as me, with the server not being able to access the Database despite the IP address being whitelisted, and the fix was to change the MongoDB version to an earlier one.
+
+## Lecture Notes 12.3.24 - Web Socket Simon
+
+There are 2 ways to think of peer-to-peer communication: First, the server and the client being direct "peers" where their communication is bidirectional. Second, different clients are "peers" to each other via their common connection to the server. A client doesn't communicate directly to another client, but it communicates a message directed for a client to the server, and the server sends that message to the receiving client, with the server initiating the communication.
+
+In a `on.('connection', )` event listener, the callback function takes a `ws` object as an argument. This object is a WebSocket connection object that is created by a client connecting to the server. So, the WebSocket object is instantiated at connection, not by the callback function.
+
+If no dependencies are passed into a `useEffect()` hook, then all of the state variables of the component are its dependencies. To set no dependencies, pass an empty array `[]` as the second argument of the `useEffect()` hook.
+
+The WebSocket deliverable will deal alot with event handlers.
+
+On a different note, a popular platform for testing web apps on different devices is called BrowserStack. There is also UI and Endpoint testing, check the class readings for useful resources there.
+
+## Lecture Notes 12.5.24 - Security
+
+A good place to see notices about recent data breaches is on Tech.co, [here](https://tech.co/news/data-breaches-updated-list).
+
+Security is a massive concern that should always be considered. Some major types of security threats are:
+
+- Injection attack: When an attacker sends malicious data as part of a query to a server, and the server executes the query with the malicious data.
+- Cross-Site Scripting (XSS): When an attacker sends malicious scripts to a server, and the server executes the scripts.
+- Social Engineering: When an attacker tricks a user into revealing sensitive information.
+- Denial of Service (DoS): When an attacker sends a large number of requests to a server, overwhelming it and causing it to crash.
+
+The "Line of Death"
+Don't unconditionally trust anything below the URL bar, because it can be faked. The URL itself is the most trustworthy source.
+
+OWASP, the Open Web Application Security Project, is a non-profit organization that provides resources for web application security. They have a list of the top 10 security risks for web applications, which is a good resource to check out, [here](https://owasp.org/www-project-top-ten/).
+
+Juice Shop is a web application developed by OWASP that is intentionally insecure, and is used to teach developers about web application security.
