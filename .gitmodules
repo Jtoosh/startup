@@ -13,3 +13,6 @@
 [submodule "simon-login"]
 	path = simon-login
 	url = https://github.com/webprogramming260/simon-login.git
+[submodule "simon-websocket"]
+	path = simon-websocket
+	url = https://github.com/webprogramming260/simon-websocket.git
