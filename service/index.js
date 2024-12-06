@@ -9,6 +9,8 @@ const app = express();
 
 const DB = require("./database.js")
 
+const peerProxy = require('./peerProxy.js')
+
 const authCookieName = 'token'
  
 
@@ -105,6 +107,8 @@ function setAuthCookie(res, authToken) {
 const server = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+peerProxy(server);
 
 //   // Graceful shutdown logic
 //   process.on('SIGTERM', () => {
