@@ -1,4 +1,4 @@
-const port = process.argv.length > 2 ? process.argv[2] : 4000;
+const port = process.argv.length > 2 ? process.argv[2] : 5173;
 
 const cookieParser = require('cookie-parser');
 const uuid = require('uuid');
@@ -9,7 +9,7 @@ const app = express();
 
 const DB = require("./database.js")
 
-const peerProxy = require('./peerProxy.js')
+const {peerProxy} = require('./peerProxy.js')
 
 const authCookieName = 'token'
  
@@ -108,7 +108,7 @@ const server = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
-peerProxy(server);
+// peerProxy(server);
 
 //   // Graceful shutdown logic
 //   process.on('SIGTERM', () => {

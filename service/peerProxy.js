@@ -1,7 +1,7 @@
 const {WebSocketServer} = require('ws');
 const uuid = require('uuid');
 
-function peerProxy(httpServer){
+function peerProxy(httpServer) {
   const webSocketServer = new WebSocketServer({noServer:true});
 
   //Handle the protocol upgrade from HTTP to WS (since I don't want all of the traffic to be WS)
