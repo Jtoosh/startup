@@ -40,7 +40,7 @@ function peerProxy(httpServer) {
   })
 
   setInterval(()=>{
-    connections.foreach((conn) => {
+    connections.forEach((conn) => {
       if (!conn.alive){
         conn.wsConnection.terminate();
       } else {

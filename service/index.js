@@ -108,7 +108,7 @@ const server = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
-// peerProxy(server);
+peerProxy(server);
 
 //   // Graceful shutdown logic
 //   process.on('SIGTERM', () => {

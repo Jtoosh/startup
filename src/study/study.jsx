@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 import { Deck } from "../../public/shared/deck.mjs";
 import { Card } from "../../public/shared/card.mjs";
 import { DeckContext } from "../app.jsx";
+import { OnlineStatus } from "./onlineStatus.jsx";
+import { StudyEvent, StudyNotifier } from "./studyNotifier.js";
 
 export function Study() {
   const {currentDeckIndex, setCurrentDeckIndex} = useContext(DeckContext);
@@ -53,7 +55,10 @@ export function Study() {
       deckDivs.push(
         <div className="card" style={cardWidth}>
           <h5 className="card-title">{deck.name}</h5>
-          <NavLink to="flashcard" className="btn btn-primary btn-sm" onClick={() => {setCurrentDeckIndex(userDecks.indexOf(deck))}}>
+          <NavLink to="flashcard" className="btn btn-primary btn-sm" onClick={() => {
+            StudyNotifier.broadcastEvent(currentUser.username, StudyEvent.Start, {})
+            setCurrentDeckIndex(userDecks.indexOf(deck))
+            }}>
             Study
           </NavLink>
         </div>
@@ -95,7 +100,10 @@ export function Study() {
       <div className="row d-flex justify-content-evenly text-center ms-4">
         <span className="text-start">Your Quizzes:</span>
 
-        <div className="card" style={cardWidth}>
+        <div>
+          <span>Quiz functionality coming soon!</span>
+        </div>
+        {/* <div className="card" style={cardWidth}>
           <h5 className="card-title">Quiz1</h5>
           <NavLink to="quiz" className="btn btn-primary btn-sm">
             Take Quiz
@@ -112,8 +120,11 @@ export function Study() {
           <NavLink to="quizEdit" className="btn btn-primary btn-sm">
             +
           </NavLink>
-        </div>
+        </div> */}
       </div>
+
+      <OnlineStatus userName ={currentUser.username} />
+              
     </main>
   );
 }

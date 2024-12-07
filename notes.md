@@ -800,3 +800,7 @@ Don't unconditionally trust anything below the URL bar, because it can be faked.
 OWASP, the Open Web Application Security Project, is a non-profit organization that provides resources for web application security. They have a list of the top 10 security risks for web applications, which is a good resource to check out, [here](https://owasp.org/www-project-top-ten/).
 
 Juice Shop is a web application developed by OWASP that is intentionally insecure, and is used to teach developers about web application security.
+
+## Startup Web Socket Notes
+
+- One way to get some useful data like protocol, port #, and hostname is to use the `location` object in the browser. It is accessed as a proptery of the `window` object, so `window.location` will return an object with all of the data about the current URL. The location object has properties like `protocol`, `port`, and `hostname` that can be used to get the data needed to connect to a WebSocket.

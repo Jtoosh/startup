@@ -7,7 +7,11 @@ export default defineConfig({
       {
         target: 'http://localhost:5173',
         secure: false,
-      } 
+      }, 
+      '/ws': {
+        target: 'ws://localhost:3000',
+        ws: true,
+      },
     },
   },
 });
