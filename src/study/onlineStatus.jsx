@@ -1,5 +1,5 @@
 import React from 'react';
-import { StudyEvent, StudyNotifier } from './studyNotifier';
+import { StudyEvent, StudyNotifier } from './studyNotifier.mjs';
 
 export function OnlineStatus(props) {
 

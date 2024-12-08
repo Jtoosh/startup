@@ -5,7 +5,7 @@ import { Deck } from "../../public/shared/deck.mjs";
 import { Card } from "../../public/shared/card.mjs";
 import { DeckContext } from "../app.jsx";
 import { OnlineStatus } from "./onlineStatus.jsx";
-import { StudyEvent, StudyNotifier } from "./studyNotifier.js";
+import { StudyEvent, StudyNotifier } from "./studyNotifier.mjs";
 
 export function Study() {
   const {currentDeckIndex, setCurrentDeckIndex} = useContext(DeckContext);

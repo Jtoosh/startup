@@ -1,5 +1,3 @@
-import { Study } from "./study";
-
 const StudyEvent = {
   System: 'system',
   End: 'sessionEnd',
@@ -21,6 +19,7 @@ class StudyEventNotifier{
   constructor(){
     let port = window.location.port;
     const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+    this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
     this.socket.onopen = (event) => {
       this.receiveEvent(new EventMessage('Mnemonic Study ', StudyEvent.System, {msg: 'connected.'}));
     };

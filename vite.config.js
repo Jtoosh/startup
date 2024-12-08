@@ -9,7 +9,7 @@ export default defineConfig({
         secure: false,
       }, 
       '/ws': {
-        target: 'ws://localhost:3000',
+        target: 'ws://localhost:5173',
         ws: true,
       },
     },
