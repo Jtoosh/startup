@@ -7,6 +7,8 @@ import { Login } from "./login/login";
 import { Account } from "./account/account";
 import { About } from "./about/about";
 import { Home } from "./home/home";
+import { NotFound } from "./other/notFound";
+import { Unauthorized } from "./other/unauthorized";
 import { Flashcard } from "./study/flashcard";
 import { FlashcardEdit } from "./study/flashcardEdit";
 import { Quiz } from "./study/quiz";
@@ -50,6 +52,57 @@ export default function App() {
     ? AuthState.Authenticated
     : AuthState.Unauthenticated;
   const [authState, setAuthState] = React.useState(currentAuthState);
+  const [editingAccount, setEditingAccount] = React.useState(false);
+
+  const authenticatedRoutes = (<Routes>
+    <Route
+      path="/"
+      element={
+        <Login
+          userName={userName}
+          authState={authState}
+          onAuthChange={(userName, authState) => {
+            setAuthState(authState);
+            setUserName(userName);
+          }}
+        />
+      }
+    />
+    <Route path="/study" element={<Study />} />
+    <Route path="/home" element={<Home />} />
+    <Route path="/study/flashcard" element={<Flashcard />} />
+    <Route path="/study/flashcardEdit" element={<FlashcardEdit />} />
+    <Route path="/study/quiz" element={<Quiz />} />
+    <Route path="/study/quizEdit" element={<QuizEdit />} />
+    <Route path="/account" element={<Account editing ={editingAccount} setter={setEditingAccount} />} />
+    <Route path="/about" element={<About />} />
+    <Route path="*" element={<NotFound />} />
+  </Routes>)
+
+  const unauthenticatedRoutes = (<Routes>
+    <Route
+      path="/"
+      element={
+        <Login
+          userName={userName}
+          authState={authState}
+          onAuthChange={(userName, authState) => {
+            setAuthState(authState);
+            setUserName(userName);
+          }}
+        />
+      }
+    />
+    <Route path="/study" element={<Unauthorized />} />
+    <Route path="/study/flashcard" element={<Unauthorized />} />
+    <Route path="/study/flashcardEdit" element={<Unauthorized />} />
+    <Route path="/study/quiz" element={<Unauthorized />} />
+    <Route path="/study/quizEdit" element={<Unauthorized />} />
+    <Route path="/account" element={<Unauthorized />} />
+    <Route path="/home" element={<Home />} />
+    <Route path="/about" element={<About />} />
+    <Route path="*" element={<NotFound />} />
+    </Routes>)
 
   return (
     <DeckProvider>
@@ -118,31 +171,7 @@ export default function App() {
               </div>
             </nav>
           </header>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Login
-                  userName={userName}
-                  authState={authState}
-                  onAuthChange={(userName, authState) => {
-                    setAuthState(authState);
-                    setUserName(userName);
-                  }}
-                />
-              }
-            />
-            <Route path="/study" element={<Study />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/study/flashcard" element={<Flashcard />} />
-            <Route path="/study/flashcardEdit" element={<FlashcardEdit />} />
-            <Route path="/study/quiz" element={<Quiz />} />
-            <Route path="/study/quizEdit" element={<QuizEdit />} />
-            <Route path="/account" element={<Account />} />
-            <Route path="/about" element={<About />} />
-            <Route path="*" element={<NotFound />} />
-            {/* Not Found component still needs to be implemented */}
-          </Routes>
+          {(authState === AuthState.Authenticated) ? authenticatedRoutes : unauthenticatedRoutes}
           <footer className="container-fluid bg-secondary fixed-bottom">
             <div className="text-center">
               <span>James Teuscher, 2024</span>
@@ -159,10 +188,3 @@ export default function App() {
   );
 }
 
-function NotFound() {
-  return (
-    <main className="container-fluid bg-secondary text-center">
-      <h2>Error 404: Return to sender. Address unknown.</h2>
-    </main>
-  );
-}

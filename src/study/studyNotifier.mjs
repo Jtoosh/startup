@@ -47,6 +47,7 @@ class StudyEventNotifier{
     this.handlers.filter((h) => {h !== handler})
   }
 
+  //This is eventually going to update the state variable in the onlineStatus.jsx component when it is executed.
   receiveEvent(event){
     this.events.push(event);
 

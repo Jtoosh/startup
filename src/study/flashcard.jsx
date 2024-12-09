@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 import { DeckContext } from "../app";
 import { Card } from "../../public/shared/card.mjs"
 import { Deck } from "../../public/shared/deck.mjs"
+import { StudyEvent, StudyNotifier } from "./studyNotifier.mjs";
+import { OnlineStatus } from "./onlineStatus";
 
 export function Flashcard() {
   const [currentUser, setCurrentUser] = React.useState(JSON.parse(localStorage.getItem("userObject")));
@@ -76,7 +78,9 @@ export function Flashcard() {
   return (
     <main onLoad={readStorage}>
       <h1 className="text-center">{currentDeck.name}</h1>
-      <NavLink to="../study" className="btn btn-primary">
+      <NavLink to="../study" className="btn btn-primary" onClick={() =>{
+        StudyNotifier.sendMessage(currentUser.username, StudyEvent.End, {})
+      }}>
         &#8592; Back to Study
       </NavLink>
 
@@ -117,6 +121,10 @@ export function Flashcard() {
             </NavLink>
           </div>
         </div>
+        {/* <div>
+          <OnlineStatus />
+        </div> */}
+
       </div>
     </main>
   );

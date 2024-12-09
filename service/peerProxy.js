@@ -19,7 +19,8 @@ function peerProxy(httpServer) {
     connections.push(connection)
 
     webSocketConn.on('message', function message(data){
-      connections.foreach((conn) => {
+      connections.forEach((conn) => {
+        // conn.wsConnection.send(data);
         if (conn.id !== connection.id){
           conn.wsConnection.send(data);
         }

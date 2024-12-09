@@ -56,7 +56,7 @@ export function Study() {
         <div className="card" style={cardWidth}>
           <h5 className="card-title">{deck.name}</h5>
           <NavLink to="flashcard" className="btn btn-primary btn-sm" onClick={() => {
-            StudyNotifier.broadcastEvent(currentUser.username, StudyEvent.Start, {})
+            StudyNotifier.sendMessage(currentUser.username, StudyEvent.Start, {})
             setCurrentDeckIndex(userDecks.indexOf(deck))
             }}>
             Study
@@ -123,7 +123,8 @@ export function Study() {
         </div> */}
       </div>
 
-      <OnlineStatus userName ={currentUser.username} />
+      <OnlineStatus />
+      
               
     </main>
   );
