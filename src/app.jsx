@@ -8,7 +8,7 @@ import { Account } from "./account/account";
 import { About } from "./about/about";
 import { Home } from "./home/home";
 import { NotFound } from "./other/notFound";
-import { Unauthorized } from "./other/unauthorized";
+import { Unauthorized } from "./other/Unauthorized";
 import { Flashcard } from "./study/flashcard";
 import { FlashcardEdit } from "./study/flashcardEdit";
 import { Quiz } from "./study/quiz";

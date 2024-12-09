@@ -160,3 +160,24 @@ As far as the data stored in the database, each user's username/email, their enc
 - Authentication was primitively implemented by sending the username and password from the input elements to the backend in a POST request, then comparing those with the credentials stored in the `users` object in the backend.
 - Database usage was using MongoDB, and the `database.js` file was created to handle the data. The data present in the database is visible when the user logs in, as their username is displayed in "Welcome, [username]" text of the login response page. It is also visible when the user navigates to the study page, as their flashcard decks are displayed and able to be studied.
 - WebSocket data was not yet implemented, but the placeholder `table` created was styled.
+
+## WebSocket Deliverable
+
+Overview of WebSocket implementation:
+
+WebSockets were implemented using the `ws` library in Node.js. I drew heavily from the provided Simon code for the backend file, as the behavior of my WebSockets is virtually the same. An instance of a WebSocketServer was created on the backend, and event listeners were added for connection, closing, and receiving messages. On the frontend, a class was created that contained the messages that would be received by the WebSocket, and an instance of the WebSocket socket was created. A component was then created that would display the messages that were received by the WebSocket. This was done by storing messages from the frontend class in this component as a state variable, and then mapping over that state variable to display the messages. Because the array of messages was stored in the state, the component would update whenever a new message was received.
+
+### Features: WebSocket
+
+- This delivarable saw the partial implementation of the feature: "This will be used for the collaborative study feature, allowing users to share quizzes and flashcards with each other in real time, and view quiz scores and status (online, in quiz, offline, etc.) of other users." The sharing of quizzes and flashcards has not yet been implemented due to time constraints, but I look to implement it in a future update.
+
+### Technologies: WebSocket
+
+- HTML previously was used to create the full structure of the page. The HTML files were deleted, and the rendered HTML was moved to be included in the return statements of the corresponding React components. Some adjustments were made, such as additional buttons, as development needs arose.
+- CSS was previously fully implemented according to assignment specifications, adjusted slightly to work with React components. Stylesheets for indiviual components were created as necessary
+- JavaScript was implmented via React.
+- React was about 50% implemented, with full functionality for flashcards, with quizzes and account editing to be implemented soon.
+- Web service APIs were implemented using the Datamuse API, using the "Need Ideas?" button that is located on the flashcard editing page.
+- Authentication was primitively implemented by sending the username and password from the input elements to the backend in a POST request, then comparing those with the credentials stored in the `users` object in the backend.
+- Database usage was using MongoDB, and the `database.js` file was created to handle the data. The data present in the database is visible when the user logs in, as their username is displayed in "Welcome, [username]" text of the login response page. It is also visible when the user navigates to the study page, as their flashcard decks are displayed and able to be studied.
+- WebSocket data was implemented by adding a div to the study menu to show who is online, and when they start or finish studying a flashcard deck.
