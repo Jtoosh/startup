@@ -171,7 +171,31 @@ export default function App() {
               </div>
             </nav>
           </header>
-          {(authState === AuthState.Authenticated) ? authenticatedRoutes : unauthenticatedRoutes}
+          {/* {(authState === AuthState.Authenticated) ? authenticatedRoutes : unauthenticatedRoutes} */}
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Login
+                  userName={userName}
+                  authState={authState}
+                  onAuthChange={(userName, authState) => {
+                    setAuthState(authState);
+                    setUserName(userName);
+                  }}
+                />
+              }
+            />
+            <Route path="/study" element={<Study />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/study/flashcard" element={<Flashcard />} />
+            <Route path="/study/flashcardEdit" element={<FlashcardEdit />} />
+            <Route path="/study/quiz" element={<Quiz />} />
+            <Route path="/study/quizEdit" element={<QuizEdit />} />
+            <Route path="/account" element={<Account editing ={editingAccount} setter={setEditingAccount} />} />
+            <Route path="/about" element={<About />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
           <footer className="container-fluid bg-secondary fixed-bottom">
             <div className="text-center">
               <span>James Teuscher, 2024</span>

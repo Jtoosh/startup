@@ -804,3 +804,23 @@ Juice Shop is a web application developed by OWASP that is intentionally insecur
 ## Startup Web Socket Notes
 
 - One way to get some useful data like protocol, port #, and hostname is to use the `location` object in the browser. It is accessed as a proptery of the `window` object, so `window.location` will return an object with all of the data about the current URL. The location object has properties like `protocol`, `port`, and `hostname` that can be used to get the data needed to connect to a WebSocket.
+
+## Demo day
+
+Here are ideas and insights that I got from people's demos:
+
+- The deck of cards workout app was a really cool idea.
+- Abe said that API ninja is what he used to get the recipie data for his app.
+
+URLs to keep:
+
+- <https://startup.mymovieknight.com/>
+- <https://startup.subak.click/>
+- <https://startup.deckofdeath.click/>
+- <https://startup.homeworkhub.click/>
+
+Test Review:
+
+- Port 80 is for HTTP, Port 443 is for HTTPS.
+- Language is not a standard HTTP header.
+- Cookies allow for the server to store data on the client's machine.
