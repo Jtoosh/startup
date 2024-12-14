@@ -2,8 +2,8 @@ import React, { useContext, useState } from "react";
 import "./study.css";
 import { NavLink } from "react-router-dom";
 import { DeckContext } from "../app";
-import { Card } from "../../public/shared/card.mjs"
-import { Deck } from "../../public/shared/deck.mjs"
+import { Card } from "./card.mjs"
+import { Deck } from "./deck.mjs"
 import { StudyEvent, StudyNotifier } from "./studyNotifier.mjs";
 import { OnlineStatus } from "./onlineStatus";
 

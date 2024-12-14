@@ -824,3 +824,5 @@ Test Review:
 - Port 80 is for HTTP, Port 443 is for HTTPS.
 - Language is not a standard HTTP header.
 - Cookies allow for the server to store data on the client's machine.
+- Remember that `fetch` can be used on the frontend and the backend
+
