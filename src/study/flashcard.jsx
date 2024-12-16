@@ -14,12 +14,6 @@ export function Flashcard() {
   const { currentDeckIndex, setCurrentDeckIndex } = useContext(DeckContext);
   const currentDeck = userDecks[currentDeckIndex];
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
-  // console.log(userDecks);
-  // console.log(currentDeckIndex);
-  const [currentCard, setCurrentCard] = React.useState(
-    userDecks[currentDeckIndex].cards[0]
-  );
-
 
   function readStorage() {
     const thisUserDecks = []

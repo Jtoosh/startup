@@ -28,6 +28,18 @@ export const DeckProvider = ({ children }) => {
   );
 };
 
+export const QuizContext = createContext();
+
+export const QuizProvider = ({ children }) => {
+  const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
+
+  return (
+    <DeckContext.Provider value={{ currentQuizIndex, setCurrentQuizIndex }}>
+      {children}
+    </DeckContext.Provider>
+  );
+};
+
 // This function is the logout function that will be passed to the logout button **WORK IN PROGRESS**
 // function logout() {
 //   fetch(`/api/auth/logout`, {
@@ -54,161 +66,162 @@ export default function App() {
   const [authState, setAuthState] = React.useState(currentAuthState);
   const [editingAccount, setEditingAccount] = React.useState(false);
 
-  const authenticatedRoutes = (<Routes>
-    <Route
-      path="/"
-      element={
-        <Login
-          userName={userName}
-          authState={authState}
-          onAuthChange={(userName, authState) => {
-            setAuthState(authState);
-            setUserName(userName);
-          }}
-        />
-      }
-    />
-    <Route path="/study" element={<Study />} />
-    <Route path="/home" element={<Home />} />
-    <Route path="/study/flashcard" element={<Flashcard />} />
-    <Route path="/study/flashcardEdit" element={<FlashcardEdit />} />
-    <Route path="/study/quiz" element={<Quiz />} />
-    <Route path="/study/quizEdit" element={<QuizEdit />} />
-    <Route path="/account" element={<Account editing ={editingAccount} setter={setEditingAccount} />} />
-    <Route path="/about" element={<About />} />
-    <Route path="*" element={<NotFound />} />
-  </Routes>)
+  // const authenticatedRoutes = (<Routes>
+  //   <Route
+  //     path="/"
+  //     element={
+  //       <Login
+  //         userName={userName}
+  //         authState={authState}
+  //         onAuthChange={(userName, authState) => {
+  //           setAuthState(authState);
+  //           setUserName(userName);
+  //         }}
+  //       />
+  //     }
+  //   />
+  //   <Route path="/study" element={<Study />} />
+  //   <Route path="/home" element={<Home />} />
+  //   <Route path="/study/flashcard" element={<Flashcard />} />
+  //   <Route path="/study/flashcardEdit" element={<FlashcardEdit />} />
+  //   <Route path="/study/quiz" element={<Quiz />} />
+  //   <Route path="/study/quizEdit" element={<QuizEdit />} />
+  //   <Route path="/account" element={<Account editing ={editingAccount} setter={setEditingAccount} />} />
+  //   <Route path="/about" element={<About />} />
+  //   <Route path="*" element={<NotFound />} />
+  // </Routes>)
 
-  const unauthenticatedRoutes = (<Routes>
-    <Route
-      path="/"
-      element={
-        <Login
-          userName={userName}
-          authState={authState}
-          onAuthChange={(userName, authState) => {
-            setAuthState(authState);
-            setUserName(userName);
-          }}
-        />
-      }
-    />
-    <Route path="/study" element={<Unauthorized />} />
-    <Route path="/study/flashcard" element={<Unauthorized />} />
-    <Route path="/study/flashcardEdit" element={<Unauthorized />} />
-    <Route path="/study/quiz" element={<Unauthorized />} />
-    <Route path="/study/quizEdit" element={<Unauthorized />} />
-    <Route path="/account" element={<Unauthorized />} />
-    <Route path="/home" element={<Home />} />
-    <Route path="/about" element={<About />} />
-    <Route path="*" element={<NotFound />} />
-    </Routes>)
+  // const unauthenticatedRoutes = (<Routes>
+  //   <Route
+  //     path="/"
+  //     element={
+  //       <Login
+  //         userName={userName}
+  //         authState={authState}
+  //         onAuthChange={(userName, authState) => {
+  //           setAuthState(authState);
+  //           setUserName(userName);
+  //         }}
+  //       />
+  //     }
+  //   />
+  //   <Route path="/study" element={<Unauthorized />} />
+  //   <Route path="/study/flashcard" element={<Unauthorized />} />
+  //   <Route path="/study/flashcardEdit" element={<Unauthorized />} />
+  //   <Route path="/study/quiz" element={<Unauthorized />} />
+  //   <Route path="/study/quizEdit" element={<Unauthorized />} />
+  //   <Route path="/account" element={<Unauthorized />} />
+  //   <Route path="/home" element={<Home />} />
+  //   <Route path="/about" element={<About />} />
+  //   <Route path="*" element={<NotFound />} />
+  //   </Routes>)
 
   return (
-    <DeckProvider>
-      <BrowserRouter>
-        <div className="App">
-          <header>
-            <nav className="navbar bg-info sticky-top">
-              <div className="container-fluid">
-                <ul className="nav me-auto mb-2 mb-lg-0">
-                  <li className="nav-item">
-                    <NavLink to="home" className="nav-link">
-                      Home
-                    </NavLink>
-                  </li>
-                  {authState === AuthState.Authenticated && (
+    <QuizProvider>
+      <DeckProvider>
+        <BrowserRouter>
+          <div className="App">
+            <header>
+              <nav className="navbar bg-info sticky-top">
+                <div className="container-fluid">
+                  <ul className="nav me-auto mb-2 mb-lg-0">
                     <li className="nav-item">
-                      <NavLink className="nav-link" to="study">
-                        Study
+                      <NavLink to="home" className="nav-link">
+                        Home
                       </NavLink>
                     </li>
-                  )}
-                  {authState === AuthState.Authenticated && (
+                    {authState === AuthState.Authenticated && (
+                      <li className="nav-item">
+                        <NavLink className="nav-link" to="study">
+                          Study
+                        </NavLink>
+                      </li>
+                    )}
+                    {authState === AuthState.Authenticated && (
+                      <li className="nav-item">
+                        <NavLink className="nav-link" to="account">
+                          Account
+                        </NavLink>
+                      </li>
+                    )}
                     <li className="nav-item">
-                      <NavLink className="nav-link" to="account">
-                        Account
+                      <NavLink className="nav-link" to="about">
+                        About
                       </NavLink>
                     </li>
-                  )}
-                  <li className="nav-item">
-                    <NavLink className="nav-link" to="about">
-                      About
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink className="nav-link" to="">
-                      Logout
-                    </NavLink>
-                  </li>
-                </ul>
-                {/* <!--These buttons will be made conditional so that one or the other appears, but not both, depending on authentication--> */}
-                {/* <button
-                  type="submit"
-                  name="Login"
-                  className="btn btn-primary mr-1"
-                >
-                  Login
-                </button> */}
-                {/* {currentAuthState === AuthState.Authenticated &&        Logout button **WORK IN PROGRESS**
-                (<NavLink className="nav-link" to="">
-                  <button
+                    <li className="nav-item">
+                      <NavLink className="nav-link" to="">
+                        Logout
+                      </NavLink>
+                    </li>
+                  </ul>
+                  {/* <!--These buttons will be made conditional so that one or the other appears, but not both, depending on authentication--> */}
+                  {/* <button
                     type="submit"
-                    name="Logout"
-                    className="btn btn-secondary m-2"
-                    onClick={logout}
+                    name="Login"
+                    className="btn btn-primary mr-1"
                   >
-                    Logout
-                  </button>
-                </NavLink>)
-                } */}
-                {currentAuthState === AuthState.Authenticated && (
-                <span>
-                  {userName} <i className="bi bi-person fs-1"></i>
-                </span>)
+                    Login
+                  </button> */}
+                  {/* {currentAuthState === AuthState.Authenticated &&        Logout button **WORK IN PROGRESS**
+                  (<NavLink className="nav-link" to="">
+                    <button
+                      type="submit"
+                      name="Logout"
+                      className="btn btn-secondary m-2"
+                      onClick={logout}
+                    >
+                      Logout
+                    </button>
+                  </NavLink>)
+                  } */}
+                  {currentAuthState === AuthState.Authenticated && (
+                  <span>
+                    {userName} <i className="bi bi-person fs-1"></i>
+                  </span>)
+                  }
+                </div>
+              </nav>
+            </header>
+            {/* {(authState === AuthState.Authenticated) ? authenticatedRoutes : unauthenticatedRoutes} */}
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Login
+                    userName={userName}
+                    authState={authState}
+                    onAuthChange={(userName, authState) => {
+                      setAuthState(authState);
+                      setUserName(userName);
+                    }}
+                  />
                 }
-
+              />
+              <Route path="/study" element={<Study />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/study/flashcard" element={<Flashcard />} />
+              <Route path="/study/flashcardEdit" element={<FlashcardEdit />} />
+              <Route path="/study/quiz" element={<Quiz />} />
+              <Route path="/study/quizEdit" element={<QuizEdit />} />
+              <Route path="/account" element={<Account editing ={editingAccount} setter={setEditingAccount} />} />
+              <Route path="/about" element={<About />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <footer className="container-fluid bg-secondary fixed-bottom">
+              <div className="text-center">
+                <span>James Teuscher, 2024</span>
+                <form action="https://github.com/Jtoosh/startup.git">
+                  <button className="btn btn-primary">
+                    Mnemonic Study GitHub
+                  </button>
+                </form>
               </div>
-            </nav>
-          </header>
-          {/* {(authState === AuthState.Authenticated) ? authenticatedRoutes : unauthenticatedRoutes} */}
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Login
-                  userName={userName}
-                  authState={authState}
-                  onAuthChange={(userName, authState) => {
-                    setAuthState(authState);
-                    setUserName(userName);
-                  }}
-                />
-              }
-            />
-            <Route path="/study" element={<Study />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/study/flashcard" element={<Flashcard />} />
-            <Route path="/study/flashcardEdit" element={<FlashcardEdit />} />
-            <Route path="/study/quiz" element={<Quiz />} />
-            <Route path="/study/quizEdit" element={<QuizEdit />} />
-            <Route path="/account" element={<Account editing ={editingAccount} setter={setEditingAccount} />} />
-            <Route path="/about" element={<About />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          <footer className="container-fluid bg-secondary fixed-bottom">
-            <div className="text-center">
-              <span>James Teuscher, 2024</span>
-              <form action="https://github.com/Jtoosh/startup.git">
-                <button className="btn btn-primary">
-                  Mnemonic Study GitHub
-                </button>
-              </form>
-            </div>
-          </footer>
-        </div>
-      </BrowserRouter>
-    </DeckProvider>
+            </footer>
+          </div>
+        </BrowserRouter>
+      </DeckProvider>
+    </QuizProvider>
   );
 }
 
