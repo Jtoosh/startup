@@ -34,7 +34,8 @@ async function createUser(username, password){
     username: username,
     password: passwordHash,
     token : uuid.v4(),
-    decks : []
+    decks : [],
+    quizzes : []
   };
 
   await userCollection.insertOne(user);

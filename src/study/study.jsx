@@ -6,12 +6,15 @@ import { Card } from "./card.mjs";
 import { Quiz } from "./quiz.js";
 import { Question } from "./question.js";
 import { DeckContext } from "../app.jsx";
+import { QuizContext } from "../app.jsx";
 import { OnlineStatus } from "./onlineStatus.jsx";
 import { StudyEvent, StudyNotifier } from "./studyNotifier.mjs";
 
 export function Study() {
   const { currentDeckIndex, setCurrentDeckIndex } = useContext(DeckContext);
-  const { currentQuizIndex, setCurrentQuizIndex } = useContext(DeckContext);
+  const { currentQuizIndex, setCurrentQuizIndex } = useContext(QuizContext);
+  console.log(currentDeckIndex);
+  console.log(currentQuizIndex);
   const [currentUser, setCurrentUser] = React.useState(
     JSON.parse(localStorage.getItem("userObject"))
   );
@@ -19,6 +22,7 @@ export function Study() {
 
   let cardWidth = { width: "10rem" };
   let createdDecks = readDecks();
+  let createdQuizzes = readQuizzes();
 
   function readStorage(mediaType) {
     if (mediaType === "flashcard") {
@@ -49,10 +53,11 @@ export function Study() {
         let deckObjects = thisUserDecks.map(
           (deck) => new Deck(deck.name, deck.cards)
         );
+        return deckObjects;
       } else {
         return [];
       }
-      return deckObjects;
+      
     } else if (mediaType === "quiz") {
       const thisUserQuizzes = [];
       if (currentUser.quizzes.length) {
@@ -78,10 +83,10 @@ export function Study() {
         let quizObjects = thisUserQuizzes.map(
           (quiz) => new Quiz(quiz.name, quiz.questions)
         );
+        return quizObjects;
       } else {
         return [];
       }
-      return quizObjects;
     }
   }
   function readDecks() {
@@ -190,28 +195,11 @@ export function Study() {
 
       <div className="row d-flex justify-content-evenly text-center ms-4">
         <span className="text-start">Your Quizzes:</span>
-
-        <div>
+        {createdQuizzes}
+        {/* <div>
           <span>Quiz functionality coming soon!</span>
-        </div>
-        {/* <div className="card" style={cardWidth}>
-          <h5 className="card-title">Quiz1</h5>
-          <NavLink to="quiz" className="btn btn-primary btn-sm">
-            Take Quiz
-          </NavLink>
-        </div>
-        <div className="card" style={cardWidth}>
-          <h5 className="card-title">Quiz2</h5>
-          <NavLink to="quiz" className="btn btn-primary btn-sm">
-            Take Quiz
-          </NavLink>
-        </div>
-        <div className="card" style={cardWidth}>
-          <h5 className="card-title">Create Quiz</h5>
-          <NavLink to="quizEdit" className="btn btn-primary btn-sm">
-            +
-          </NavLink>
         </div> */}
+        
       </div>
 
       <OnlineStatus />

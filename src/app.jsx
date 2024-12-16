@@ -14,9 +14,10 @@ import { FlashcardEdit } from "./study/flashcardEdit";
 import { Quiz } from "./study/quiz";
 import { QuizEdit } from "./study/quizEdit";
 import { AuthState } from "./login/authState";
+import { QuizComponent } from "./study/quizComponent";
 
 // These next 12 lines are the context and provider for the Deck component, to pass it between pages
-export const DeckContext = createContext();
+export const DeckContext = createContext(0);
 
 export const DeckProvider = ({ children }) => {
   const [currentDeckIndex, setCurrentDeckIndex] = useState(0);
@@ -28,7 +29,7 @@ export const DeckProvider = ({ children }) => {
   );
 };
 
-export const QuizContext = createContext();
+export const QuizContext = createContext(0);
 
 export const QuizProvider = ({ children }) => {
   const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
@@ -117,7 +118,7 @@ export default function App() {
   //   </Routes>)
 
   return (
-    <QuizProvider>
+    
       <DeckProvider>
         <BrowserRouter>
           <div className="App">
@@ -202,7 +203,7 @@ export default function App() {
               <Route path="/home" element={<Home />} />
               <Route path="/study/flashcard" element={<Flashcard />} />
               <Route path="/study/flashcardEdit" element={<FlashcardEdit />} />
-              <Route path="/study/quiz" element={<Quiz />} />
+              <Route path="/study/quiz" element={<QuizComponent />} />
               <Route path="/study/quizEdit" element={<QuizEdit />} />
               <Route path="/account" element={<Account editing ={editingAccount} setter={setEditingAccount} />} />
               <Route path="/about" element={<About />} />
@@ -221,7 +222,6 @@ export default function App() {
           </div>
         </BrowserRouter>
       </DeckProvider>
-    </QuizProvider>
   );
 }
 
