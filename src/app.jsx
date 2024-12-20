@@ -17,29 +17,10 @@ import { AuthState } from "./login/authState";
 import { QuizComponent } from "./study/quizComponent";
 
 // These next 12 lines are the context and provider for the Deck component, to pass it between pages
+
 export const DeckContext = createContext(0);
 
-export const DeckProvider = ({ children }) => {
-  const [currentDeckIndex, setCurrentDeckIndex] = useState(0);
-
-  return (
-    <DeckContext.Provider value={{ currentDeckIndex, setCurrentDeckIndex }}>
-      {children}
-    </DeckContext.Provider>
-  );
-};
-
 export const QuizContext = createContext(0);
-
-export const QuizProvider = ({ children }) => {
-  const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
-
-  return (
-    <DeckContext.Provider value={{ currentQuizIndex, setCurrentQuizIndex }}>
-      {children}
-    </DeckContext.Provider>
-  );
-};
 
 // This function is the logout function that will be passed to the logout button **WORK IN PROGRESS**
 // function logout() {
@@ -66,6 +47,9 @@ export default function App() {
     : AuthState.Unauthenticated;
   const [authState, setAuthState] = React.useState(currentAuthState);
   const [editingAccount, setEditingAccount] = React.useState(false);
+
+  const [currentDeckIndex, setCurrentDeckIndex] = useState(0);
+  const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
 
   // const authenticatedRoutes = (<Routes>
   //   <Route
@@ -118,8 +102,8 @@ export default function App() {
   //   </Routes>)
 
   return (
-    
-      <DeckProvider>
+    <DeckContext.Provider value={{ currentDeckIndex, setCurrentDeckIndex }}>
+      <QuizContext.Provider value={{ currentQuizIndex, setCurrentQuizIndex }}>
         <BrowserRouter>
           <div className="App">
             <header>
@@ -158,29 +142,29 @@ export default function App() {
                   </ul>
                   {/* <!--These buttons will be made conditional so that one or the other appears, but not both, depending on authentication--> */}
                   {/* <button
-                    type="submit"
-                    name="Login"
-                    className="btn btn-primary mr-1"
-                  >
-                    Login
-                  </button> */}
-                  {/* {currentAuthState === AuthState.Authenticated &&        Logout button **WORK IN PROGRESS**
-                  (<NavLink className="nav-link" to="">
-                    <button
                       type="submit"
-                      name="Logout"
-                      className="btn btn-secondary m-2"
-                      onClick={logout}
+                      name="Login"
+                      className="btn btn-primary mr-1"
                     >
-                      Logout
-                    </button>
-                  </NavLink>)
-                  } */}
+                      Login
+                    </button> */}
+                  {/* {currentAuthState === AuthState.Authenticated &&        Logout button **WORK IN PROGRESS**
+                    (<NavLink className="nav-link" to="">
+                      <button
+                        type="submit"
+                        name="Logout"
+                        className="btn btn-secondary m-2"
+                        onClick={logout}
+                      >
+                        Logout
+                      </button>
+                    </NavLink>)
+                    } */}
                   {currentAuthState === AuthState.Authenticated && (
-                  <span>
-                    {userName} <i className="bi bi-person fs-1"></i>
-                  </span>)
-                  }
+                    <span>
+                      {userName} <i className="bi bi-person fs-1"></i>
+                    </span>
+                  )}
                 </div>
               </nav>
             </header>
@@ -205,7 +189,15 @@ export default function App() {
               <Route path="/study/flashcardEdit" element={<FlashcardEdit />} />
               <Route path="/study/quiz" element={<QuizComponent />} />
               <Route path="/study/quizEdit" element={<QuizEdit />} />
-              <Route path="/account" element={<Account editing ={editingAccount} setter={setEditingAccount} />} />
+              <Route
+                path="/account"
+                element={
+                  <Account
+                    editing={editingAccount}
+                    setter={setEditingAccount}
+                  />
+                }
+              />
               <Route path="/about" element={<About />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
@@ -221,7 +213,7 @@ export default function App() {
             </footer>
           </div>
         </BrowserRouter>
-      </DeckProvider>
+      </QuizContext.Provider>
+    </DeckContext.Provider>
   );
 }
-

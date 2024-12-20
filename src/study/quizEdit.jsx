@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 export function QuizEdit() {
   return  <main>
   <h1 className = "text-center">"Quiz Name"</h1>
-  <NavLink to="study" className="btn btn-primary">&#8592; Back to Study</NavLink>
+  <NavLink to="../study" className="btn btn-primary">&#8592; Back to Study</NavLink>
   <div className="container-fluid d-flex row justify-content-center">
       <div className="card question text-center my-4 d-flex column justify-content-end">
           <div className="my-4" > 

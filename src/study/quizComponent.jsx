@@ -13,9 +13,6 @@ export function QuizComponent() {
 
     const { currentQuizIndex, setCurrentQuizIndex } = React.useContext(QuizContext);
     const currentQuiz = userQuizzes[currentQuizIndex];
-    console.log(userQuizzes);
-    console.log(currentQuizIndex);
-    console.log(currentQuiz);
     const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);    
 
     function readStorage() {
@@ -27,15 +24,11 @@ export function QuizComponent() {
             // const questionsKey = Object.keys(currentUser.quizzes[i])[1];
             const questionsValue = Object.values(currentUser.quizzes[i])[1];
             for (let j = 0; j < questionsValue.length; j++) {
-              const questionTextValue = questionsValue[0];
-              const answerValue = questionsValue[1];
-              const optionsValue = questionsValue[2];
-              const semanticValue = questionsValue[3];
               questionsValue[j] = new Question(
-                questionTextValue,
-                answerValue,
-                optionsValue,
-                semanticValue
+                questionsValue[j].questionText,
+                questionsValue[j].answer,
+                questionsValue[j].options,
+                questionsValue[j].semantic
               );
             }
             thisUserQuizzes.push({ name: nameValue, questions: questionsValue });
@@ -67,7 +60,7 @@ export function QuizComponent() {
       }
 
   return (
-    <main onLoad={readStorage()}>
+    <main onLoad={readStorage}>
       <h1 className="text-center">"Quiz Name"</h1>
       <NavLink to="../study" className="btn btn-primary">
         &#8592; Back to Study
@@ -79,20 +72,13 @@ export function QuizComponent() {
 
           <div className="mt-8">
             <div className="my-4">
-              <input
+              {/* <input
                 type="text"
                 id="answer"
                 name="answer"
                 placeholder="Answer"
                 required
-              />
-              <input
-                type="text"
-                id="semantic"
-                name="semantic"
-                placeholder="Semantic Device"
-                required
-              />
+              /> */}
             </div>
             <div className="my-4 text-start">
               <div className="form-check">
@@ -104,7 +90,7 @@ export function QuizComponent() {
                   className="form-check-input"
                 />
                 <label for="option1" className="form-check-label">
-                  Option 1
+                  {currentQuiz.questions[currentQuestionIndex].options[0]}
                 </label>
               </div>
               <div className="form-check">
@@ -116,7 +102,7 @@ export function QuizComponent() {
                   className="form-check-input"
                 />
                 <label for="option2" className="form-check-label">
-                  Option 2
+                  {currentQuiz.questions[currentQuestionIndex].options[1]}
                 </label>
               </div>
               <div className="form-check">
@@ -128,7 +114,7 @@ export function QuizComponent() {
                   className="form-check-input"
                 />
                 <label for="option3" className="form-check-label">
-                  Option 3
+                  {currentQuiz.questions[currentQuestionIndex].options[2]}
                 </label>
               </div>
               <div className="form-check">
@@ -140,7 +126,7 @@ export function QuizComponent() {
                   className="form-check-input"
                 />
                 <label for="option4" className="form-check-label">
-                  Option 4
+                  {currentQuiz.questions[currentQuestionIndex].options[3]}
                 </label>
               </div>
             </div>
@@ -149,17 +135,17 @@ export function QuizComponent() {
         <div>
           <div className=" buttons d-flex column justify-content-center  mx-2 ">
             <button className="btn btn-warning">Help</button>
-            <button className="btn btn-success">&#8592; Back</button>
-            <button className="btn btn-success">Next &#8594;</button>
+            <button className="btn btn-success" onClick={prevQuestion}>&#8592; Back</button>
+            <button className="btn btn-success" onClick={nextQuestion}>Next &#8594;</button>
           </div>
           <div className="buttons d-flex column justify-content-center my-4">
             <button className="btn btn-warning">Favorite</button>
             <button className="btn btn-secondary">Share Quiz </button>
-            <form action="quizEdit.html">
+            <NavLink to="../study/quizEdit" className="btn btn-primary">
               <button type="submit" className="btn btn-primary">
                 Edit Quiz
               </button>
-            </form>
+            </NavLink >
           </div>
         </div>
       </div>

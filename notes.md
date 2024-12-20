@@ -1,6 +1,8 @@
 # CS 260: Web Programming
 
-## Intro
+## Class Notes
+
+### Intro
 
 Web programming is one of the most useful branches of skills and technologies to have in the world today. Learning these skills will open previously inacessible doors.
 Because the specifics technologies of web programming shift constantly, focus less on the specific technologies and more on the overall concepts and frameworks of being a web programmer in this class.
@@ -77,7 +79,7 @@ You can also chain the input and output of commands using special characters
 for i in {1..2}; do printf 'y' >> other.txt; done;
 ```
 
-## GitHub
+### GitHub
 
 While a repo can be made in a local directory using `git init`, it is easier to create a repo on GitHub and clone it to the local machine. This is done using the command `git clone <url>`.
 
@@ -136,7 +138,7 @@ Like with other projects I have had, remember to balance ambition with reality. 
 
 Maintain the separation between the Development and Production environments. It is bad practice to do any coding/developing in the production environment. Development is the designated place for breaking and messing up. Also ensure that things being done in the development environment are being pushed to GitHub.
 
-## Lecture 9.12.24
+### Lecture 9.12.24
 
 Caddy
 : a gateway that can be used for 3 main purposes: serving static files, web user authentication, and redirecting web traffic. It serves the same function as Apache in my ITC210 class.
@@ -158,7 +160,7 @@ Something important about the region in which we set up this server, is that the
 _Notes about the server from the reading:_
 The `Caddyfile` is the configuration file for your web service gateway. The `public_html` directory contains all of the static files that you are serving up directly through Caddy when using it as a web service. We will cover Caddy configuration in a later instruction. The `services` directory is the place where you are going to install all of your web services once you build them.
 
-## Lecture 9.17.24
+### Lecture 9.17.24
 
 Domain name anatomy:
 [subdomain].[domain].[tld]
@@ -179,7 +181,7 @@ Prof. Ventura mentioned that class may not seem very hard right now, which is fi
 
 Make sure to take notes of things as I do the HTTPS assignment reading and the HTML readings.
 
-## HTTPS Assignment
+### HTTPS Assignment
 
 HTTPS, or Hypertext Transfer Protocol Secure, is a protocol that is used to secure the communication between a web server and a web browser. It is an extension of HTTP, or Hypertext Transfer Protocol, which is the protocol that is used to transfer data. HTTPS uses encryption to secure the data that is being transferred. This encryption is done using SSL, or Secure Sockets Layer, which is a protocol that is used to encrypt data that is being transferred. SSL is now unsecure and was surpassed by TLS Protocol. HTTPS is used to secure sensitive data, such as credit card numbers, passwords, and other personal information, that is being transferred between a web server and a web browser.
 
@@ -195,7 +197,7 @@ To implement HTTPS on my website, I need to do the following:
 2. Create an A record in the DNS that maps the domain name to the IP address of my web server.
 3. In the EC2 instance, with Caddy installed, edit the Caddyfile to include the domain name. Do this by editing the section that says `:80{` (meaning port 80) to be the domain name (`mnemonicstudy.com{` in my case).
 
-## HTML Assignments
+### HTML Assignments
 
 `input` HTML elements have a `pattern` attribute that can be used to specify a regular expression that the input must match. This is useful for validating user input.
 To edit the color of a `color` input element, use the `value` attribute to assign it a hexidecimal color value.
@@ -222,11 +224,11 @@ Attributes: `src`, `controls`, `autoplay`, `loop`, and others. These have the sa
 `canvas` elements
 : An HTML internal media element used to create graphics in a webpage. The HTML element itself creates the canvas, but JavaScript is needed to actually draw on it.
 
-## Lecture 9.19.24
+### Lecture 9.19.24
 
 Don't worry about making the pieces look like the finished product, just make sure that all of the pieces are present in my HTML. In the Simon example code, most of the pieces don't look or behavior _anything_ like the final product, but they are all there.
 
-## Startup HTML notes
+### Startup HTML notes
 
 What pieces do I need?
 
@@ -269,7 +271,7 @@ What pieces do I need?
 - contact info
 - mission of Mnemonic study
 
-## Lecture 9.24.24 - CSS
+### Lecture 9.24.24 - CSS
 
 Psuedo selecters allow you to select an element based on its state. The syntax is `element:state`. Some of the most common ones are: `:hover`, `:active`, `:focus`, `:visited`, and others.
 
@@ -301,7 +303,7 @@ div {
 }
 ```
 
-## Lecture 9.26.24 - CSS Continued
+### Lecture 9.26.24 - CSS Continued
 
 > The following is courtesy of Copilot lol.
 
@@ -331,7 +333,7 @@ Bootstrap is the most popular CSS framework, and Tailwind CSS is a newer one tha
 
 The downside to Bootstrap is that sites styled with it are pretty uniform, so like all programming tools, it is not an end-all-be-all.
 
-## CSS Frameworks Assignment Notes
+### CSS Frameworks Assignment Notes
 
 Bootstrap is far and away the most popular CSS framework, but its major success is also its weakness: Bootstrap styling has become the de facto look of the web, so using Bootstrap can deliver a reliable and comfortable user experience, but it won't be able to stand out and be unique. Tailwind CSS is the next closest framework as of recent years, emerging in the last 4 years. It allow for different "looks" and avoids having a single distinct style.
 
@@ -340,7 +342,7 @@ Bootstrap is a mobile-first framework, meaning that it is designed to work on mo
 CSS: <https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css>
 JS: <https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js>
 
-## Lecture Notes 10.1.24
+### Lecture Notes 10.1.24
 
 In Caddy, different from Apache, the `publichtml` directory is the root directory of the website. This is where the `index.html` file is located that gets displayed when no subdomain is specified. The HTML for any subdomain is located in the `services` directory.
 
@@ -350,7 +352,7 @@ The colors for Bootstrap is present in their CSS using a Sass map. If I want, I 
 
 When debugging CSS, the `Styles` tab in the browser inspector is my best friend. It will only show the styles that are being applied to the element that I have selected, so I need to select one first. In `Styles` I'll see all of the styles applied, and then the ones that are overridden will be crossed out. I can also add new styles to the element to see how they will look, or toggle styles using the checkbox next to them. The `Computed` tab will show me the final styles that are being applied to the element, including the ones that are inherited from the parent elements.
 
-## Lecture Notes 10.3.24 - JavaScript Intro
+### Lecture Notes 10.3.24 - JavaScript Intro
 
 UX has become a complex subject, and in the setting of designing a good, mature application, serious consideration must be given to UX.
 
@@ -370,7 +372,7 @@ There are at least 3 types of objects in JavaScript;
 2. Objects that are defined with key value pairs, such as `{name: 'John', age: 30}`, and don't require instantiation.
 3. Type objects.
 
-## Startup CSS notes
+### Startup CSS notes
 
 One of the core things that I've noticed as I've used Bootstrap for this is the placement of most of the elements into some type of container, referred to as `components` in their docs. A lot of the stylistic choices include choosing the right component for the job.
 
@@ -382,7 +384,7 @@ The `input` element has an attribute called `placeholder` where the string value
 
 Like Tailwind, Bootstrap has some classes that can apply generally to everything, like `my-` for margins on the y-axis. Most of these classes are 'utility' classes, and can be found in that section of the docs.
 
-## JS Array Assignment notes
+### JS Array Assignment notes
 
 The Array object has several interesting static functions associated with it. Here are some of the interesting ones.
 
@@ -401,7 +403,7 @@ The Array object has several interesting static functions associated with it. He
 | every    | Run a function to test if all items match                            | `a.every(i => i < 3)`         |
 | some     | Run a function to test if any items match                            | `a.some(i => i < 1)`          |
 
-## Lecture Notes 10.8.24 - JavaScript Continued
+### Lecture Notes 10.8.24 - JavaScript Continued
 
 - Generally always use the strict equality operator, `===`, not the loose one, `==`. Falsey and truthy values are only functional with the loose equality operator, but they do work with comparison operators.
 - With a switch block, remember to use the `break` keyword to prevent the code from falling through to the next case.
@@ -411,7 +413,7 @@ The Array object has several interesting static functions associated with it. He
 - A _closure_ is comparable to higher order functions. When a function is returned from another function, the returned function is called a closure. The closure has access to the variables in the outer function, even after the outer function has finished executing.
 - There are `for of` loops which iterates through each value (the iterator needs to be instantiated) and `for in` loops which iterates through each key in an object.
 
-## Lecture Notes 10.10.24 - JavaScript Continued
+### Lecture Notes 10.10.24 - JavaScript Continued
 
 - `try` and `catch` blocks are used similarly to other languages: the code in the `try` block is tried, if an error is thrown, then the thrown error is "caught" in the `catch` block. The `finally` block is always executed.
 - A **spread** operator, `...` is used to spread, or add, the elements of an array into another array as individual elements, not as a nested array.
@@ -420,7 +422,7 @@ The Array object has several interesting static functions associated with it. He
 - Remember that using the DOM, a new element is created using `document.createElement()` method. This only creates an instance of an element object, however, it isn't attached to the DOM. It's just free-floating right now. To attach it to the DOM, use the `appendChild()` method of the parent element.
 - localStorage can be used to manually cache in case the database goes down.
 
-## Lecture Notes 10.15.24 - JavaScript Promises, Async Await
+### Lecture Notes 10.15.24 - JavaScript Promises, Async Await
 
 - Browser rednering is single-threaded, so typical sequential execution can cause the browser to hang. This is where promises come in. They are used to handle asynchronous operations in JavaScript.
 
@@ -452,7 +454,7 @@ Where executor is a function to be executed by the constructor, which should tak
 
 - The `i` at the end of the regex statement `/A|f/i` makes the regex case-insensitive.
 
-## JS Promises and Async/Await assignment
+### JS Promises and Async/Await assignment
 
 - I learned the "producing code" and "consuming code" way of thinking about promises is useful for me. When I tried to put the next promise inside of a function called by the `.then()` method, it didn't work. It only did when I placed the promise function directly inside of the `.then()` method. I'm not 100% sure why this is, I'll likely learn later on. What I did learn is that Promises are objects that take in a function to produce something, and then with the promise syntax, the promise chain consumes the product of the producing code.
 
@@ -460,7 +462,7 @@ In doing these assignments, I decided to read up on callbacks, since that kept b
 
 When using async/await, remember that the `await` keyword can only be used inside of an `async` function. Thus, async is only needed when I want to (1) return a Promise, or (2) use the `await` keyword.
 
-## JS Extra Credit notes
+### JS Extra Credit notes
 
 - Remember that most JS methods are camel case. length, toUpperCase, toLowerCase are all string methods.
 - Date is an object type. Use `new Date()` to create a new instance.
@@ -470,7 +472,7 @@ When using async/await, remember that the `await` keyword can only be used insid
 - In a `switch` statement, the `default` keyword is what denotes a block that will execute if none of the cases are true.
 - JS's version of `for in` loops is the `for (x of array)` loop.
 
-## Lecture Notes 10.17.24 - Node.js
+### Lecture Notes 10.17.24 - Node.js
 
 Modules
 : A file that contains code that can be exported to other files. Like a package in Python or Java.
@@ -499,7 +501,7 @@ Stuff from lecture to look up later (Web service functions):
 - `end()`
 - `listen()`
 
-## Lecture Notes 10.22.24 - React
+### Lecture Notes 10.22.24 - React
 
 React is a Web Development framework. Frameworks focus on the DRY principle, simplfying and bundling common patterns and components. They also strive to improve performance and increase device coverage.
 
@@ -525,7 +527,7 @@ A **hook** is a function that allows you to access and use the state of other Re
 
 `useState` is a hook that is used to add state to a functional component. It takes an initial value as an argument, and **it returns an array with two elements**: the current value of the state, and a function that can be used to update the state.
 
-## React Assignment Notes
+### React Assignment Notes
 
 With Component props, I can access them a couple ways. I can list them as a parameter inside {braces}, or uses the props object and refer to the properties of `props`, using the name of the prop passed in the component call. For example: `<Demo who = "James">` could have the `who` prop accessed in the component as `props.who`, or as `{who}` if that was how it was passed in.
 
@@ -535,7 +537,7 @@ To do inline styling with React, use the `style` attribute in the component's re
 
 Another key to reactivity in React is making components return HTML with event listeners. Two that I used for the assignment were `onChange` and `onInput`. The latter is used for input elements, and the former is used for other elements. Something from the assignment that I didn't understand yet was the attributes used to get the value of the input element. What appeared in the code was `e.target.value`, and I'm thinking `e` was just the parameter used for the input data, but I'm not 100% sure, and I'll need to find out exactly what `.target.value` is.
 
-## Lecture Notes 10.24.24 - React Continued (Router and Toolchain)
+### Lecture Notes 10.24.24 - React Continued (Router and Toolchain)
 
 React routing is what allows the application to navigate between different "pages" without actually changing the URL or html file. The router finds the correct component to render based on the file path given, and then renders that component.
 
@@ -547,7 +549,7 @@ An important difference between JS and JSX syntax is that in JSX, the `class` at
 
 Things to look for in router assignment: relationship between `NavLink` component's `to` attribute and the `Route` component's `path` attribute.
 
-## React Router Reading/Assignment Notes
+### React Router Reading/Assignment Notes
 
 [React Reading](https://blog.webdevsimplified.com/2022-07/react-router/)
 
@@ -572,7 +574,7 @@ Route priority is determined by rules similar to those that dictate CSS specific
 
 The big thing to remember is that, as long as I put the path name in the `path` prop of the `Route` component, and then the same path in the `to` prop of the `Link` component, the router will handle the navigation.
 
-## React Porting Notes
+### React Porting Notes
 
 Here are some notes from my studying React on W3 and porting my startup app to React:
 
@@ -588,7 +590,7 @@ Here are some notes from my studying React on W3 and porting my startup app to R
 - React keeps track of list items with a `key` attribute. This is used to keep track of which items have changed, and which items are new.
 - Something that I ran into often as I was porting was forgetting to import things into `.jsx` files. I'll need to get into the habit of doing that with every `.jsx` file I make and work in.
 
-## React Startup Notes
+### React Startup Notes
 
 - Describe using Context API to manage state between App, Study, and Flashcard components.
 - One of my biggeset takeaways from this stage of the startup was that it took much much longer than I anticipated or gave it time for. I think experiencing this will serve as a good learning step for me. In the future I'll devote a lot more time to the design and planning to also get a feel for how long a project like this will take.
@@ -598,18 +600,18 @@ Here are some notes from my studying React on W3 and porting my startup app to R
 - `indexOf()` returns -1 when the argument can't be found in the array.
 - Potential rework would include rendering flashcard, quiz, and respective edit components in the study component, rather than separate URLs.
 
-## Spooky Lecture Notes 10.31.24 - Fetch, Web Mechanics
+### Spooky Lecture Notes 10.31.24 - Fetch, Web Mechanics
 
 - A router is a special kind of computer, so routers connecting to routers is how the internet works. The internet is a network of networks.
 - A modem is a device that modulates and demodulates signals. It is used to connect a computer to the internet using the infrastructure of telephone lines.
 
 - Fetch is a function that is used to make network (HTTP) requests in JavaScript. It is used to get data from a server, and it returns a _promise_ that resolves to the response from the server. The `fetch` function takes a URL as an argument, and it returns a promise that resolves to the response from the server. The response object has a `json()` method that is used to parse the response as JSON. The `json()` method also returns a promise that resolves to the parsed JSON data. Because of the promise returned, the `fetch` function is asynchronous, and its results are used with the `then()` method to handle the response from the server. The `await` method can also be used. The default method for a fetch call is `GET` but `POST` can be used by using the optional argument.
 
-## Vite Assignment Notes
+### Vite Assignment Notes
 
 Vite is a toolchain for web frameworks that bundles code quickly, and allows for features like minification, JSX, polyfilling, and others. It is used to bundle the code for a React app, and then deploy it to a server. This is implemented for my startup in the deployment script. Vite is installed using npm, and the commands `npm run dev` and `npm run build` are used to make development and production builds, respectively.
 
-## Lecture Notes 11.5.24 - Web Services, Express, CORS/SOP
+### Lecture Notes 11.5.24 - Web Services, Express, CORS/SOP
 
 After some more reading, the class notes for Express and middleware were the most helpful for me. [Here](../notes/cs260.github/profile/webServices/express/express.md) is the link to the notes.
 
@@ -631,7 +633,7 @@ Express allows variables to be passed in the URL, and these variables are access
 
 `express.router()` is used to create a router object, which is used to create modular, mountable route handlers, more just a syntatic sugar for organizing routes.
 
-## Lecture Notes 11.12.24 - Web Services: Endpoint Design, Debugging
+### Lecture Notes 11.12.24 - Web Services: Endpoint Design, Debugging
 
 PM2 is a process manager that uses daemons to keep node services running. Terminal commands can be used to do various things related to PM2 on a server where it is installed. For example, `pm2 ls` lists the services running via pm2. `pm2 start` starts a service, and `pm2 stop` stops a service. `pm2 delete` deletes a service, and `pm2 restart` restarts a service. `pm2 logs` shows the logs of a service, and `pm2 monit` shows the monitoring of a service.
 
@@ -649,7 +651,7 @@ Single Origin Policy (SOP) is a security feature that restricts what resources c
 
 _Remember:_ `fetch` statements are used on the front end to make requests to the endpoints specified on the backend, or a third-party.
 
-## Lecture Notes 11.14.24 - Web Authentication
+### Lecture Notes 11.14.24 - Web Authentication
 
 The best notes are in the class readings. I'll link to the files [here](../notes/cs260.github/profile/webServices/dataServices/dataServices.md).
 
@@ -657,7 +659,7 @@ For accessing data that is user-specific, Dr. Ventura recommended creating a col
 
 Rainbow tables are a type of attack that uses precomputed hash values for common passwords to crack hashed passwords, and then map those hash values to the original passwords to find matches.
 
-## Startup Service Notes
+### Startup Service Notes
 
 My understanding of endpoints is you define a path/URL that triggers a certain function when visited. Then, on certain components on the frontend, when I want to access that data, I use a fetch statement that is connected to that component to get that data.
 
@@ -712,7 +714,7 @@ I got a little mixed up while trying to connect the backend to the front end, an
 - Finish data structure implementation for full stack.
 - Get correct data handling for exisitng pages (flashcard, flashcard edit)
 
-## Lecture Notes 11.19.24 & Assignment Notes - Data Services
+### Lecture Notes 11.19.24 & Assignment Notes - Data Services
 
 Main implementations for Startup Login:
 
@@ -735,7 +737,7 @@ The method for inserting a document into a collection is `.insertOne()`. This me
 
 >Remember that to debug the backend, set breakpoints, and then just run them in the terminal with `node <filename>`.
 
-## Lecture Notes 11.21.24 - Web Sockets
+### Lecture Notes 11.21.24 - Web Sockets
 
 The [reading](../notes/cs260.github/profile/webServices/webSocket/webSocket.md) for this was pretty helpful. WebSocket connections move from client-server to peer-peer communication. The main difference in between these two is that client-server can only ever be initiated by the client, while peer-peer can have communication (after the initial) initiated by either end.
 
@@ -748,7 +750,7 @@ On the frontend, WebSocket capacities are built in, so you can simply create an 
 The `WebSocket.close()` method closes the connection.
 When WebSocket capacities are only wanted for some of the data traffic, a non-webSocket server can be made, as well as an instance of WebSocketServer, with the property `noServer` set to true. Then connections can be specified to be upgraded or not, and the backend can have event listeners for those upgrades.
 
-## Startup Login Notes
+### Startup Login Notes
 
 **Design Outline**:
 To start, I'm going to outline what needs to be implemented using the DB and roughly how to do it.
@@ -771,7 +773,7 @@ These will follow the same general structure as the Simon example, but slightly 
 - I was running into a problem of trying to debug the backend index.js file, but it kept saying that the port was in use. I didn't realize that because the bash script runs `pm2 restart startup`, that the index.js file was already running using pm2. So I had to stop the pm2 process, and then run the index.js file in the terminal to debug it.
 - I also was reminded to check the discord more often! That honestly should come earlier in the hierarchy before googling, because the info an questions in the Discord are specific to the class' context. I was able to find that other people had already had the exact same problem as me, with the server not being able to access the Database despite the IP address being whitelisted, and the fix was to change the MongoDB version to an earlier one.
 
-## Lecture Notes 12.3.24 - Web Socket Simon
+### Lecture Notes 12.3.24 - Web Socket Simon
 
 There are 2 ways to think of peer-to-peer communication: First, the server and the client being direct "peers" where their communication is bidirectional. Second, different clients are "peers" to each other via their common connection to the server. A client doesn't communicate directly to another client, but it communicates a message directed for a client to the server, and the server sends that message to the receiving client, with the server initiating the communication.
 
@@ -783,7 +785,7 @@ The WebSocket deliverable will deal alot with event handlers.
 
 On a different note, a popular platform for testing web apps on different devices is called BrowserStack. There is also UI and Endpoint testing, check the class readings for useful resources there.
 
-## Lecture Notes 12.5.24 - Security
+### Lecture Notes 12.5.24 - Security
 
 A good place to see notices about recent data breaches is on Tech.co, [here](https://tech.co/news/data-breaches-updated-list).
 
@@ -801,11 +803,11 @@ OWASP, the Open Web Application Security Project, is a non-profit organization t
 
 Juice Shop is a web application developed by OWASP that is intentionally insecure, and is used to teach developers about web application security.
 
-## Startup Web Socket Notes
+### Startup Web Socket Notes
 
 - One way to get some useful data like protocol, port #, and hostname is to use the `location` object in the browser. It is accessed as a proptery of the `window` object, so `window.location` will return an object with all of the data about the current URL. The location object has properties like `protocol`, `port`, and `hostname` that can be used to get the data needed to connect to a WebSocket.
 
-## Demo day
+### Demo day
 
 Here are ideas and insights that I got from people's demos:
 
@@ -826,3 +828,6 @@ Test Review:
 - Cookies allow for the server to store data on the client's machine.
 - Remember that `fetch` can be used on the frontend and the backend
 
+## Post Class Development Notes
+
+As I was working on MnemonicStudy a bit todat (19.12.24), I did a litter more digging and learning about the Context API and how it works. The [react docs](https://react.dev/reference/react/createContext) are pretty useful. What I learned is that a more standard way to include dynamic values in the context object being used is to wrap all the components in a `<SomeContext.Provider>` tag, rather than making a separate function called SomeContextProvider, like I was doing before (I think what I was doing before was something generated by an LLM anyway). The `<SomeContext.Provider>` tag takes a `value` attribute, which is the object that is being passed to the context. So, I simply set a state variable and setter that had the same default value as the context's default value, and passed the state variable and the setter as the `value` attribute of the `<SomeContext.Provider>` tag. This is essentially the same as what the provider component functions were doing before, just a different way of packaging it.
