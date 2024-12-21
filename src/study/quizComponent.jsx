@@ -5,40 +5,66 @@ import { Quiz } from "./quiz.js";
 import { Question } from "./question.js";
 import { QuizContext } from "../app.jsx";
 import { readStorage } from "./readstorage.js";
-
-
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
 export function QuizComponent() {
-    const [currentUser, setCurrentUser] = React.useState(JSON.parse(localStorage.getItem("userObject")));
-    let userQuizzes = readStorage("quiz", currentUser);
+  const [currentUser, setCurrentUser] = React.useState(
+    JSON.parse(localStorage.getItem("userObject"))
+  );
+  let userQuizzes = readStorage("quiz", currentUser);
 
-    const { currentQuizIndex, setCurrentQuizIndex } = React.useContext(QuizContext);
-    const currentQuiz = userQuizzes[currentQuizIndex];
-    const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0); 
-    
-    console.log(currentQuiz)
-    
+  const { currentQuizIndex, setCurrentQuizIndex } =
+    React.useContext(QuizContext);
+  const currentQuiz = userQuizzes[currentQuizIndex];
+  const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
 
-      function nextQuestion() {
-        if (currentQuiz.questions[currentQuestionIndex + 1] === undefined) {
-          alert('No more cards in deck. Click "Add Card" to add a new card.');
-          return;
-        } else {
-          setCurrentQuestionIndex(currentQuestionIndex + 1);
-        }
-      }
-      function prevQuestion() {
-        if (currentQuiz.questions[currentQuestionIndex - 1] === undefined) {
-          alert('No more cards in deck. Click "Add Card" to add a new card.');
-          return;
-        } else {
-          setCurrentQuestionIndex(currentQuestionIndex - 1);
-        }
-      }
+  const [modalShow, setModalShow] = React.useState(false);
+
+  const handleShow = () => setModalShow(true);
+  const handleClose = () => setModalShow(false);
+
+  console.log(currentQuiz);
+
+  function nextQuestion() {
+    if (currentQuiz.questions[currentQuestionIndex + 1] === undefined) {
+      alert('No more questions in quiz. Click "Edit Quiz" to add a new question.');
+      return;
+    } else {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    }
+  }
+  function prevQuestion() {
+    if (currentQuiz.questions[currentQuestionIndex - 1] === undefined) {
+      alert('No more questions in quiz. Click "Edit Quiz" to add a new question.');
+      return;
+    } else {
+      setCurrentQuestionIndex(currentQuestionIndex - 1);
+    }
+  }
+
+  function semanticModal() {
+    return (
+      <Modal show={modalShow} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Need some Help?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <strong>Here is the semantic you wrote for this question:</strong>
+          <p>{currentQuiz.questions[currentQuestionIndex].semantic}</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
 
   return (
     <main onLoad={readStorage}>
-      <h1 className="text-center">"Quiz Name"</h1>
+      <h1 className="text-center">{currentQuiz.name}</h1>
       <NavLink to="../study" className="btn btn-primary">
         &#8592; Back to Study
       </NavLink>
@@ -111,9 +137,16 @@ export function QuizComponent() {
         </div>
         <div>
           <div className=" buttons d-flex column justify-content-center  mx-2 ">
-            <button className="btn btn-warning">Help</button>
-            <button className="btn btn-success" onClick={prevQuestion}>&#8592; Back</button>
-            <button className="btn btn-success" onClick={nextQuestion}>Next &#8594;</button>
+            <button className="btn btn-warning" onClick={handleShow}>
+              Help
+            </button>
+            {semanticModal()}
+            <button className="btn btn-success" onClick={prevQuestion}>
+              &#8592; Back
+            </button>
+            <button className="btn btn-success" onClick={nextQuestion}>
+              Next &#8594;
+            </button>
           </div>
           <div className="buttons d-flex column justify-content-center my-4">
             <button className="btn btn-warning">Favorite</button>
@@ -122,7 +155,7 @@ export function QuizComponent() {
               <button type="submit" className="btn btn-primary">
                 Edit Quiz
               </button>
-            </NavLink >
+            </NavLink>
           </div>
         </div>
       </div>
