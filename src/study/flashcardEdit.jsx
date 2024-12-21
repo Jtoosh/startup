@@ -5,6 +5,7 @@ import { Card } from "./card.mjs";
 import { Deck } from "./deck.mjs";
 import { DeckContext } from "../app";
 import { ApiModal } from "./apiModal";
+import { readStorage } from "./readstorage";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
@@ -16,48 +17,13 @@ export function FlashcardEdit() {
   
 
   let deckEditing =
-    readStorage()[currentDeckIndex] !== undefined
-      ? readStorage()[currentDeckIndex]
+    readStorage("flashcard", currentUser)[currentDeckIndex] !== undefined
+      ? readStorage("flashcard", currentUser)[currentDeckIndex]
       : new Deck("New Deck", [
           new Card("New Term", "New Definition", "New Semantic"),
         ]);
-  
-
-  function readStorage() {
-    const thisUserDecks = []
-    if (currentUser.decks.length !== 0) {
-      for (let i = 0; i < currentUser.decks.length; i++) {
-        // 
-        const nameKey = Object.keys(currentUser.decks[i])[0];
-        const nameValue = Object.values(currentUser.decks[i])[0];
-        const cardsKey = Object.keys(currentUser.decks[i])[1];
-        const cardsValue = Object.values(currentUser.decks[i])[1];
-        for (let j = 0; j < cardsValue.length; j++) {
-          const termNameKey = Object.keys(cardsValue[j])[0];
-          const termNameValue = Object.values(cardsValue[j])[0];
-          const termDefKey = Object.keys(cardsValue[j])[1];
-          const termDefValue = Object.values(cardsValue[j])[1];
-          const semanticKey = Object.keys(cardsValue[j])[2];
-          const semanticValue = Object.values(cardsValue[j])[2];
-          cardsValue[j] = new Card(termNameValue, termDefValue, semanticValue);
-        }
-        thisUserDecks.push({ name: nameValue, cards: cardsValue });
-      }
-      
-      let deckObjects = thisUserDecks.map(
-        (deck) => new Deck(deck.name, deck.cards)
-      );
-      
-      return deckObjects;
-    } else{
-      return [];
-    }
-    
-    
-  }
 
   function updateStorage() {
-    console.log(currentUser.decks);
     currentUser.decks[currentDeckIndex] = deckEditing;
     setCurrentUser(currentUser);
     localStorage.setItem("userObject", JSON.stringify(currentUser));

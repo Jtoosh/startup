@@ -9,12 +9,12 @@ import { DeckContext } from "../app.jsx";
 import { QuizContext } from "../app.jsx";
 import { OnlineStatus } from "./onlineStatus.jsx";
 import { StudyEvent, StudyNotifier } from "./studyNotifier.mjs";
+import { readStorage } from "./readstorage.js";
 
 export function Study() {
   const { currentDeckIndex, setCurrentDeckIndex } = useContext(DeckContext);
   const { currentQuizIndex, setCurrentQuizIndex } = useContext(QuizContext);
-  console.log(currentDeckIndex);
-  console.log(currentQuizIndex);
+
   const [currentUser, setCurrentUser] = React.useState(
     JSON.parse(localStorage.getItem("userObject"))
   );
@@ -24,73 +24,9 @@ export function Study() {
   let createdDecks = readDecks();
   let createdQuizzes = readQuizzes();
 
-  function readStorage(mediaType) {
-    if (mediaType === "flashcard") {
-      const thisUserDecks = [];
-      if (currentUser.decks.length !== 0) {
-        for (let i = 0; i < currentUser.decks.length; i++) {
-          //
-          // const nameKey = Object.keys(currentUser.decks[i])[0];
-          const nameValue = Object.values(currentUser.decks[i])[0];
-          // const cardsKey = Object.keys(currentUser.decks[i])[1];
-          const cardsValue = Object.values(currentUser.decks[i])[1];
-          for (let j = 0; j < cardsValue.length; j++) {
-            // const termNameKey = Object.keys(cardsValue[j])[0];
-            const termNameValue = Object.values(cardsValue[j])[0];
-            // const termDefKey = Object.keys(cardsValue[j])[1];
-            const termDefValue = Object.values(cardsValue[j])[1];
-            // const semanticKey = Object.keys(cardsValue[j])[2];
-            const semanticValue = Object.values(cardsValue[j])[2];
-            cardsValue[j] = new Card(
-              termNameValue,
-              termDefValue,
-              semanticValue
-            );
-          }
-          thisUserDecks.push({ name: nameValue, cards: cardsValue });
-        }
 
-        let deckObjects = thisUserDecks.map(
-          (deck) => new Deck(deck.name, deck.cards)
-        );
-        return deckObjects;
-      } else {
-        return [];
-      }
-      
-    } else if (mediaType === "quiz") {
-      const thisUserQuizzes = [];
-      if (currentUser.quizzes.length) {
-        for (let i = 0; i < currentUser.quizzes.length; i++) {
-          // const nameKey = Object.keys(currentUser.quizzes[i])[0];
-          const nameValue = Object.values(currentUser.quizzes[i])[0];
-          // const questionsKey = Object.keys(currentUser.quizzes[i])[1];
-          const questionsValue = Object.values(currentUser.quizzes[i])[1];
-          for (let j = 0; j < questionsValue.length; j++) {
-            const questionTextValue = questionsValue[0];
-            const answerValue = questionsValue[1];
-            const optionsValue = questionsValue[2];
-            const semanticValue = questionsValue[3];
-            questionsValue[j] = new Question(
-              questionTextValue,
-              answerValue,
-              optionsValue,
-              semanticValue
-            );
-          }
-          thisUserQuizzes.push({ name: nameValue, questions: questionsValue });
-        }
-        let quizObjects = thisUserQuizzes.map(
-          (quiz) => new Quiz(quiz.name, quiz.questions)
-        );
-        return quizObjects;
-      } else {
-        return [];
-      }
-    }
-  }
   function readDecks() {
-    let userDecks = readStorage("flashcard");
+    let userDecks = readStorage("flashcard", currentUser);
     let deckDivs = [];
     for (let deck of userDecks) {
       deckDivs.push(
@@ -131,7 +67,7 @@ export function Study() {
   }
 
   function readQuizzes() {
-    let userQuizzes = readStorage("quiz");
+    let userQuizzes = readStorage("quiz", currentUser);
     let quizDivs = [];
     for (let quiz of userQuizzes) {
       quizDivs.push(

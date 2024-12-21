@@ -4,43 +4,20 @@ import { NavLink } from "react-router-dom";
 import { Quiz } from "./quiz.js";
 import { Question } from "./question.js";
 import { QuizContext } from "../app.jsx";
+import { readStorage } from "./readstorage.js";
 
 
 
 export function QuizComponent() {
     const [currentUser, setCurrentUser] = React.useState(JSON.parse(localStorage.getItem("userObject")));
-    let userQuizzes = readStorage();
+    let userQuizzes = readStorage("quiz", currentUser);
 
     const { currentQuizIndex, setCurrentQuizIndex } = React.useContext(QuizContext);
     const currentQuiz = userQuizzes[currentQuizIndex];
-    const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);    
-
-    function readStorage() {
-        const thisUserQuizzes = [];
-        if (currentUser.quizzes.length) {
-          for (let i = 0; i < currentUser.quizzes.length; i++) {
-            // const nameKey = Object.keys(currentUser.quizzes[i])[0];
-            const nameValue = Object.values(currentUser.quizzes[i])[0];
-            // const questionsKey = Object.keys(currentUser.quizzes[i])[1];
-            const questionsValue = Object.values(currentUser.quizzes[i])[1];
-            for (let j = 0; j < questionsValue.length; j++) {
-              questionsValue[j] = new Question(
-                questionsValue[j].questionText,
-                questionsValue[j].answer,
-                questionsValue[j].options,
-                questionsValue[j].semantic
-              );
-            }
-            thisUserQuizzes.push({ name: nameValue, questions: questionsValue });
-          }
-          let quizObjects = thisUserQuizzes.map(
-            (quiz) => new Quiz(quiz.name, quiz.questions)
-          );
-          return quizObjects;
-        } else {
-          return [];
-        }
-      }
+    const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0); 
+    
+    console.log(currentQuiz)
+    
 
       function nextQuestion() {
         if (currentQuiz.questions[currentQuestionIndex + 1] === undefined) {

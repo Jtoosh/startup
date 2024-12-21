@@ -6,47 +6,17 @@ import { Card } from "./card.mjs"
 import { Deck } from "./deck.mjs"
 import { StudyEvent, StudyNotifier } from "./studyNotifier.mjs";
 import { OnlineStatus } from "./onlineStatus";
+import { readStorage } from "./readstorage";
 
 export function Flashcard() {
   const [currentUser, setCurrentUser] = React.useState(JSON.parse(localStorage.getItem("userObject")));
-  let userDecks = readStorage();
+  let userDecks = readStorage("flashcard", currentUser);
 
   const { currentDeckIndex, setCurrentDeckIndex } = useContext(DeckContext);
   const currentDeck = userDecks[currentDeckIndex];
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
 
-  function readStorage() {
-    const thisUserDecks = []
-    if (currentUser.decks.length !== 0) {
-      for (let i = 0; i < currentUser.decks.length; i++) {
-        // 
-        const nameKey = Object.keys(currentUser.decks[i])[0];
-        const nameValue = Object.values(currentUser.decks[i])[0];
-        const cardsKey = Object.keys(currentUser.decks[i])[1];
-        const cardsValue = Object.values(currentUser.decks[i])[1];
-        for (let j = 0; j < cardsValue.length; j++) {
-          const termNameKey = Object.keys(cardsValue[j])[0];
-          const termNameValue = Object.values(cardsValue[j])[0];
-          const termDefKey = Object.keys(cardsValue[j])[1];
-          const termDefValue = Object.values(cardsValue[j])[1];
-          const semanticKey = Object.keys(cardsValue[j])[2];
-          const semanticValue = Object.values(cardsValue[j])[2];
-          cardsValue[j] = new Card(termNameValue, termDefValue, semanticValue);
-        }
-        thisUserDecks.push({ name: nameValue, cards: cardsValue });
-      }
-      
-      let deckObjects = thisUserDecks.map(
-        (deck) => new Deck(deck.name, deck.cards)
-      );
-      
-      return deckObjects;
-    } else{
-      return [];
-    }
-    
-    
-  }
+
   function flipAnimation() {
     let flashcard = document.querySelector(".flashcard");
     flashcard.classList.toggle("flipped");
