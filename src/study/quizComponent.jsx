@@ -24,7 +24,6 @@ export function QuizComponent() {
   const handleShow = () => setModalShow(true);
   const handleClose = () => setModalShow(false);
 
-  console.log(currentQuiz);
 
   function nextQuestion() {
     if (currentQuiz.questions[currentQuestionIndex + 1] === undefined) {
@@ -88,7 +87,7 @@ export function QuizComponent() {
                 <input
                   type="radio"
                   id="option1"
-                  name="quiz-option"
+                  name="quiz-selection"
                   value="option1"
                   className="form-check-input"
                 />
@@ -100,7 +99,7 @@ export function QuizComponent() {
                 <input
                   type="radio"
                   id="option2"
-                  name="quiz-option"
+                  name="quiz-selection"
                   value="option2"
                   className="form-check-input"
                 />
@@ -112,7 +111,7 @@ export function QuizComponent() {
                 <input
                   type="radio"
                   id="option3"
-                  name="quiz-option"
+                  name="quiz-selection"
                   value="option3"
                   className="form-check-input"
                 />
@@ -124,7 +123,7 @@ export function QuizComponent() {
                 <input
                   type="radio"
                   id="option4"
-                  name="quiz-option"
+                  name="quiz-selection"
                   value="option4"
                   className="form-check-input"
                 />

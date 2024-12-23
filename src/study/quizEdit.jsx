@@ -58,7 +58,6 @@ export function QuizEdit() {
         const form = e.target;
         const formData = new FormData(form);
         const formObject = Object.fromEntries(formData.entries());
-        console.log(formObject);
         let currentQuestion = quizEditing.questions[currentQuestionIndex];
 
         currentQuestion.questionText = formObject.question;
@@ -69,8 +68,14 @@ export function QuizEdit() {
             formObject.option3,
             formObject.option4,
         ];
-
         updateStorage();
+    }
+
+    function addQuestion() {
+        let newQuestion = new Question("Question", "Answer", ["A", "B", "C", "D"], "Semantic");
+        quizEditing.questions.push(newQuestion);
+        updateStorage();
+        setCurrentQuestionIndex(quizEditing.questions.length - 1);
         console.log(quizEditing);
     }
 
@@ -119,10 +124,12 @@ export function QuizEdit() {
                                     </label>
                                     <input
                                         type="text"
-                                        id="option1text"
+                                        id="option1"
+                                        name="option1"
                                         defaultValue={
                                             quizEditing.questions[currentQuestionIndex].options[0]
                                         }
+                                        required
                                     />
                                 </div>
                                 <div className="form-check">
@@ -131,10 +138,12 @@ export function QuizEdit() {
                                     </label>
                                     <input
                                         type="text"
-                                        id="option1text"
+                                        id="option2"
+                                        name="option2"
                                         defaultValue={
                                             quizEditing.questions[currentQuestionIndex].options[1]
                                         }
+                                        required
                                     />
                                 </div>
                                 <div className="form-check">
@@ -144,9 +153,11 @@ export function QuizEdit() {
                                     <input
                                         type="text"
                                         id="option3"
+                                        name="option3"
                                         defaultValue={
                                             quizEditing.questions[currentQuestionIndex].options[2]
                                         }
+                                        required
                                     />
                                 </div>
                                 <div className="form-check">
@@ -156,9 +167,11 @@ export function QuizEdit() {
                                     <input
                                         type="text"
                                         id="option4"
+                                        name="option4"
                                         defaultValue={
                                             quizEditing.questions[currentQuestionIndex].options[3]
                                         }
+                                        required
                                     />
                                 </div>
                             </div>
@@ -171,6 +184,9 @@ export function QuizEdit() {
                             </button>
                             <button className="btn btn-success" onClick={nextQuestion}>
                                 Next &#8594;
+                            </button>
+                            <button className="btn btn-secondary" onClick={addQuestion}>
+                                Add Question
                             </button>
                         </div>
                         <div className="buttons d-flex column justify-content-center my-4">
