@@ -91,7 +91,7 @@ export function QuizComponent() {
                   value="option1"
                   className="form-check-input"
                 />
-                <label for="option1" className="form-check-label">
+                <label htmlFor="option1" className="form-check-label">
                   {currentQuiz.questions[currentQuestionIndex].options[0]}
                 </label>
               </div>
@@ -103,7 +103,7 @@ export function QuizComponent() {
                   value="option2"
                   className="form-check-input"
                 />
-                <label for="option2" className="form-check-label">
+                <label htmlFor="option2" className="form-check-label">
                   {currentQuiz.questions[currentQuestionIndex].options[1]}
                 </label>
               </div>
@@ -115,7 +115,7 @@ export function QuizComponent() {
                   value="option3"
                   className="form-check-input"
                 />
-                <label for="option3" className="form-check-label">
+                <label htmlFor="option3" className="form-check-label">
                   {currentQuiz.questions[currentQuestionIndex].options[2]}
                 </label>
               </div>
@@ -127,7 +127,7 @@ export function QuizComponent() {
                   value="option4"
                   className="form-check-input"
                 />
-                <label for="option4" className="form-check-label">
+                <label htmlFor="option4" className="form-check-label">
                   {currentQuiz.questions[currentQuestionIndex].options[3]}
                 </label>
               </div>

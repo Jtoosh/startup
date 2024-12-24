@@ -835,3 +835,5 @@ As I was working on MnemonicStudy a bit todat (19.12.24), I did a litter more di
 I had a weird issue while working with Modals on the quiz page. When I was trying to handle the show state of the modal, rather than just using the setter that I associated with the state variable for the click event listeners, I had to define seperate handler functions that used the setters from the state variables, and for some reason those handlers that I defined work, but using the setters directly does not, as the console says that causes an infinite loop. I'm curious to learn why the handlers do not cause an infinite loop.
 
 I had to relearn the difference between `name` and `id` attributes in `input` elements. `id` is used to connect an input element to a `label` element, and that's about it. `name` is used to identify the input element in the form data that is sent to the server. So, when form data is sent to the server, the keys for the values taken from the input elements are the `name` attributes of the input elements.
+
+**Current Issue:** When adding a question to the quiz, it simple adds a copy of the existing question, rather than a new blank question.

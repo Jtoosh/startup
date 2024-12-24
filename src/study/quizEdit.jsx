@@ -30,6 +30,7 @@ export function QuizEdit() {
         currentUser.quizzes[currentQuizIndex] = quizEditing;
         setCurrentUser(currentUser);
         localStorage.setItem("userObject", JSON.stringify(currentUser));
+
     }
 
     function nextQuestion() {
@@ -72,10 +73,12 @@ export function QuizEdit() {
     }
 
     function addQuestion() {
-        let newQuestion = new Question("Question", "Answer", ["A", "B", "C", "D"], "Semantic");
+        const newQuestion = new Question("Question", "Answer", ["A", "B", "C", "D"], "Semantic");
+        console.log(newQuestion);
         quizEditing.questions.push(newQuestion);
         updateStorage();
-        setCurrentQuestionIndex(quizEditing.questions.length - 1);
+        setCurrentQuestionIndex((quizEditing.questions.length - 1));
+        console.log(currentQuestionIndex)
         console.log(quizEditing);
     }
 
@@ -179,20 +182,20 @@ export function QuizEdit() {
                     </div>
                     <div>
                         <div className=" buttons d-flex column justify-content-center  mx-2 ">
-                            <button className="btn btn-success" onClick={prevQuestion}>
+                            <button type="button" className="btn btn-success" onClick={prevQuestion}>
                                 &#8592; Back
                             </button>
-                            <button className="btn btn-success" onClick={nextQuestion}>
+                            <button type="button" className="btn btn-success" onClick={nextQuestion}>
                                 Next &#8594;
                             </button>
-                            <button className="btn btn-secondary" onClick={addQuestion}>
+                            <button  type="button" className="btn btn-secondary" onClick={addQuestion}>
                                 Add Question
                             </button>
                         </div>
                         <div className="buttons d-flex column justify-content-center my-4">
                             <button className="btn btn-warning">Need a Suggestion?</button>
                             <NavLink
-                                type="button"
+                                type="submit"
                                 to="../study/quiz"
                                 className="btn btn-primary"
                             >
