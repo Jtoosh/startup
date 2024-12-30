@@ -24,18 +24,21 @@ export function QuizComponent() {
   const handleShow = () => setModalShow(true);
   const handleClose = () => setModalShow(false);
 
-
   function nextQuestion() {
-    if (currentQuiz.questions[currentQuestionIndex + 1] === undefined) {
-      alert('No more questions in quiz. Click "Edit Quiz" to add a new question.');
+    if (currentQuestionIndex + 1 === currentQuiz.questions.length) {
+      alert(
+        'No more questions in quiz. Click "Edit Quiz" to add a new question.'
+      );
       return;
     } else {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     }
   }
   function prevQuestion() {
-    if (currentQuiz.questions[currentQuestionIndex - 1] === undefined) {
-      alert('No more questions in quiz. Click "Edit Quiz" to add a new question.');
+    if (currentQuestionIndex - 1 < 0) {
+      alert(
+        'No more questions in quiz. Click "Edit Quiz" to add a new question.'
+      );
       return;
     } else {
       setCurrentQuestionIndex(currentQuestionIndex - 1);

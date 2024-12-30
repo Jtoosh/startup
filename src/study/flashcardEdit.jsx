@@ -6,15 +6,15 @@ import { Deck } from "./deck.mjs";
 import { DeckContext } from "../app";
 import { ApiModal } from "./apiModal";
 import { readStorage } from "./readstorage";
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 export function FlashcardEdit() {
   const { currentDeckIndex, setCurrentDeckIndex } = useContext(DeckContext);
   const [currentCardIndex, setCurrentCardIndex] = React.useState(0);
-  const [currentUser, setCurrentUser] = React.useState(JSON.parse(localStorage.getItem("userObject")));
- 
-  
+  const [currentUser, setCurrentUser] = React.useState(
+    JSON.parse(localStorage.getItem("userObject"))
+  );
 
   let deckEditing =
     readStorage("flashcard", currentUser)[currentDeckIndex] !== undefined
@@ -27,7 +27,6 @@ export function FlashcardEdit() {
     currentUser.decks[currentDeckIndex] = deckEditing;
     setCurrentUser(currentUser);
     localStorage.setItem("userObject", JSON.stringify(currentUser));
-    
   }
 
   function handleSubmit(e) {
@@ -76,7 +75,6 @@ export function FlashcardEdit() {
     setCurrentCardIndex(deckEditing.cards.length - 1);
   }
 
-  
   return (
     <main>
       <h1 className="text-center">{deckEditing.name}</h1>
@@ -146,8 +144,8 @@ export function FlashcardEdit() {
           </div>
           <div>
             <div className="buttons d-flex column justify-content-center">
-              <ApiModal/>
-              
+              <ApiModal />
+
               <button
                 type="submit"
                 to="../study/flashcard"

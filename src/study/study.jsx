@@ -24,7 +24,6 @@ export function Study() {
   let createdDecks = readDecks();
   let createdQuizzes = readQuizzes();
 
-
   function readDecks() {
     let userDecks = readStorage("flashcard", currentUser);
     let deckDivs = [];
@@ -135,7 +134,6 @@ export function Study() {
         {/* <div>
           <span>Quiz functionality coming soon!</span>
         </div> */}
-        
       </div>
 
       <OnlineStatus />
