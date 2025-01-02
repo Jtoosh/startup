@@ -20,9 +20,10 @@ export function QuizEdit() {
       : new Quiz("New Quiz", [
           new Question(
             "New Question",
-            "New Semantic",
+            "New Answer",
             ["Option 1", "Option 2", "Option 3", "Option 4"],
-            0
+            "New Semantic",
+            "No Selection"
           ),
         ]);
 
@@ -61,6 +62,7 @@ export function QuizEdit() {
     let currentQuestion = quizEditing.questions[currentQuestionIndex];
 
     currentQuestion.questionText = formObject.question;
+    currentQuestion.answer = formObject.answer;
     currentQuestion.semantic = formObject.semantic;
     currentQuestion.options = [
       formObject.option1,
@@ -76,7 +78,8 @@ export function QuizEdit() {
       "Question",
       "Answer",
       ["A", "B", "C", "D"],
-      "Semantic"
+      "Semantic",
+      "No Selection"
     );
     console.log(newQuestion);
     quizEditing.questions.push(newQuestion);
@@ -123,6 +126,20 @@ export function QuizEdit() {
                   key={`${currentQuestionIndex}-semantic-2`}
                 />
               </div>
+
+              <div className="my-2">
+                <label htmlFor="answer">Answer: </label>
+                <input
+                  type="text"
+                  id="answer"
+                  name="answer"
+                  defaultValue={
+                    quizEditing.questions[currentQuestionIndex].answer
+                  }
+                  required = {true}
+                  key={`${currentQuestionIndex}-answer-3`}
+                />   
+              </div>
             </div>
 
             <div className="mt-8">
@@ -139,7 +156,7 @@ export function QuizEdit() {
                       quizEditing.questions[currentQuestionIndex].options[0]
                     }
                     required = {true}
-                    key={`${currentQuestionIndex}-option1-3`}
+                    key={`${currentQuestionIndex}-option1-4`}
                   />
                 </div>
                 <div className="form-check">
@@ -154,7 +171,7 @@ export function QuizEdit() {
                       quizEditing.questions[currentQuestionIndex].options[1]
                     }
                     required = {true}
-                    key={`${currentQuestionIndex}-option2-4`}
+                    key={`${currentQuestionIndex}-option2-5`}
                   />
                 </div>
                 <div className="form-check">
@@ -169,7 +186,7 @@ export function QuizEdit() {
                       quizEditing.questions[currentQuestionIndex].options[2]
                     }
                     required = {true}
-                    key={`${currentQuestionIndex}-option3-5`}
+                    key={`${currentQuestionIndex}-option3-6`}
                   />
                 </div>
                 <div className="form-check">
@@ -184,7 +201,7 @@ export function QuizEdit() {
                       quizEditing.questions[currentQuestionIndex].options[3]
                     }
                     required = {true}
-                    key={`${currentQuestionIndex}-option4-6`}
+                    key={`${currentQuestionIndex}-option4-7`}
                   />
                 </div>
               </div>

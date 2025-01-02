@@ -11,9 +11,9 @@ export function readStorage(mediaType, userObject) {
         for (let i = 0; i < userObject.decks.length; i++) {
           //
           // const nameKey = Object.keys(userObject.decks[i])[0];
-          const nameValue = Object.values(userObject.decks[i])[0];
+          const nameValue = userObject.decks[i].name;
           // const cardsKey = Object.keys(userObject.decks[i])[1];
-          const cardsValue = Object.values(userObject.decks[i])[1];
+          const cardsValue = userObject.decks[i].cards;
           for (let j = 0; j < cardsValue.length; j++) {
             // const termNameKey = Object.keys(cardsValue[j])[0];
             const termNameValue = Object.values(cardsValue[j])[0];
@@ -51,7 +51,8 @@ export function readStorage(mediaType, userObject) {
               questionsValue[j].questionText,
               questionsValue[j].answer,
               questionsValue[j].options,
-              questionsValue[j].semantic
+              questionsValue[j].semantic,
+              questionsValue[j].selection
             );
           }
           thisUserQuizzes.push({ name: nameValue, questions: questionsValue });

@@ -845,3 +845,4 @@ A couple other small things I noticed:
 
 - All edited questions don't all save when the save button is clicked, it needs to be clicked for each question that is edited. I'll likely want to try and change that.
 - When I select one of the radio options, that selection persists across all of the questions. So, if I select B on the first question, the next question renders with B already selected. Then, if I select A on the second question, then go back to the first question, A is now selected. I'll need to find a way to make the radio buttons independent of each other.
+  > In answer to this question, I found that putting a `key` attribute on the radio input elements would prevent the selection from carrying over, but it would wipe the selection as soon as the user moves to a different question. So, I needed to develop some way to store the selections throughout the quiz.

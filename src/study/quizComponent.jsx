@@ -64,6 +64,24 @@ export function QuizComponent() {
     );
   }
 
+    function findSelection(){
+      let currentQuestion = currentQuiz.questions[currentQuestionIndex];
+      let options = currentQuestion.options;
+      let selection = currentQuestion.selection;
+      for (option of options){
+        if (option === selection){
+          optionElement = document.getElementById(`option` + options.indexOf(option));
+          optionElement.defaultChecked = true;
+        }
+      }
+    }
+
+    function setSelection(option){
+      let currentQuestion = currentQuiz.questions[currentQuestionIndex];
+      currentQuestion.selection = option;  
+      localStorage.setItem("userObject", JSON.stringify(currentUser));  
+    }
+
   return (
     <main onLoad={readStorage}>
       <h1 className="text-center">{currentQuiz.name}</h1>
@@ -85,14 +103,17 @@ export function QuizComponent() {
                 required
               /> */}
             </div>
-            <div className="my-4 text-start">
+            <div className="my-4 text-start" onLoad={findSelection}>
               <div className="form-check">
                 <input
+                  onChange={() => setSelection(currentQuiz.questions[currentQuestionIndex].options[0])}
                   type="radio"
                   id="option1"
                   name="quiz-selection"
                   value="option1"
                   className="form-check-input"
+                  key={currentQuiz.questions[currentQuestionIndex].options[0]}
+                  defaultChecked= {false}
                 />
                 <label htmlFor="option1" className="form-check-label">
                   {currentQuiz.questions[currentQuestionIndex].options[0]}
@@ -100,11 +121,14 @@ export function QuizComponent() {
               </div>
               <div className="form-check">
                 <input
+                  onChange={() => setSelection(currentQuiz.questions[currentQuestionIndex].options[1])}
                   type="radio"
                   id="option2"
                   name="quiz-selection"
                   value="option2"
                   className="form-check-input"
+                  key={currentQuiz.questions[currentQuestionIndex].options[1]}
+                  defaultChecked= {false}
                 />
                 <label htmlFor="option2" className="form-check-label">
                   {currentQuiz.questions[currentQuestionIndex].options[1]}
@@ -112,11 +136,14 @@ export function QuizComponent() {
               </div>
               <div className="form-check">
                 <input
+                  onChange={() => setSelection(currentQuiz.questions[currentQuestionIndex].options[2])}
                   type="radio"
                   id="option3"
                   name="quiz-selection"
                   value="option3"
                   className="form-check-input"
+                  key={currentQuiz.questions[currentQuestionIndex].options[2]}
+                  defaultChecked= {false}
                 />
                 <label htmlFor="option3" className="form-check-label">
                   {currentQuiz.questions[currentQuestionIndex].options[2]}
@@ -124,11 +151,14 @@ export function QuizComponent() {
               </div>
               <div className="form-check">
                 <input
+                  onChange={() => setSelection(currentQuiz.questions[currentQuestionIndex].options[3])}
                   type="radio"
                   id="option4"
                   name="quiz-selection"
                   value="option4"
                   className="form-check-input"
+                  key={currentQuiz.questions[currentQuestionIndex].options[3]}
+                  defaultChecked= {false}
                 />
                 <label htmlFor="option4" className="form-check-label">
                   {currentQuiz.questions[currentQuestionIndex].options[3]}

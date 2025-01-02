@@ -24,10 +24,14 @@ export function About() {
   <div className="container-fluid">
       <h2>The Details</h2>
       <p>
-          First, a couple of definitions. <em>Semantic encoding</em> is a way to process new information by linking it to existing knowledge and experiences, and forming mental relationships between information.
-          This differs from other methods of encoding information that are more shallow, such as just paying attention to how something looks or sounds. Jason Hreha describes it this way: 
+          <p>
+              First, a couple of definitions. <em>Semantic encoding</em> is a way to process new information by linking it to existing knowledge and experiences, and forming mental relationships between information.
+              This differs from other methods of encoding information that are more shallow, such as just paying attention to how something looks or sounds. Jason Hreha describes it this way:
+          </p>
+          
           <blockquote className="blockquote">"It is a type of deep processing that focuses on the meaning of the information rather than its sensory or structural characteristics...Research has shown that semantic 
-          encoding is more effective in cretaeing leasting memories compared to other forms of encoding, such as visual or acoustic encoding, which focus on the superficial characteristics of the information."</blockquote> 
+          encoding is more effective in creating lasting memories compared to other forms of encoding, such as visual or acoustic encoding, which focus on the superficial characteristics of the information."</blockquote> 
+
           <figcaption className="blockquote-footer">(Semantic Encoding - The Behavioral Scientist)</figcaption>
       
           Mnemonics are some type of device, linguistic, digital, literary, or otherwise, that aids memory. Any catchy acronym that helps someone remember the meaning of
