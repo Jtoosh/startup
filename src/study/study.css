@@ -29,6 +29,7 @@
 
 .flashcard.flipped .flashcard-inner {
   transform: rotateY(180deg);
+  backface-visibility: hidden;
   /* rotate: y 180deg; */
 }
 

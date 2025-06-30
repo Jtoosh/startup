@@ -51,56 +51,6 @@ export default function App() {
   const [currentDeckIndex, setCurrentDeckIndex] = useState(0);
   const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
 
-  // const authenticatedRoutes = (<Routes>
-  //   <Route
-  //     path="/"
-  //     element={
-  //       <Login
-  //         userName={userName}
-  //         authState={authState}
-  //         onAuthChange={(userName, authState) => {
-  //           setAuthState(authState);
-  //           setUserName(userName);
-  //         }}
-  //       />
-  //     }
-  //   />
-  //   <Route path="/study" element={<Study />} />
-  //   <Route path="/home" element={<Home />} />
-  //   <Route path="/study/flashcard" element={<Flashcard />} />
-  //   <Route path="/study/flashcardEdit" element={<FlashcardEdit />} />
-  //   <Route path="/study/quiz" element={<Quiz />} />
-  //   <Route path="/study/quizEdit" element={<QuizEdit />} />
-  //   <Route path="/account" element={<Account editing ={editingAccount} setter={setEditingAccount} />} />
-  //   <Route path="/about" element={<About />} />
-  //   <Route path="*" element={<NotFound />} />
-  // </Routes>)
-
-  // const unauthenticatedRoutes = (<Routes>
-  //   <Route
-  //     path="/"
-  //     element={
-  //       <Login
-  //         userName={userName}
-  //         authState={authState}
-  //         onAuthChange={(userName, authState) => {
-  //           setAuthState(authState);
-  //           setUserName(userName);
-  //         }}
-  //       />
-  //     }
-  //   />
-  //   <Route path="/study" element={<Unauthorized />} />
-  //   <Route path="/study/flashcard" element={<Unauthorized />} />
-  //   <Route path="/study/flashcardEdit" element={<Unauthorized />} />
-  //   <Route path="/study/quiz" element={<Unauthorized />} />
-  //   <Route path="/study/quizEdit" element={<Unauthorized />} />
-  //   <Route path="/account" element={<Unauthorized />} />
-  //   <Route path="/home" element={<Home />} />
-  //   <Route path="/about" element={<About />} />
-  //   <Route path="*" element={<NotFound />} />
-  //   </Routes>)
-
   return (
     <DeckContext.Provider value={{ currentDeckIndex, setCurrentDeckIndex }}>
       <QuizContext.Provider value={{ currentQuizIndex, setCurrentQuizIndex }}>
